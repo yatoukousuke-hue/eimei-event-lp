@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>板橋区科学館へ大冒険｜エイメイ水谷 小学生イベント</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="エイメイ学院／明成個別 水谷校舎の小学生イベント。11/28（土）板橋区立教育科学館への遠足（参加費無料）。プラネタリウムや体験型の科学展示を見学します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<meta property="og:type" content="website">
+<meta property="og:title" content="11/28(土) 板橋区科学館へ大冒険｜エイメイ水谷 小学生イベント">
+<meta property="og:description" content="プラネタリウムと20以上の体験展示。小1〜6年生対象・参加費無料。お申し込みは公式LINEから。">
+<meta property="og:image" content="/img/ensoku.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#05081c">
+<style>
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+
+/* Layout: 1枚の夜空（固定の星図）の上を、展示室のパネルがスクロールで流れていく。ページ全体がプラネタリウムの中。 */
+:root{
+  --void:#05081c; --space:#0b1238; --space-2:#172260; --nebula:#4a2a8a; --nebula-2:#1f5f8a;
+  --star:#ffd84d; --scope:#5ee6ff; --red:#ff3b5c; --line:#06c755; --line-dark:#04913d;
+  --glass:rgba(10,16,48,.62); --glass-edge:rgba(94,230,255,.28);
+  --paper:#f3f6fd; --sheet:#ffffff; --ink:#141b3c; --sub:#56607f; --grid:#d9e1f3; --gridline:rgba(60,100,200,.09);
+  --pend:#a24c00; --pend-bg:#fff1dc; --tojo:#1b5fbf;
+  --display:"Dela Gothic One","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+  --mono:"DotGothic16","Osaka-Mono","MS Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0b1030; --sheet:#121a45; --ink:#e9edff; --sub:#a9b2d6; --grid:#27336f; --gridline:rgba(120,160,255,.08); --pend:#ffb867; --pend-bg:#3a2a12; --tojo:#6aa5ff; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0b1030; --sheet:#121a45; --ink:#e9edff; --sub:#a9b2d6; --grid:#27336f; --gridline:rgba(120,160,255,.08); --pend:#ffb867; --pend-bg:#3a2a12; --tojo:#6aa5ff; color-scheme:dark }
+body{background:var(--void);color:var(--ink)}
+.ev{font-family:var(--body);font-size:16px;line-height:1.85;color:#fff;background:var(--void);overflow-x:clip;position:relative}
+.ev *{box-sizing:border-box}
+.ev h1,.ev h2,.ev h3{text-wrap:balance;margin:0}
+.ev p{margin:0}
+.ev p,.ev h2,.ev h3,.ev li,.ev dd,.ev .nm{overflow-wrap:anywhere}
+.ev a{color:inherit}
+.ev .wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ev .pend{display:inline-block;background:var(--pend-bg);color:var(--pend);font-weight:700;font-size:.82em;padding:0 .45em;border-radius:4px;line-height:1.6}
+.ev .mono{font-family:var(--mono);letter-spacing:.06em}
+.ev .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border-radius:999px;font-weight:900;text-decoration:none;font-size:1.05rem;transition:transform .15s,box-shadow .15s}
+.ev .btn-line{background:var(--line);color:#fff;box-shadow:0 6px 0 var(--line-dark),0 0 36px rgba(6,199,85,.35)}
+.ev .btn-line:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--line-dark),0 0 50px rgba(6,199,85,.5)}
+.ev .btn-line:active{transform:translateY(3px);box-shadow:0 3px 0 var(--line-dark)}
+.ev .btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.05);backdrop-filter:blur(6px)}
+.ev .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.ev .btn:focus-visible,.ev .chip:focus-visible,.ev summary:focus-visible,.ev .el:focus-visible{outline:3px solid var(--star);outline-offset:3px}
+
+/* ===== 固定の星空 ===== */
+.ev .sky{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(140% 90% at 50% 115%,var(--nebula) 0%,transparent 55%),
+  radial-gradient(70% 60% at 85% 20%,rgba(31,95,138,.55) 0%,transparent 60%),
+  linear-gradient(180deg,var(--void) 0%,var(--space) 50%,var(--void) 100%)}
+.ev .sky canvas{position:absolute;inset:0;width:100%;height:100%}
+.ev .sky .milky{position:absolute;inset:-20%;background:radial-gradient(60% 18% at 50% 50%,rgba(255,255,255,.06),transparent 70%);transform:rotate(-28deg)}
+.ev .page{position:relative;z-index:1}
+
+/* ===== トップバー ===== */
+.ev .topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);background:rgba(5,8,28,.55);border-bottom:1px solid rgba(255,255,255,.08)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:#05081c}
+.ev .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:10px}
+.ev .brand{font-weight:900;font-size:.9rem;line-height:1.35;min-width:0}
+.ev .brand small{display:block;font-family:var(--mono);font-weight:400;color:var(--scope);font-size:.72rem;letter-spacing:.16em}
+.ev .topbar .btn{min-height:44px;padding:0 18px;font-size:.9rem;box-shadow:none;flex:0 0 auto}
+.ev .topbar .btn:hover{transform:none;box-shadow:none}
+
+/* ===== ヒーロー ===== */
+.ev .hero{position:relative;min-height:min(92svh,900px);display:grid;align-content:center;padding-block:48px 120px;overflow:hidden}
+.ev .orbit{position:absolute;left:50%;top:50%;width:min(150vw,1700px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(94,230,255,.14);transform:translate(-50%,-18%);pointer-events:none;opacity:.8}
+.ev .orbit.o2{width:min(118vw,1300px);border-color:rgba(255,216,77,.18);border-style:dashed}
+.ev .orbit.o3{display:none}
+.ev .orbit::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:var(--scope);box-shadow:0 0 14px var(--scope)}
+.ev .orbit.o2::after{background:var(--star);box-shadow:0 0 14px var(--star);top:auto;bottom:-4px}
+.ev .orbit.o3::after{display:none}
+@media (prefers-reduced-motion: no-preference){
+  .ev .orbit{animation:spin 120s linear infinite}.ev .orbit.o2{animation-duration:80s;animation-direction:reverse}
+  @keyframes spin{to{transform:translate(-50%,-18%) rotate(360deg)}}
+}
+.ev .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
+.ev .hero-text{display:flex;flex-direction:column;gap:20px;min-width:0}
+.ev .callsign{font-family:var(--mono);color:var(--scope);font-size:.85rem;letter-spacing:.22em;display:flex;align-items:center;gap:10px}
+.ev .callsign::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red);animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.ev .hero h1{font-family:var(--display);font-weight:400;line-height:1.02;font-size:clamp(2.7rem,9.6vw,6rem);letter-spacing:.01em}
+.ev .hero h1 .pre{display:block;font-size:.3em;color:var(--star);letter-spacing:.18em;margin-bottom:14px}
+.ev .hero h1 .glow{background:linear-gradient(180deg,#fff 35%,#a9e8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 28px rgba(94,230,255,.35))}
+.ev .hero h1 .sub{display:block;font-size:.62em;margin-top:6px;color:#fff;-webkit-text-stroke:0}
+.ev .lead{color:#d7dcff;max-width:30em;font-size:1.05rem}
+.ev .readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--glass-edge);border-radius:16px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.ev .readout div{padding:12px 14px;border-right:1px solid rgba(94,230,255,.18);min-width:0;position:relative}
+.ev .readout div::before{content:"";position:absolute;left:14px;top:8px;width:18px;height:2px;background:var(--scope);opacity:.7}
+.ev .readout div:last-child{border-right:0}
+.ev .readout span{display:block;font-family:var(--mono);font-size:.68rem;color:var(--scope);letter-spacing:.14em;margin-top:6px}
+.ev .readout b{display:block;font-family:var(--mono);font-weight:400;font-size:clamp(1rem,2.4vw,1.3rem);line-height:1.3;color:#fff}
+.ev .readout .free b{color:var(--star);text-shadow:0 0 16px rgba(255,216,77,.5)}
+.ev .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.ev .countdown{font-family:var(--mono);color:#d7dcff;font-size:.95rem;display:flex;align-items:baseline;gap:4px}
+.ev .countdown b{font-weight:400;color:var(--star);font-size:2.2rem;line-height:1;text-shadow:0 0 18px rgba(255,216,77,.5)}
+.ev .deadline{font-size:.9rem;color:#c9cff2}
+.ev .deadline b{color:#fff}
+/* ポスター: 浮かぶ標本 */
+.ev .specimen{position:relative;margin:0 auto;max-width:380px;width:100%;perspective:1200px}
+.ev .specimen img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12);transform:rotateY(-10deg) rotateX(3deg)}
+@media (prefers-reduced-motion: no-preference){.ev .specimen img{animation:float 7s ease-in-out infinite}@keyframes float{50%{transform:rotateY(-10deg) rotateX(3deg) translateY(-12px)}}}
+.ev .specimen::before{content:"";position:absolute;left:10%;right:10%;bottom:-28px;height:40px;border-radius:50%;background:radial-gradient(ellipse,rgba(94,230,255,.35),transparent 70%);filter:blur(6px)}
+.ev .specimen figcaption{position:absolute;left:-14px;top:22px;background:var(--star);color:#1c1300;font-family:var(--mono);font-size:.74rem;padding:5px 12px;transform:rotate(-4deg);letter-spacing:.1em;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.ev .scroll-hint{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;color:rgba(255,255,255,.55);display:flex;flex-direction:column;align-items:center;gap:8px}
+.ev .scroll-hint i{width:1px;height:38px;background:linear-gradient(180deg,var(--scope),transparent)}
+
+/* ===== ジャンプ（展示室の案内板） ===== */
+.ev .jump{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:15;pointer-events:none}
+.ev .jump .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:10px;scrollbar-width:none;pointer-events:auto}
+.ev .chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--glass-edge);background:var(--glass);backdrop-filter:blur(10px);text-decoration:none;font-weight:700;font-size:.85rem;color:#fff}
+.ev .chip i{font-style:normal;font-family:var(--mono);color:var(--scope);font-size:.72rem}
+.ev .chip:hover{border-color:var(--star)}
+
+/* ===== 展示室（セクション） ===== */
+.ev section.room{padding-block:70px}
+.ev .head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 18px;align-items:end;margin-bottom:30px}
+.ev .head .no{grid-row:span 2;font-family:var(--mono);font-size:3.6rem;line-height:.85;color:var(--scope);text-shadow:0 0 24px rgba(94,230,255,.45)}
+.ev .head .tag{font-family:var(--mono);font-size:.76rem;letter-spacing:.26em;color:var(--scope)}
+.ev .head h2{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,4.6vw,2.6rem);line-height:1.28;color:#fff}
+.ev .head p{grid-column:1/-1;color:#c9cff2;max-width:44em;margin-top:8px}
+/* 明るい展示室 */
+.ev .room.light{background:var(--paper);color:var(--ink);background-image:linear-gradient(var(--gridline) 1px,transparent 1px),linear-gradient(90deg,var(--gridline) 1px,transparent 1px);background-size:24px 24px;position:relative}
+.ev .room.light .head .no{color:var(--tojo);text-shadow:none}
+.ev .room.light .head .tag{color:var(--tojo)}
+.ev .room.light .head h2{color:var(--ink)}
+.ev .room.light .head p{color:var(--sub)}
+.ev .room.light::before,.ev .room.light::after{content:"";position:absolute;left:0;right:0;height:46px;background:var(--paper);z-index:1}
+.ev .room.light::before{top:-45px;clip-path:ellipse(60% 100% at 50% 100%)}
+.ev .room.light::after{bottom:-45px;clip-path:ellipse(60% 100% at 50% 0)}
+.ev .room.light .wrap{position:relative;z-index:2}
+
+/* 展示ラベル */
+.ev .exhibits{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.ev .placard{position:relative;background:var(--glass);border:1px solid var(--glass-edge);backdrop-filter:blur(10px);border-radius:18px;padding:0 0 22px;display:flex;flex-direction:column;gap:10px;min-width:0;overflow:hidden;transition:transform .25s,border-color .25s}
+.ev .placard:hover{transform:translateY(-6px);border-color:rgba(255,216,77,.6)}
+.ev .placard .floor{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:.76rem;background:var(--star);color:#1c1300;padding:3px 10px;border-radius:999px;z-index:2}
+.ev .placard .viz{height:150px;position:relative}
+.ev .placard.star .viz{background:radial-gradient(ellipse at 50% 120%,#5b3aa8,#0e1640 60%,#070b24)}
+.ev .placard.lab .viz{background:linear-gradient(135deg,#0f3a5c,#1f5f8a)}
+.ev .placard.quake .viz{background:linear-gradient(135deg,#4a1f3a,#7a2a4a)}
+.ev .viz svg{position:absolute;inset:0;width:100%;height:100%}
+.ev .placard .code{font-family:var(--mono);color:var(--scope);font-size:.76rem;letter-spacing:.14em;padding:0 20px}
+.ev .placard h3{font-size:1.35rem;font-weight:900;line-height:1.4;padding:0 20px}
+.ev .placard p{color:#d7dcff;padding:0 20px;font-size:.95rem}
+.ev .note{margin-top:14px;font-size:.82rem;color:#aab2d8}
+
+/* ミッション */
+.ev .mission{margin-top:34px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center;border:1px solid rgba(255,216,77,.5);background:linear-gradient(135deg,rgba(255,216,77,.08),rgba(10,16,48,.5));backdrop-filter:blur(8px);border-radius:20px;padding:26px;position:relative;overflow:hidden}
+.ev .mission::before{content:"TOP SECRET";position:absolute;right:-30px;top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;color:var(--red);border:1px solid var(--red);padding:2px 40px;transform:rotate(35deg);opacity:.8}
+.ev .stamp{width:110px;height:110px;border-radius:50%;border:3px double var(--star);color:var(--star);display:grid;place-items:center;text-align:center;font-family:var(--mono);font-size:.78rem;line-height:1.3;transform:rotate(-12deg);box-shadow:0 0 24px rgba(255,216,77,.25)}
+.ev .stamp b{display:block;font-family:var(--display);font-weight:400;font-size:1.55rem}
+.ev .mission h3{font-family:var(--display);font-weight:400;font-size:1.4rem;line-height:1.4}
+.ev .mission p{color:#d7dcff;margin-top:6px}
+
+/* 路線図・観測ログ */
+.ev .route{background:var(--sheet);border:1px solid var(--grid);border-radius:16px;padding:18px 16px 14px;overflow-x:auto;margin-bottom:30px;box-shadow:0 10px 30px rgba(20,30,80,.08)}
+.ev .route svg{display:block;min-width:620px;width:100%;height:auto}
+.ev .route text{font-family:var(--body);fill:var(--ink)}
+.ev .route .t{font-family:var(--mono);fill:var(--sub)}
+.ev .log{list-style:none;margin:0;padding:0;max-width:760px;border-left:2px dashed var(--tojo);margin-left:8px}
+.ev .log li{position:relative;padding:0 0 24px 28px}
+.ev .log li::before{content:"";position:absolute;left:-8px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--sheet);border:3px solid var(--tojo)}
+.ev .log li.hl::before{background:var(--star);border-color:var(--star);box-shadow:0 0 0 6px rgba(255,216,77,.3)}
+.ev .log time{font-family:var(--mono);font-size:1.2rem;color:var(--tojo)}
+.ev .log b{display:block;font-size:1.08rem}
+.ev .log span{color:var(--sub);font-size:.92rem}
+
+/* 装備・保護者 */
+.ev .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.ev .panel{background:var(--sheet);border:1px solid var(--grid);border-radius:16px;padding:24px;min-width:0;box-shadow:0 10px 30px rgba(20,30,80,.08)}
+.ev .panel h3{font-size:1.15rem;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ev .panel h3 .mono{font-size:.72rem;color:var(--tojo);font-weight:400}
+.ev .check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.ev .check label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;min-height:44px;padding:5px 0}
+.ev .check input{width:22px;height:22px;margin-top:4px;accent-color:var(--tojo);flex:0 0 auto}
+.ev .check small{display:block;color:var(--sub)}
+.ev .check input:checked~span{text-decoration:line-through;color:var(--sub)}
+.ev .meter{margin-top:12px;height:10px;border-radius:999px;background:var(--grid);overflow:hidden}
+.ev .meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--tojo),var(--scope));transition:width .3s}
+.ev .check-meter{font-family:var(--mono);font-size:.85rem;color:var(--sub);margin-top:6px}
+.ev .plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+
+/* 観測記録 */
+.ev .readings{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ev .reading{background:var(--glass);border:1px solid var(--glass-edge);backdrop-filter:blur(10px);border-radius:18px;padding:18px 20px;min-width:0;position:relative;overflow:hidden}
+.ev .reading::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;border:1px dashed rgba(94,230,255,.3)}
+.ev .reading .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--scope)}
+.ev .reading b{display:block;font-family:var(--mono);font-weight:400;font-size:3rem;line-height:1.1;color:var(--star);font-variant-numeric:tabular-nums;text-shadow:0 0 20px rgba(255,216,77,.4)}
+.ev .reading b small{font-size:.38em;color:#fff;margin-left:4px;text-shadow:none}
+.ev .reading span{font-size:.88rem;color:#d7dcff}
+.ev .lastyear{margin-top:26px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 20px}
+.ev .lastyear .yr{font-family:var(--mono);background:var(--star);color:#1c1300;border-radius:12px;padding:8px 12px;text-align:center;line-height:1.2}
+.ev .lastyear .yr b{display:block;font-size:1.4rem;font-weight:400}
+.ev .lastyear h3{font-weight:900;font-size:1.12rem}
+.ev .lastyear p{color:#c9cff2;font-size:.95rem}
+.ev h3.sub{margin:40px 0 14px;font-size:1.15rem;font-weight:900;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ev h3.sub .mono{font-size:.72rem;color:var(--scope);font-weight:400;letter-spacing:.18em}
+.ev .table{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:10px}
+.ev .el{position:relative;background:var(--glass);border:1px solid var(--glass-edge);border-radius:8px;padding:10px 12px 12px;min-height:138px;display:flex;flex-direction:column;min-width:0;transition:transform .2s,box-shadow .2s}
+.ev .el:hover{transform:translateY(-4px);box-shadow:0 0 0 1px var(--star),0 0 24px rgba(255,216,77,.25)}
+.ev .el .num{font-family:var(--mono);font-size:.76rem;color:var(--scope)}
+.ev .el .sym{font-family:var(--display);font-size:2.3rem;line-height:1.15;margin:2px 0}
+.ev .el .nm{font-weight:900;font-size:.86rem;line-height:1.35}
+.ev .el .dt{font-family:var(--mono);font-size:.7rem;color:#aab2d8;margin-top:auto}
+.ev .el.c1 .sym{color:#7fb8ff}.ev .el.c2 .sym{color:#5ee6ff}.ev .el.c3 .sym{color:#c7a6ff}.ev .el.c4 .sym{color:#ffb070}.ev .el.c5 .sym{color:#ff8fb8}
+.ev .seasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.ev .card{background:var(--glass);border:1px solid var(--glass-edge);backdrop-filter:blur(10px);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .25s}
+.ev .card:hover{transform:translateY(-6px)}
+.ev .card .ph{aspect-ratio:4/3;max-width:100%;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 10px,rgba(255,255,255,.07) 10px 20px);display:grid;place-items:center;color:#aab2d8;font-family:var(--mono);font-size:.8rem;text-align:center;padding:12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ev .card .ph img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.ev .card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px}
+.ev .card .date{font-family:var(--mono);font-size:.76rem;color:var(--scope);letter-spacing:.1em}
+.ev .card h3{font-size:1.08rem;font-weight:900}
+.ev .card p{font-size:.93rem;color:#d7dcff}
+.ev .gallery{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.ev .gallery .ph{aspect-ratio:1/1;max-width:100%;border:1px dashed rgba(255,255,255,.25);border-radius:12px;display:grid;place-items:center;color:#aab2d8;font-family:var(--mono);font-size:.76rem;text-align:center;padding:8px}
+.ev .voice{margin-top:14px;background:rgba(255,255,255,.04);border-left:3px solid var(--star);border-radius:0 14px 14px 0;padding:16px 20px}
+.ev .voice b{display:block;margin-bottom:4px;color:var(--star);font-family:var(--mono);font-weight:400;font-size:.8rem;letter-spacing:.14em}
+.ev .records-note{margin-top:10px;font-size:.8rem;color:#aab2d8}
+
+/* 申込（発射台） */
+.ev .launch{position:relative;padding-block:80px 90px;overflow:hidden}
+.ev .launch::before{content:"";position:absolute;left:50%;top:0;width:2px;height:100%;background:linear-gradient(180deg,transparent,var(--scope) 40%,transparent);opacity:.35}
+.ev .launch .head .no{color:var(--star);text-shadow:0 0 24px rgba(255,216,77,.5)}
+.ev .steps{list-style:none;margin:0 0 34px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;position:relative}
+.ev .steps li{border:1px solid var(--glass-edge);border-radius:18px;padding:20px;background:var(--glass);backdrop-filter:blur(8px);min-width:0}
+.ev .steps .n{font-family:var(--mono);color:var(--scope);font-size:.76rem;letter-spacing:.2em}
+.ev .steps b{display:block;font-size:1.1rem;margin:4px 0 6px}
+.ev .steps span{color:#d7dcff;font-size:.93rem}
+.ev .prefill{margin:0 0 26px;border:1px dashed var(--glass-edge);border-radius:18px;padding:18px 20px;background:rgba(6,199,85,.06)}
+.ev .prefill .mono{font-size:.72rem;letter-spacing:.2em;color:var(--scope)}
+.ev .prefill p{color:#d7dcff;font-size:.93rem;margin:4px 0 10px}
+.ev .prefill pre{margin:0;white-space:pre-wrap;font-family:var(--body);font-size:.95rem;line-height:1.8;background:#fff;color:#141b3c;border-radius:14px 14px 14px 4px;padding:12px 16px;max-width:30em}
+.ev .launch .ctas{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.ev .tel{color:#d7dcff;font-size:.93rem}
+.ev .tel b{color:#fff;font-family:var(--mono);font-weight:400;font-size:1.3rem;user-select:all}
+
+/* FAQ・アクセス */
+.ev details{background:var(--sheet);border:1px solid var(--grid);border-radius:14px;padding:0 20px;color:var(--ink)}
+.ev details+details{margin-top:10px}
+.ev summary{cursor:pointer;font-weight:900;padding:15px 0;min-height:50px}
+.ev details p{margin:0 0 16px;color:var(--ink)}
+.ev .access{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.ev .access dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px}
+.ev .access dt{font-family:var(--mono);font-size:.78rem;color:var(--sub);padding-top:4px}
+.ev .access dd{margin:0}
+.ev .access a{color:var(--tojo);font-weight:700}
+.ev footer{padding-block:28px 34px;color:#8f98c6;font-size:.82rem;text-align:center;font-family:var(--mono);letter-spacing:.08em}
+
+/* 現れるアニメーション */
+.ev .reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion: no-preference){
+  .ev .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .ev .js .reveal.in{opacity:1;transform:none}
+}
+
+@media (max-width:760px){
+  .ev .hero{min-height:auto;padding-block:30px 90px}
+  .ev .hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .ev .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ev .readout div:nth-child(2){border-right:0}
+  .ev .readout div:nth-child(-n+2){border-bottom:1px solid rgba(94,230,255,.18)}
+  .ev .specimen{max-width:280px}
+  .ev .mission{grid-template-columns:minmax(0,1fr)}
+  .ev .head .no{font-size:2.6rem}
+  .ev .jump{top:calc(env(safe-area-inset-top,0px) + 62px)}
+  .ev .scroll-hint{display:none}
+  .ev .hero{padding-block:30px 48px}
+  .ev .hero h1 .pre{font-size:.34em}
+}
+@media (prefers-reduced-motion: reduce){.ev .callsign::before{animation:none}}
+</style>
+</head>
+<body>
+
+
+<div class="ev">
+<div class="sky" aria-hidden="true"><div class="milky"></div><canvas id="sky"></canvas></div>
+
+<div class="page">
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">エイメイ学院／明成個別 水谷校舎<small>ELEMENTARY EVENTS</small></div>
+    <a class="btn btn-line" href="https://line.me/R/oaMessage/%40249algab/?%E3%80%90%E9%81%A0%E8%B6%B3%E7%94%B3%E8%BE%BC%E3%80%9111%2F28%20%E6%9D%BF%E6%A9%8B%E5%8C%BA%E7%A7%91%E5%AD%A6%E9%A4%A8%0A%E2%97%8F%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0A%E2%97%8F%E5%AD%A6%E6%A0%A1%E3%81%A8%E5%AD%A6%E5%B9%B4%EF%BC%9A%0A%E2%97%8F%E9%81%A0%E8%B6%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%BE%E3%81%99%0A%E2%97%8F%E7%B7%8A%E6%80%A5%E3%81%AE%E9%80%A3%E7%B5%A1%E5%85%88%EF%BC%88%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%EF%BC%89%EF%BC%9A%0A%E2%97%8F%E5%BF%83%E9%85%8D%E3%81%AA%E7%82%B9%E3%83%BB%E5%85%B1%E6%9C%89%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8D%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8%EF%BC%9A">公式LINEで申し込む</a>
+  </div>
+</header>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="orbit" aria-hidden="true"></div><div class="orbit o2" aria-hidden="true"></div><div class="orbit o3" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="callsign">EXPEDITION ／ 2026.11.28 ／ ITABASHI ／ 小1〜6年生</span>
+      <h1 id="hero-title"><span class="pre">みんなで行こう！</span><span class="glow">板橋区科学館</span><span class="sub">遠足</span></h1>
+      <p class="lead">360°の星空がひろがるプラネタリウムと、20をこえる体験型の展示。先生たちといっしょに電車に乗って、科学の世界へ探検に出かけます。</p>
+      <div class="readout" role="list" aria-label="遠足の基本情報">
+        <div role="listitem"><span>DATE</span><b>11/28（土）</b></div>
+        <div role="listitem"><span>START</span><b>9:00 みずほ台駅</b></div>
+        <div role="listitem"><span>RETURN</span><b>15:40ごろ</b></div>
+        <div role="listitem" class="free"><span>FEE</span><b>参加費 無料</b></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-line" href="#apply">参加を申し込む</a>
+        <a class="btn btn-ghost" href="#spots">見どころを見る</a>
+      </div>
+      <p class="countdown" id="countdown">出発まで <b>--</b> 日</p>
+      <p class="deadline">申込締切 <b>11/15</b> <span class="pend">【要確認：曜日】</span></p>
+    </div>
+    <figure class="specimen">
+      <img src="img/ensoku.jpg" alt="板橋区科学館遠足のチラシ。11月28日（土）9時みずほ台駅集合、参加費無料">
+      <figcaption>FLYER No.2026-11</figcaption>
+    </figure>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">SCROLL<i></i></div>
+</section>
+
+<nav class="jump" aria-label="ページ内リンク">
+  <div class="wrap">
+    <a class="chip" href="#spots"><i>01</i>見どころ</a>
+    <a class="chip" href="#day"><i>02</i>1日の流れ</a>
+    <a class="chip" href="#bring"><i>03</i>持ち物</a>
+    <a class="chip" href="#past"><i>04</i>これまで</a>
+    <a class="chip" href="#apply"><i>05</i>申込</a>
+    <a class="chip" href="#faq"><i>06</i>Q&amp;A</a>
+  </div>
+</nav>
+
+<section id="spots" class="room">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="no">01</span>
+      <span class="tag">OBSERVATION POINTS</span>
+      <h2>科学館で待っている、3つの体験</h2>
+      <p>行き先は、東武東上線の上板橋駅から歩いて5分の「板橋区立教育科学館」。見て、さわって、ためして楽しめる科学館です。</p>
+    </div>
+    <div class="exhibits">
+      <article class="placard star reveal">
+        <span class="floor">1F</span>
+        <div class="viz"><svg viewBox="0 0 300 150" aria-hidden="true"><path d="M10 150 Q150 -40 290 150" fill="none" stroke="#5ee6ff" stroke-opacity=".5" stroke-width="1.5"/><path d="M40 150 Q150 10 260 150" fill="none" stroke="#5ee6ff" stroke-opacity=".2" stroke-width="1"/><g fill="#fff"><circle cx="60" cy="90" r="1.6"/><circle cx="95" cy="55" r="2"/><circle cx="130" cy="40" r="1.4"/><circle cx="170" cy="46" r="2.4"/><circle cx="205" cy="66" r="1.5"/><circle cx="240" cy="96" r="1.8"/><circle cx="150" cy="78" r="1.2"/><circle cx="110" cy="100" r="1"/><circle cx="190" cy="110" r="1.3"/></g><path d="M95 55 L130 40 L170 46 L205 66" stroke="#ffd84d" stroke-width="1" fill="none" stroke-opacity=".9"/><circle cx="170" cy="46" r="6" fill="none" stroke="#ffd84d" stroke-opacity=".6"/><rect x="135" y="118" width="30" height="20" rx="3" fill="#1c2a6e" stroke="#5ee6ff" stroke-opacity=".6"/><circle cx="150" cy="118" r="7" fill="#1c2a6e" stroke="#5ee6ff" stroke-opacity=".8"/></svg></div>
+        <span class="code">EXHIBIT A ／ PLANETARIUM</span>
+        <h3>360°の星空にかこまれる</h3>
+        <p>空をぐるりと見わたせる「水平形」のプラネタリウム。ドームいっぱいに広がる満天の星空を、みんなで見上げます。</p>
+      </article>
+      <article class="placard lab reveal">
+        <span class="floor">B1</span>
+        <div class="viz"><svg viewBox="0 0 300 150" aria-hidden="true"><circle cx="150" cy="70" r="36" fill="#ffd84d"/><g stroke="#ffd84d" stroke-width="3" stroke-linecap="round" stroke-opacity=".8"><path d="M150 18v12M150 110v12M98 70h12M190 70h12M113 33l8 8M181 99l8 8M187 33l-8 8M119 99l-8 8"/></g><rect x="52" y="104" width="66" height="18" rx="5" fill="#5ee6ff"/><circle cx="66" cy="124" r="7" fill="#05081c"/><circle cx="104" cy="124" r="7" fill="#05081c"/><rect x="62" y="94" width="46" height="10" fill="#bfe9ff"/><path d="M232 122 q-16 -22 0 -44 q16 -22 0 -44" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M248 122 q-11 -18 0 -36 q11 -18 0 -36" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-opacity=".6"/></svg></div>
+        <span class="code">EXHIBIT B ／ SCIENCE HALL</span>
+        <h3>20以上の体験型展示</h3>
+        <p>光でソーラーカーを走らせたり、小さな竜巻ができるようすを観察したり。エネルギー・交通・通信・災害・からだの5つの分野を、さわって体験できます。</p>
+      </article>
+      <article class="placard quake reveal">
+        <span class="floor">館内</span>
+        <div class="viz"><svg viewBox="0 0 300 150" aria-hidden="true"><path d="M0 75 H56 L68 40 L80 112 L92 22 L104 126 L116 50 L128 96 L140 64 L152 82 H300" fill="none" stroke="#ffb070" stroke-width="2.5" stroke-linejoin="round"/><g fill="none" stroke="#fff" stroke-width="2"><circle cx="226" cy="75" r="24"/><circle cx="258" cy="75" r="24"/></g><circle cx="226" cy="75" r="5" fill="#fff"/><circle cx="258" cy="75" r="5" fill="#fff"/><path d="M170 75 H196" stroke="#fff" stroke-width="1" stroke-dasharray="3 3"/></svg></div>
+        <span class="code">EXHIBIT C ／ WONDER ROOM</span>
+        <h3>目が、からだが、だまされる？</h3>
+        <p>からだの「錯覚」を体験できる不思議な部屋や、地震の揺れを体験できる装置も。「なんで？」がたくさん見つかります。</p>
+      </article>
+    </div>
+    <p class="note">※展示内容は板橋区立教育科学館の公式案内をもとにしています。当日の見学内容は、混雑などにより変わる場合があります。</p>
+
+    <div class="mission reveal">
+      <div class="stamp"><span>MISSION<b>15</b>のかけら</span></div>
+      <div>
+        <span class="mono" style="color:var(--scope);font-size:.78rem">BRIEFING ／ 小学生研究員のみなさんへ</span>
+        <h3>博士が発明のために集めた「15のかけら」を集めよ！</h3>
+        <p>館内にちりばめられた手がかりを解き明かし、ヒントを集めていけば、やがて博士の発明の正体が明らかになるはず……。みんなの力を貸してください！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day" class="room light">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="no">02</span>
+      <span class="tag">EXPEDITION LOG</span>
+      <h2>11/28（土）の探検ログ</h2>
+      <p>予定時刻は前後する場合があります。当日の様子は、参加される方だけのオープンチャットでお知らせします。</p>
+    </div>
+    <div class="route reveal" role="img" aria-label="行き方の路線図。みずほ台駅から東武東上線で上板橋駅へ。北口から歩いて5分で板橋区立教育科学館。">
+      <svg viewBox="0 0 760 130" aria-hidden="true">
+        <text x="20" y="22" class="t" font-size="12">TOBU TOJO LINE</text>
+        <line x1="70" y1="70" x2="500" y2="70" stroke="#1b5fbf" stroke-width="10" stroke-linecap="round"/>
+        <line x1="500" y1="70" x2="680" y2="70" stroke="#8a93b8" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+        <g><circle cx="70" cy="70" r="14" fill="#fff" stroke="#1b5fbf" stroke-width="5"/><text x="70" y="108" text-anchor="middle" font-size="16" font-weight="900">みずほ台</text><text x="70" y="44" text-anchor="middle" class="t" font-size="13">9:00 集合</text></g>
+        <text x="285" y="58" text-anchor="middle" class="t" font-size="12">電車で上りへ</text>
+        <g><circle cx="500" cy="70" r="14" fill="#fff" stroke="#1b5fbf" stroke-width="5"/><text x="500" y="108" text-anchor="middle" font-size="16" font-weight="900">上板橋</text><text x="500" y="44" text-anchor="middle" class="t" font-size="13">北口</text></g>
+        <text x="590" y="58" text-anchor="middle" class="t" font-size="12">徒歩 5分</text>
+        <g><rect x="664" y="54" width="32" height="32" rx="6" fill="#ffd84d" stroke="#141b3c" stroke-width="2"/><path d="M670 76 a10 10 0 0 1 20 0z" fill="#141b3c"/><text x="680" y="108" text-anchor="middle" font-size="16" font-weight="900">科学館</text><text x="680" y="44" text-anchor="middle" class="t" font-size="13">10:00 探検開始</text></g>
+      </svg>
+    </div>
+    <ol class="log reveal">
+      <li><time>9:00</time><b>みずほ台駅 改札前に集合</b><span>電車で上板橋駅へ向かいます</span></li>
+      <li class="hl"><time>10:00</time><b>科学館で探検開始！</b><span>任務をクリアしながら館内をまわります。プログラムの中でプラネタリウムも見ます</span></li>
+      <li><time>12:00</time><b>軽食・お土産タイム</b><span>お土産を買える時間も少しだけ取ります</span></li>
+      <li><time>15:00</time><b>上板橋駅から帰路へ</b><span>みんなで電車に乗って帰ります</span></li>
+      <li><time>15:40</time><b>みずほ台駅に到着・解散予定</b><span>到着のめどはオープンチャットでお知らせします</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="bring" class="room light" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="no">03</span>
+      <span class="tag">EQUIPMENT CHECK</span>
+      <h2>探検の装備と、保護者の方へ</h2>
+    </div>
+    <div class="cols">
+      <div class="panel reveal">
+        <h3>装備チェック <span class="mono">TAP TO CHECK</span></h3>
+        <ul class="check" id="gear">
+          <li><label><input type="checkbox" id="b1"><span>リュックサック<small>両手が自由に使えるもの</small></span></label></li>
+          <li><label><input type="checkbox" id="b2"><span>筆記用具</span></label></li>
+          <li><label><input type="checkbox" id="b3"><span>飲み物</span></label></li>
+          <li><label><input type="checkbox" id="b4"><span>軽食<small>パンやおかしなど、簡単に食べられるもの</small></span></label></li>
+          <li><label><input type="checkbox" id="b5"><span>交通費<small>電車賃 往復600円</small></span></label></li>
+          <li><label><input type="checkbox" id="b6"><span>必要な分のお金<small>おみやげ代など</small></span></label></li>
+        </ul>
+        <div class="meter" aria-hidden="true"><i id="gear-bar"></i></div>
+        <p class="check-meter" id="gear-meter" aria-live="polite">装備 0 / 6</p>
+      </div>
+      <div class="panel reveal" id="parents">
+        <h3>保護者の方へ <span class="mono">FOR PARENTS</span></h3>
+        <ul class="plain">
+          <li>時間の前後や遠足の様子は、<b>参加される方だけのオープンチャットでリアルタイムにお知らせ</b>します。参加リンクは、お申し込みのあと公式LINEでお送りします。</li>
+          <li>参加費は無料です。電車賃（往復600円）とおみやげ代などはご用意ください。</li>
+          <li>プラネタリウム観覧料の扱い <span class="pend">【要確認：参加費に含むか】</span></li>
+          <li>対象は<b>小学1〜6年生</b>です。引率の人数 <span class="pend">【要確認】</span></li>
+          <li>雨の日の実施 <span class="pend">【要確認】</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="past" class="room">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="no">04</span>
+      <span class="tag">OBSERVATION RECORDS</span>
+      <h2>これまでの観測記録</h2>
+      <p>エイメイ水谷では、2024年から小学生向けのイベントを毎月のように開いています。塾に通っていないお友だちも、たくさん参加してくれています。</p>
+    </div>
+    <div class="readings">
+      <div class="reading reveal"><span class="lbl">PARTICIPANTS / 2026.4–10</span><b data-count="141">0<small>人</small></b><span>6回のイベントに参加した小学生（のべ人数）</span></div>
+      <div class="reading reveal"><span class="lbl">NEW FRIENDS</span><b data-count="75">0<small>人</small></b><span>そのうち、塾の外から来てくれたお友だち</span></div>
+      <div class="reading reveal"><span class="lbl">SUMMER FESTIVAL 2026</span><b data-count="185">0<small>人</small></b><span>夏祭りの参加者（小学生の部は64人）</span></div>
+    </div>
+    <p class="records-note">※人数は水谷校舎で記録したものです。</p>
+
+    <div class="lastyear reveal">
+      <div class="yr">2025<b>11/22</b></div>
+      <div>
+        <h3>去年の遠足は「国立科学博物館へ大冒険」</h3>
+        <p>上野の国立科学博物館で、館内にひそむ「なぞの生き物」の手がかりを集める探検をしました。今年の舞台は、プラネタリウムのある板橋区の科学館です。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">理科実験教室 <span class="mono">THE PERIODIC TABLE OF EIMEI LABS</span></h3>
+    <ul class="table reveal">
+      <li class="el c1" tabindex="0"><span class="num">01</span><span class="sym">磁</span><span class="nm">動くスライム</span><span class="dt">2025.06</span></li>
+      <li class="el c2" tabindex="0"><span class="num">02</span><span class="sym">氷</span><span class="nm">アイスを作ろう</span><span class="dt">2025.07 ／ 2026.06</span></li>
+      <li class="el c3" tabindex="0"><span class="num">03</span><span class="sym">星</span><span class="nm">プラネタリウム作り</span><span class="dt">2025.09</span></li>
+      <li class="el c4" tabindex="0"><span class="num">04</span><span class="sym">溶</span><span class="nm">バレンタイン実験</span><span class="dt">2026.02</span></li>
+      <li class="el c2" tabindex="0"><span class="num">05</span><span class="sym">泡</span><span class="nm">触れるシャボン玉</span><span class="dt">2026.03 ／ 12人</span></li>
+      <li class="el c1" tabindex="0"><span class="num">06</span><span class="sym">雲</span><span class="nm">ふわふわ雲スライム</span><span class="dt">2026.04 ／ 23人</span></li>
+      <li class="el c5" tabindex="0"><span class="num">07</span><span class="sym">息</span><span class="nm">呼吸のヒミツ</span><span class="dt">2026.05</span></li>
+      <li class="el c4" tabindex="0"><span class="num">08</span><span class="sym">光</span><span class="nm">ぷくぷくシール</span><span class="dt">2026.09</span></li>
+      <li class="el c3" tabindex="0"><span class="num">09</span><span class="sym">色</span><span class="nm">まほうのポーション</span><span class="dt">2026.10</span></li>
+    </ul>
+
+    <h3 class="sub reveal">季節のイベント <span class="mono">SEASONAL</span></h3>
+    <div class="seasons">
+      <article class="card reveal">
+        <div class="ph"><img src="img/halloween.jpg" alt="小学部ハロウィンパーティーのチラシ"></div>
+        <div class="body"><span class="date">2026.10.17</span><h3>小学部ハロウィンパーティー</h3><p>仮装でお菓子プレゼント、特別理科実験教室「まほうのポーション」、宝探し。20人が参加し、そのうち9人は塾外のお友だちでした。</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">PHOTO ／ 夏祭り</div>
+        <div class="body"><span class="date">EVERY AUGUST SINCE 2024</span><h3>えいめい夏祭り</h3><p>わたあめ・焼きそば・フルーツポンチ、先生すくい、ビンゴ。2026年は185人が集まった、年でいちばん大きなイベントです。</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">PHOTO ／ クリスマス・かるた大会</div>
+        <div class="body"><span class="date">DECEMBER ／ JANUARY</span><h3>クリスマスパーティー・新春かるた大会</h3><p>クリスマスの文化と英語にふれるゲームとビンゴ。お正月は都道府県や漢字のかるたで勝負します。</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">PHOTO ／ なぞとき教室</div>
+        <div class="body"><span class="date">2025.05</span><h3>なぞとき教室「時計じかけの迷宮」</h3><p>時間がゆがんだ迷宮から、みんなの知恵で脱出。20人が挑戦しました。</p></div>
+      </article>
+    </div>
+    <div class="gallery reveal" aria-label="イベントの様子（写真）">
+      <div class="ph">PHOTO 01</div><div class="ph">PHOTO 02</div><div class="ph">PHOTO 03</div><div class="ph">PHOTO 04</div>
+    </div>
+    <div class="voice reveal"><b>FROM TEACHERS</b>イベントのたびに「お手伝いしたい！」と自分から言ってくれる子がたくさんいます。夏祭りでは、小学生が自分から受付をやってくれました。</div>
+    <div class="voice reveal"><b>FROM PARENTS</b><span class="pend">【要確認：参加者の感想を抜粋（名前・学校が分からない形で）】</span></div>
+  </div>
+</section>
+
+<section id="apply" class="launch">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="no">05</span>
+      <span class="tag">LAUNCH SEQUENCE</span>
+      <h2>公式LINEで、かんたん申込</h2>
+      <p>申込締切は 11/15 です。公式LINEの追加と、下の内容の連絡で申込完了です。</p>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><span class="n">STEP 01</span><b>公式LINEを開く</b><span>下のボタンから、エイメイ水谷校舎の公式LINEを友だち追加してください。</span></li>
+      <li class="reveal"><span class="n">STEP 02</span><b>この5つを送る</b><span>①お名前　②学校と学年　③遠足に参加すること　④緊急の連絡先（電話番号）　⑤心配な点や、共有しておきたいこと</span></li>
+      <li class="reveal"><span class="n">STEP 03</span><b>オープンチャットに参加</b><span>校舎からオープンチャットの参加リンクをお送りします。当日の様子はここでお知らせします。</span></li>
+    </ol>
+    <div class="prefill reveal">
+      <span class="mono">AUTO-FILLED MESSAGE</span>
+      <p>下のボタンを押すと、水谷校舎の公式LINEが開き、入力欄にこの文が入った状態になります。「：」のあとを書き足して送るだけです。</p>
+      <pre>【遠足申込】11/28 板橋区科学館
+●お名前：
+●学校と学年：
+●遠足に参加します
+●緊急の連絡先（電話番号）：
+●心配な点・共有しておきたいこと：</pre>
+    </div>
+    <div class="ctas reveal">
+      <a class="btn btn-line" href="https://line.me/R/oaMessage/%40249algab/?%E3%80%90%E9%81%A0%E8%B6%B3%E7%94%B3%E8%BE%BC%E3%80%9111%2F28%20%E6%9D%BF%E6%A9%8B%E5%8C%BA%E7%A7%91%E5%AD%A6%E9%A4%A8%0A%E2%97%8F%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0A%E2%97%8F%E5%AD%A6%E6%A0%A1%E3%81%A8%E5%AD%A6%E5%B9%B4%EF%BC%9A%0A%E2%97%8F%E9%81%A0%E8%B6%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%BE%E3%81%99%0A%E2%97%8F%E7%B7%8A%E6%80%A5%E3%81%AE%E9%80%A3%E7%B5%A1%E5%85%88%EF%BC%88%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%EF%BC%89%EF%BC%9A%0A%E2%97%8F%E5%BF%83%E9%85%8D%E3%81%AA%E7%82%B9%E3%83%BB%E5%85%B1%E6%9C%89%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8D%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8%EF%BC%9A">申込の文を入れてLINEを開く</a>
+      <a class="btn btn-ghost" href="https://lin.ee/YUk6YFb">友だち追加だけする</a>
+      <span class="tel">お電話でのお問い合わせ <b>0120-488-368</b>（9:00〜17:00、日・祝を除く）</span>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="room light">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="no">06</span>
+      <span class="tag">Q &amp; A</span>
+      <h2>みずほ台の小学生向け 科学館遠足Q&amp;A</h2>
+    </div>
+    <div class="reveal">
+      <details><summary>Q. 参加費はかかりますか？</summary><p>参加費は無料です。電車賃（往復600円）とおみやげ代などはご用意ください。</p></details>
+      <details><summary>Q. 友だちを誘って参加できますか？</summary><p>大歓迎です。その場合は、お友だちの保護者の方にも公式LINEの追加とご連絡をお願いしています（当日の連絡をすべてのご家庭に届けるためです）。</p></details>
+      <details><summary>Q. 何年生が参加できますか？</summary><p>小学1年生から6年生まで参加できます。</p></details>
+      <details><summary>Q. 当日の様子は分かりますか？</summary><p>出発や到着の時間、遠足の様子を、参加される方だけのオープンチャットでリアルタイムにお知らせします。参加リンクはお申し込みのあと公式LINEでお送りします。</p></details>
+      <details><summary>Q. 集合・解散はどこですか？</summary><p>東武東上線 みずほ台駅の改札前に9:00集合、15:40ごろみずほ台駅で解散予定です。</p></details>
+    </div>
+    <div class="access" style="margin-top:36px">
+      <div class="panel reveal">
+        <h3>行き先 <span class="mono">DESTINATION</span></h3>
+        <dl>
+          <dt>施設</dt><dd>板橋区立教育科学館</dd>
+          <dt>住所</dt><dd>東京都板橋区常盤台4-14-1</dd>
+          <dt>最寄り</dt><dd>東武東上線 上板橋駅 北口から徒歩5分</dd>
+          <dt>公式</dt><dd><a href="https://www.city.itabashi.tokyo.jp/kyoikuiinkai/shisetsu/1013106.html">板橋区の施設案内ページ</a></dd>
+        </dl>
+      </div>
+      <div class="panel reveal">
+        <h3>主催 <span class="mono">HOST</span></h3>
+        <dl>
+          <dt>校舎</dt><dd>エイメイ学院／明成個別 水谷校舎</dd>
+          <dt>住所</dt><dd>〒354-0011 埼玉県富士見市水子4651</dd>
+          <dt>アクセス</dt><dd>東武東上線 みずほ台駅 東口より徒歩8分</dd>
+          <dt>校舎HP</dt><dd><a href="https://www.eimeigakuin.jp/mizutani/shogakubu/">水谷校舎 小学部</a></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© EIMEI GROUP ／ エイメイ学院／明成個別 水谷校舎</div></footer>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Event","name":"板橋区科学館遠足（エイメイ水谷校舎 小学生イベント）","startDate":"2026-11-28T09:00:00+09:00","endDate":"2026-11-28T15:40:00+09:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","isAccessibleForFree":true,"location":{"@type":"Place","name":"板橋区立教育科学館","address":{"@type":"PostalAddress","streetAddress":"常盤台4-14-1","addressLocality":"板橋区","addressRegion":"東京都","addressCountry":"JP"}},"organizer":{"@type":"EducationalOrganization","name":"エイメイ学院／明成個別 水谷校舎","telephone":"0120-488-368","url":"https://www.eimeigakuin.jp/mizutani/","address":{"@type":"PostalAddress","postalCode":"354-0011","streetAddress":"水子4651","addressLocality":"富士見市","addressRegion":"埼玉県","addressCountry":"JP"}}}
+</script>
+
+<script>
+(function(){
+  var root=document.querySelector(".ev"); if(root) root.classList.add("js");
+  var still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // 出発までの日数（日本時間の暦で数える）。
+  try{
+    var el=document.getElementById("countdown");
+    var now=new Date(Date.now()+9*3600000); var today=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
+    var days=Math.round((Date.UTC(2026,10,28)-today)/86400000);
+    if(el){ el.innerHTML = days>0 ? '出発まで <b>'+days+'</b> 日' : days===0 ? '<b>今日</b> 出発！' : '探検は<b>終了</b>しました'; }
+  }catch(e){}
+
+  // 装備チェック。
+  var gear=document.getElementById("gear"), meter=document.getElementById("gear-meter"), bar=document.getElementById("gear-bar");
+  function count(){ if(!gear||!meter) return; var boxes=gear.querySelectorAll("input"), n=0; boxes.forEach(function(b){ if(b.checked) n++; }); meter.textContent = n===boxes.length ? "装備 "+n+" / "+boxes.length+"　準備完了！" : "装備 "+n+" / "+boxes.length; if(bar) bar.style.width=(n/boxes.length*100)+"%"; }
+  if(gear) gear.addEventListener("change",count); count();
+
+  // 現れるアニメーションと、数字のカウントアップ。
+  var counted=new Set();
+  function countUp(b){ var target=+b.getAttribute("data-count"); var small=b.querySelector("small"); var t0=performance.now(); function step(now){ var p=Math.min(1,(now-t0)/1400); var v=Math.round(target*(1-Math.pow(1-p,3))); b.firstChild.nodeValue=String(v); if(p<1) requestAnimationFrame(step); } if(still){ b.firstChild.nodeValue=String(target); return; } requestAnimationFrame(step); }
+  var reveals=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(!e.isIntersecting) return; e.target.classList.add("in"); e.target.querySelectorAll("[data-count]").forEach(function(b){ if(!counted.has(b)){ counted.add(b); countUp(b); } }); io.unobserve(e.target); }); },{threshold:.15});
+    reveals.forEach(function(r){ io.observe(r); });
+  } else { reveals.forEach(function(r){ r.classList.add("in"); r.querySelectorAll("[data-count]").forEach(countUp); }); }
+
+  // 固定の星空: またたく星・ときどき流れ星・星座の線。スクロールで星がゆっくり動く（視差）。
+  var canvas=document.getElementById("sky"); if(!canvas||!canvas.getContext) return;
+  var ctx=canvas.getContext("2d"), dpr=Math.min(window.devicePixelRatio||1,2), stars=[], meteors=[], W=0, H=0, t0=performance.now(), scrollY=0;
+  var shapes=[
+    {pts:[[.72,.14],[.82,.18],[.75,.34],[.775,.36],[.80,.38],[.73,.56],[.85,.54]],lines:[[0,2],[1,4],[2,3],[3,4],[2,5],[4,6]]},
+    {pts:[[.06,.12],[.12,.2],[.18,.13],[.24,.22],[.30,.15]],lines:[[0,1],[1,2],[2,3],[3,4]]},
+    {pts:[[.40,.72],[.46,.76],[.52,.74],[.56,.80],[.62,.78],[.58,.86],[.50,.88]],lines:[[0,1],[1,2],[2,3],[3,4],[3,5],[5,6]]}
+  ];
+  function resize(){
+    W=window.innerWidth; H=window.innerHeight;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.round(W*H/2200); stars=[];
+    for(var i=0;i<n;i++) stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,p:Math.random()*6.28,s:Math.random()*1.5+.4,d:Math.random()*.6+.2,gold:Math.random()<.07,cyan:Math.random()<.05});
+  }
+  function frame(now){
+    var t=(now-t0)/1000; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<stars.length;i++){ var s=stars[i]; var y=(s.y - scrollY*s.d*.25)%H; if(y<0) y+=H; var a=still?.8:.4+.6*Math.abs(Math.sin(s.p+t*s.s)); ctx.globalAlpha=a; ctx.fillStyle=s.gold?"#ffd84d":s.cyan?"#5ee6ff":"#ffffff"; ctx.beginPath(); ctx.arc(s.x,y,s.r,0,6.283); ctx.fill(); }
+    if(!still){
+      if(Math.random()<.004 && meteors.length<2) meteors.push({x:Math.random()*W*.8,y:Math.random()*H*.4,vx:9+Math.random()*5,vy:4+Math.random()*3,life:1});
+      for(var m=meteors.length-1;m>=0;m--){ var mt=meteors[m]; ctx.globalAlpha=mt.life; var g=ctx.createLinearGradient(mt.x,mt.y,mt.x-mt.vx*8,mt.y-mt.vy*8); g.addColorStop(0,"#fff"); g.addColorStop(1,"rgba(255,255,255,0)"); ctx.strokeStyle=g; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(mt.x,mt.y); ctx.lineTo(mt.x-mt.vx*8,mt.y-mt.vy*8); ctx.stroke(); mt.x+=mt.vx; mt.y+=mt.vy; mt.life-=.02; if(mt.life<=0) meteors.splice(m,1); }
+    }
+    var prog=still?1:Math.min(1,t/5);
+    shapes.forEach(function(sh){
+      var off=-scrollY*.08;
+      ctx.globalAlpha=.5; ctx.strokeStyle="#5ee6ff"; ctx.lineWidth=1;
+      sh.lines.forEach(function(l,k){ var seg=Math.max(0,Math.min(1,prog*sh.lines.length-k)); if(!seg) return; var a=sh.pts[l[0]], b=sh.pts[l[1]]; ctx.beginPath(); ctx.moveTo(a[0]*W,a[1]*H+off); ctx.lineTo((a[0]+(b[0]-a[0])*seg)*W,(a[1]+(b[1]-a[1])*seg)*H+off); ctx.stroke(); });
+      ctx.globalAlpha=1; ctx.fillStyle="#ffffff"; sh.pts.forEach(function(p){ ctx.beginPath(); ctx.arc(p[0]*W,p[1]*H+off,2.2,0,6.283); ctx.fill(); ctx.globalAlpha=.25; ctx.beginPath(); ctx.arc(p[0]*W,p[1]*H+off,6,0,6.283); ctx.fill(); ctx.globalAlpha=1; });
+    });
+    ctx.globalAlpha=1;
+    if(!still) requestAnimationFrame(frame);
+  }
+  window.addEventListener("scroll",function(){ scrollY=window.scrollY||0; if(still) frame(performance.now()); },{passive:true});
+  resize(); window.addEventListener("resize",function(){ resize(); if(still) frame(performance.now()); });
+  requestAnimationFrame(frame);
+})();
+</script>
+</div>
+
+</body>
+</html>
