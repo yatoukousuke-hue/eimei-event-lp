@@ -66,6 +66,42 @@ body{margin:0;background:#fff}
 .es .facts-row span{display:inline-flex;align-items:center;gap:6px}
 .es .facts-row svg{width:18px;height:18px;flex:0 0 auto}
 .es .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.es .trust{margin-top:18px;font-size:14px;font-weight:700;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.es .trust a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--pen)}
+.es .trust .hand{font-size:16px}
+.es .board-h{margin-top:40px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.es .board-h h3{font-size:20px;font-weight:900}
+.es .board-h .hand{font-size:16px}
+.es .proof{grid-template-columns:repeat(3,minmax(0,1fr)) !important;margin-top:14px !important}
+.es .proof div{border-top:1px solid var(--rule)}
+.es .proof div:nth-child(-n+3){border-top:0}
+.es .proof div:nth-child(3n+1){border-left:0}
+.es .proof small{display:block;font-size:12.5px;color:var(--sub);font-weight:500;margin-top:2px}
+.es .comment{margin-top:20px;padding:18px 20px;border-left:4px solid var(--pen);background:var(--wash);border-radius:0 10px 10px 0}
+.es .comment .hand{display:block;font-size:19px;margin-bottom:4px}
+.es .comment p{font-size:15.5px;line-height:1.85;white-space:pre-line}
+.es .quick{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13.5px;color:var(--sub)}
+.es .quick .btn{min-height:44px;font-size:15px;padding:8px 18px}
+.es .todo{margin-top:22px;border:2px solid var(--ink);border-radius:10px;padding:18px 20px}
+.es .todo h4{font-size:16px;margin:0 0 6px;font-weight:900}
+.es .todo ol{margin:0;padding-left:1.4em;font-size:15px}
+.es .todo li{padding:6px 0;border-bottom:1px dashed var(--rule)}
+.es .todo li:last-child{border-bottom:0}
+.es .todo .more{font-size:13.5px;color:var(--sub);margin-top:8px}
+.es .send ul{margin:0 0 14px;padding-left:1.2em;font-size:14px}
+.es .send .tel{font-size:13.5px;color:#33473a}
+.es #consult{background:#fff}
+.es .flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:6px;background:#fff;counter-reset:fl}
+.es .flow div{padding:22px 22px 20px;border-left:1px solid var(--rule);min-width:0}
+.es .flow div:first-child{border-left:0}
+.es .flow div::before{counter-increment:fl;content:counter(fl);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--pen);color:#fff;font-weight:900;font-size:14px;margin-bottom:8px}
+.es .flow h3{font-size:18px;font-weight:900}
+.es .flow p{font-size:14.5px;color:#3a3f4b;margin-top:6px}
+.es .consult-cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.es .consult-cta .tel{font-size:14px;font-weight:700}
+.es .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:2px solid var(--ink);transform:translateY(110%);transition:transform .25s ease}
+.es .dock.on{transform:none}
+.es .dock .btn{flex:1 1 0;min-height:48px;font-size:15px;padding:8px 10px;box-shadow:none}
 
 .es .sheet{position:relative;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:22px 24px 20px 30px;box-shadow:6px 6px 0 var(--rule)}
 .es .sheet-top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px;gap:12px}
@@ -182,8 +218,6 @@ body{margin:0;background:#fff}
 .es .chips span{font-size:13px;font-weight:700;padding:4px 10px;border-radius:99px;border:1.5px solid var(--pen);color:var(--pen-d);background:#fff}
 .es .chips .ok{border-color:#2f8a3e;color:#22702f}
 .es .chips .slow{border-color:#b07a00;color:#7a5400;background:#fff9e5}
-.es .advice{margin-top:22px;padding:16px 18px;border:2px dashed var(--pen);border-radius:10px;font-size:15px}
-.es .advice .hand{font-size:18px;display:block;margin-bottom:2px}
 .es .review{margin-top:22px}
 .es .review details{border-bottom:1px solid var(--rule)}
 .es .review summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:14px}
@@ -270,6 +304,15 @@ body{margin:0;background:#fff}
   .es .final .row{justify-content:flex-start}
 }
 @media (max-width:640px){
+  .es .dock{display:flex}
+  .es footer{padding-bottom:96px}
+  .es .flow{grid-template-columns:minmax(0,1fr)}
+  .es .flow div{border-left:0;border-top:1px solid var(--rule)}
+  .es .flow div:first-child{border-top:0}
+  .es .proof{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .es .proof div{border-left:1px solid var(--rule) !important;border-top:1px solid var(--rule) !important;padding:14px}
+  .es .proof div:nth-child(odd){border-left:0 !important}
+  .es .proof div:nth-child(-n+2){border-top:0 !important}
   .es section{padding:60px 0}
   .es .wrap{padding:0 16px}
   .es .hero{padding:36px 0 52px}
@@ -278,9 +321,6 @@ body{margin:0;background:#fff}
   .es .report-row .v{padding:12px 16px 16px}
   .es .report-row .st{padding:10px}
   .es .stamp{width:44px;height:44px;font-size:19px}
-  .es .proof{grid-template-columns:minmax(0,1fr)}
-  .es .proof div{border-left:0;border-top:1px solid var(--rule)}
-  .es .proof div:first-child{border-top:0}
   .es .card{padding:22px 16px 18px;box-shadow:4px 4px 0 var(--rule)}
   .es .form .two{grid-template-columns:minmax(0,1fr)}
   .es .qtext{font-size:17.5px}
@@ -293,12 +333,15 @@ body{margin:0;background:#fff}
   .es .glue ul{grid-template-columns:minmax(0,1fr)}
   .es .tabs{gap:52px}
   .es .mrow{grid-template-columns:7em minmax(0,1fr) 2.6em}
-  .es .rrank{width:80px;height:80px}
-  .es .rrank .hand{font-size:48px}
+  .es .rtop{grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:start}
+  .es .rrank{width:64px;height:64px}
+  .es .rrank .hand{font-size:38px}
+  .es .proof div:last-child:nth-child(odd){grid-column:1 / -1}
   .es .brand b{font-size:12px}
   .es .bar .btn{font-size:13px;padding:8px 12px;white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){
+  .es .dock{transition:none}
   .es .draw path,.es .draw circle,.es .draw line{animation:none;stroke-dashoffset:0}
   .es .pop{animation:none;opacity:1}
   .es .meter i,.es .prog i{transition:none}
@@ -335,6 +378,7 @@ body{margin:0;background:#fff}
         <a class="btn btn-pen" href="#grades" data-ev="cta_hero">学年を選んで診断する</a>
         <a class="btn btn-plain" href="#mizutani">水谷校舎のこと</a>
       </div>
+      <p class="trust"><span class="hand">2026年 2学期中間テスト</span><a href="#results">学年TOP10に14名・英語100点3名（水谷校舎）</a></p>
     </div>
 
     <div class="sheet ruled" aria-label="採点された答案の見本">
@@ -368,10 +412,17 @@ body{margin:0;background:#fff}
       <div class="report-row" role="row"><div class="k" role="rowheader">やる気が続く行事</div><div class="v" role="cell"><p><b>季節講習の最後は、EIMEIグループ全校舎対抗の「大勉強大会」。</b>勉強合宿や受験生激励会、小学生向けのイベントもあります。</p></div><div class="st" role="cell"><span class="stamp" aria-label="特長">◎</span></div></div>
       <div class="report-row" role="row"><div class="k" role="rowheader">授業の外のサポート</div><div class="v" role="cell"><p><b>自習室・LINEでの質問・振替は、追加料金なしで使えます。</b>入退室は写真つきで保護者の方にお知らせします。</p></div><div class="st" role="cell"><span class="stamp" aria-label="特長">◎</span></div></div>
     </div>
+    <div class="board-h" id="results"><h3>2026年度 2学期中間テストの結果（速報）</h3><span class="hand">水谷校舎の生徒だけの結果です</span></div>
     <div class="proof" aria-label="水谷校舎の実績">
-      <div><b>+8.4</b><span>北辰テスト 偏差値アップ（2026年9月）</span></div>
-      <div><b>学年1位</b><span>水谷中1年 はじめての定期テスト（5教科479点）</span></div>
-      <div><b>19名</b><span>2026年度入試 県立御三家・川高・川女 合格</span></div>
+      <div><b>14名</b><span>学年順位 TOP10</span><small>水谷中・富士見東中</small></div>
+      <div><b>13名</b><span>5科合計 450点以上</span><small>水谷中・本郷中・富士見東中</small></div>
+      <div><b>学年1位</b><span>水谷中1年 479点</span><small>3回連続の学年1位</small></div>
+      <div><b>488点</b><span>本郷中1年 校舎内最高点</span><small>英語・理科・社会 100点</small></div>
+      <div><b>英語100点</b><span>3名（水谷中1年 2名・本郷中1年）</span><small>100点満点は のべ9科目</small></div>
+      <div><b>+64点</b><span>本郷中3年 5科合計</span><small>401点 → 465点（自己最高）</small></div>
+      <div><b>+10.9</b><span>北辰テスト 偏差値アップ</span><small>第1回からの伸び</small></div>
+      <div><b>72.7</b><span>北辰テスト 塾内最高偏差値</span><small>第5回</small></div>
+      <div><b>19名</b><span>2026年度入試 合格</span><small>県立御三家・川高・川女</small></div>
     </div>
     <p class="note">※掲載実績は水谷校舎のものです。成績が伸びた生徒の一部で、今後の成績向上を保証するものではありません。</p>
 
@@ -456,6 +507,8 @@ body{margin:0;background:#fff}
           <p class="verdict" id="rVerdict"></p>
         </div>
       </div>
+      <div class="comment"><span class="hand">先生から</span><p id="rComment"></p></div>
+      <div class="quick"><a class="btn btn-line" id="rLine2" href="https://lin.ee/8jicCNb" data-ev="send_line_top">このカルテを先生に送る</a><span>送ると、くわしいカルテと次にやることが届きます</span></div>
       <div class="rgrid">
         <div><h4>分野ごとの正答率</h4><div id="rMeters"></div></div>
         <div>
@@ -464,13 +517,15 @@ body{margin:0;background:#fff}
           <h4 style="margin-top:16px">よくできていた単元</h4><div class="chips" id="rGood"></div>
         </div>
       </div>
-      <div class="advice" id="rAdvice"></div>
+      <div class="todo"><h4 id="rTodoH">次の1週間でやってみること</h4><ol id="rTodo"></ol><p class="more">水谷校舎では、このカルテをもとに一人ひとりの復習の順番を先生と一緒に決めていきます。</p></div>
       <div class="review"><h4>まちがえた問題の解説</h4><div id="rReview"></div></div>
-      <div class="send">
-        <h4>くわしいカルテを、公式LINEで受け取る</h4>
-        <p>下の文が入った状態でLINEが開きます。そのまま送ってください。先生が結果を見て、次にやることをまとめてお返しします。</p>
+      <div class="send" id="rSend">
+        <h4>先生が、くわしいカルテをお返しします</h4>
+        <p>下の文が入った状態で公式LINEが開きます。そのまま送るだけです。</p>
+        <ul><li>苦手な単元と、つまずいている原因</li><li>おうちでできる復習のやり方</li><li>ご希望があれば、面談・体験授業のご案内</li></ul>
         <pre id="rMsg"></pre>
         <div class="row"><a class="btn btn-line" id="rLine" href="https://lin.ee/8jicCNb" data-ev="send_line">結果をLINEで送る</a><button class="btn btn-plain" type="button" data-back>ほかの学年もやってみる</button></div>
+        <p class="tel" style="margin-top:12px">お電話でも相談できます：<a href="tel:0120488368">0120-488-368</a>（9:00〜17:00、日・祝を除く）</p>
       </div>
     </div>
 
@@ -527,6 +582,22 @@ body{margin:0;background:#fff}
   </div>
 </section>
 
+<section id="consult">
+  <div class="wrap">
+    <div class="head">
+      <span class="hand">結果を見て気になったら</span>
+      <h2>まずは公式LINEで、気軽に相談してください</h2>
+      <p>「この苦手、どうしたらいい？」の相談だけでも大丈夫です。入塾を前提にしなくてかまいません。</p>
+    </div>
+    <div class="flow">
+      <div><h3>結果をLINEで送る</h3><p>診断の最後のボタンを押すと、結果の文が入った状態でLINEが開きます。</p></div>
+      <div><h3>先生からカルテが届く</h3><p>苦手な単元とその原因、おうちでできる復習のやり方をお返しします。</p></div>
+      <div><h3>希望があれば面談・体験</h3><p>面談や体験授業の日時も、そのままLINEで相談できます。</p></div>
+    </div>
+    <div class="consult-cta"><a class="btn btn-line" href="https://lin.ee/8jicCNb" data-ev="line_consult">公式LINEで相談する</a><span class="tel">お電話：<a href="tel:0120488368">0120-488-368</a>（9:00〜17:00、日・祝を除く）</span></div>
+  </div>
+</section>
+
 <section id="faq" class="faq">
   <div class="wrap">
     <div class="head"><span class="hand">よくある質問</span><h2>富士見市・みずほ台の英語学力診断について</h2></div>
@@ -556,6 +627,7 @@ body{margin:0;background:#fff}
 </section>
 
 </main>
+<div class="dock" id="dock" aria-label="すぐに使うボタン"><a class="btn btn-pen" href="#grades" data-ev="dock_diag">診断する</a><a class="btn btn-line" href="https://lin.ee/8jicCNb" data-ev="dock_line">LINEで相談</a></div>
 <footer>© EIMEIグループ　エイメイ学院／明成個別 水谷校舎</footer>
 </div>
 
@@ -671,6 +743,21 @@ var ADV={
 "比較・接続":"比較や so 〜 that などの文の形は、長文の中でもよく出てきます。形を見たら意味がすぐ浮かぶようにしておきましょう。"
 };
 
+var TODO={
+"アルファベット":["A〜Zを声に出して、順番に言ってみる","大文字と小文字をペアで書く（1日1回）","b と d、p と q など、似た形を見くらべる"],
+"フォニックス":["身の回りの英単語の、最初の音を言ってみる","短い音（cat・pig）と長い読み方（cake・bike）をくらべる","sh・ch など、2文字で1つの音をまとめて練習する"],
+"単語・文":["「わたしは→する→何を」の順番で、短い文を言ってみる","好きなものを3つ、I like 〜. で言ってみる","身近なものの英単語を1日3つ覚える"],
+"品詞":["教科書の文で、動詞に〇をつけてみる","形容詞（様子）と副詞（動詞の説明）を見分ける","代名詞の表（I・my・me…）を声に出して言う"],
+"語順":["日本語を「だれが→する→何を→どこで→いつ」に並べてから英語にする","教科書の本文を1文ずつ書き写す","並べかえ問題を毎日2問やる"],
+"動詞の形":["教科書の動詞に印をつけて、現在・過去・進行形を見分ける","不規則動詞を1日5個ずつ覚える","yesterday・now など「いつの話か」を表す語に注目する"],
+"疑問文・名詞":["疑問詞（what・how・whose など）と答え方をセットで覚える","複数形のつけ方（s・es）のルールを確認する","会話文を声に出して読む"],
+"不定詞・動名詞":["to＋動詞の原形の3つの意味（〜すること・〜するための・〜するために）を整理する","enjoy・finish のあとは〜ing、と動詞ごとに覚える","例文を1日2つ音読する"],
+"不定詞":["It is 〜 for … to ― の例文を覚える","want 人 to ―／let 人 ― の形を整理する","how to など「疑問詞＋to」で文を作ってみる"],
+"接続詞・文":["if・when・because・that の意味と使い方を整理する","2つの文を接続詞でつなぐ練習をする","There is／are のあとの名詞が単数か複数かに注目する"],
+"後ろから説明":["名詞のあとに続くかたまり（running there など）に下線を引いて読む","who・which・that の使い分けを整理する","長文で「どこがどこを説明しているか」を意識して読む"],
+"比較":["比較級・最上級の作り方（er・est／more・most）を整理する","than・of・in の使い分けを例文で確認する","as 〜 as の文を音読する"],
+"比較・接続":["so 〜 that、too 〜 to などの形を例文で覚える","any other など比較の特別な形を確認する","長文の中で比較の文を探してみる"]
+};
 var S=null, tick=null;
 function fmt(sec){sec=Math.max(0,Math.round(sec));var m=Math.floor(sec/60),s=sec%60;return m+":"+(s<10?"0":"")+s}
 function shuffle(src){var a=src.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}if(a.length>1&&a.join(" ")===src.join(" ")){a.push(a.shift());}return a}
@@ -790,7 +877,7 @@ function finish(){
   goodUnits=goodUnits.filter(function(u){return wrongUnits.indexOf(u)<0&&slow.indexOf(u)<0});
   var pct=correct/qs.length;
   var rank=(pct>=.9&&chOk>=chTotal-1)?"S":pct>=.75?"A":pct>=.55?"B":"C";
-  var verdict={S:"この学年の範囲はほぼ完ぺき。入試レベルの問題にも対応できています。",A:"土台はしっかりできています。苦手な単元をつぶせば、さらに伸びます。",B:"できているところと、あいまいなところがはっきりしました。今が伸ばしどきです。",C:"まだ習っていないところもあるかもしれません。一つずつさかのぼれば大丈夫です。"}[rank];
+  var verdict={S:"学年の範囲はほぼ完ぺき。入試レベルにも手が届いています。",A:"土台はしっかり。あと少しで上のレベルです。",B:"できるところと、伸ばすところがはっきり見えました。",C:"伸びしろがたくさん見つかりました。ここからが伸ばしどきです。"}[rank];
   $("qProg").style.width="100%";
   show("rCard");
   $("rWho").textContent=S.grade+"　"+S.name+" さん（"+S.school+"）";
@@ -810,11 +897,18 @@ function finish(){
   chips($("rWeak"),wrongUnits,"","なし。全問正解です");
   chips($("rSlow"),slow,"slow","なし");
   chips($("rGood"),goodUnits,"ok","これから伸ばしていきましょう");
-  var adv=$("rAdvice"); adv.innerHTML="";
-  var h=document.createElement("span"); h.className="hand"; var p=document.createElement("span");
-  if(wrongUnits.length){h.textContent="まずは「"+weakestArea+"」から"; p.textContent=ADV[weakestArea]||"";}
-  else {h.textContent="次のステップ"; p.textContent="この学年の範囲はばっちりです。入試問題の長文や英作文にもチャレンジしてみましょう。";}
-  adv.appendChild(h); adv.appendChild(p);
+  var best=null,bestP=-1; areaOut.forEach(function(a){var r=a.correct/a.total; if(r>bestP){bestP=r;best=a.area}});
+  var c=[S.name+"さん、最後までおつかれさまでした。"];
+  if(bestP>=.6) c.push("「"+best+"」はよくできています（正答率"+Math.round(bestP*100)+"%）。ここは自信をもって大丈夫です。");
+  else c.push("最後まで解ききったことが、まず大事な一歩です。");
+  if(wrongUnits.length&&weakestArea!==best) c.push("いちばんの伸びしろは「"+weakestArea+"」。"+(ADV[weakestArea]||""));
+  if(slow.length) c.push("「"+slow[0]+"」は正解でしたが、時間がかかっていました。ここを速く解けるようになると、テストで見直しの時間が作れます。");
+  if(chTotal&&chOk) c.push("入試レベルのチャレンジ問題も"+chOk+"問正解できています。");
+  c.push({S:"この調子で、入試レベルの長文や英作文にもどんどん挑戦していきましょう。",A:"苦手な単元を1つずつ片づけていけば、S判定はすぐそこです。",B:"苦手が具体的に見えたのは大きな収穫です。ここから一気に伸ばせます。",C:"まだ習っていない単元もあるはずなので、点数は気にしなくて大丈夫。どこから始めればいいかがわかったことが、今回いちばんの成果です。"}[rank]);
+  $("rComment").textContent=c.join("\n");
+  var todo=wrongUnits.length?(TODO[weakestArea]||[]):["入試の長文を1日1題読む","3文くらいの英作文を書いてみる","リスニング問題に挑戦する"];
+  $("rTodoH").textContent=wrongUnits.length?"次の1週間でやってみること（「"+weakestArea+"」）":"次の1週間でやってみること";
+  var ol=$("rTodo"); ol.innerHTML=""; todo.forEach(function(t){var li=document.createElement("li");li.textContent=t;ol.appendChild(li)});
   var rv=$("rReview"); rv.innerHTML="";
   qs.forEach(function(q,i){
     if(answers[i].correct) return;
@@ -827,7 +921,7 @@ function finish(){
   if(!rv.children.length) rv.innerHTML='<p style="font-size:14px;color:#575d6b">まちがえた問題はありません。</p>';
   var msg="【英語診断の結果】\n"+S.grade+"　"+S.name+"（"+S.school+"）\n結果："+correct+"/"+qs.length+"問（判定"+rank+"）　時間 "+fmt(total)+"\n苦手："+(wrongUnits.slice(0,4).join("・")||"なし")+"\nくわしいカルテを希望します";
   $("rMsg").textContent=msg;
-  $("rLine").href="https://line.me/R/oaMessage/"+LINE_ID+"/?"+encodeURIComponent(msg);
+  $("rLine").href=$("rLine2").href="https://line.me/R/oaMessage/"+LINE_ID+"/?"+encodeURIComponent(msg);
   go($("rCard"));
   ev("diag_finish",{level:b.name,rank:rank});
   var payload={version:1,level:S.level,grade:S.grade,name:S.name,school:S.school,score:correct,total:qs.length,rank:rank,durationSec:Math.min(7200,Math.round(total)),areas:areaOut,weakUnits:wrongUnits.slice(0,30),answers:answers,startedAt:S.start.toISOString(),finishedAt:new Date().toISOString(),website:S.hp||""};
@@ -836,6 +930,14 @@ function finish(){
 
 Array.prototype.forEach.call(document.querySelectorAll(".grade"),function(b){b.addEventListener("click",function(){choose(b.dataset.level)})});
 Array.prototype.forEach.call(document.querySelectorAll("[data-ev]"),function(a){a.addEventListener("click",function(){ev(a.dataset.ev,S?{level:BANK[S.level].name}:{})})});
+/* スマホ下のボタン：最初の画面を過ぎたら出し、診断中と最後の案内のところでは隠す */
+var dock=$("dock"), past=false, hideBy={};
+function upd(){var hide=Object.keys(hideBy).some(function(k){return hideBy[k]}); dock.classList.toggle("on",past&&!hide)}
+if("IntersectionObserver" in window){
+  new IntersectionObserver(function(es){es.forEach(function(e){past=!e.isIntersecting&&e.boundingClientRect.top<0; upd()})}).observe(document.querySelector(".hero"));
+  var ho=new IntersectionObserver(function(es){es.forEach(function(e){hideBy[e.target.id||e.target.className]=e.isIntersecting; upd()})});
+  ["quiz","consult","grades"].forEach(function(id){ho.observe($(id))}); ho.observe(document.querySelector(".final"));
+}
 /* 合格発表の動画：見えている間だけ音なしで流す。動きを減らす設定の人には自動で流さない */
 var loop=$("mLoop"), tg=$("mToggle"), userPaused=false;
 var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
