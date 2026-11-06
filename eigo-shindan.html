@@ -99,9 +99,11 @@ body{margin:0;background:#fff}
 .es .flow p{font-size:14.5px;color:#3a3f4b;margin-top:6px}
 .es .consult-cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .es .consult-cta .tel{font-size:14px;font-weight:700}
-.es .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:2px solid var(--ink);transform:translateY(110%);transition:transform .25s ease}
-.es .dock.on{transform:none}
-.es .dock .btn{flex:1 1 0;min-height:48px;font-size:15px;padding:8px 10px;box-shadow:none}
+.es .dock{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;gap:8px}
+.es .dock #dockDiag{display:none}
+.es .dock .btn{min-height:52px;font-size:15px;padding:10px 20px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.es .dock .btn svg{width:20px;height:20px}
+.es .dock.inquiz #dockDiag{display:none !important}
 
 .es .sheet{position:relative;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:22px 24px 20px 30px;box-shadow:6px 6px 0 var(--rule)}
 .es .sheet-top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px;gap:12px}
@@ -160,8 +162,18 @@ body{margin:0;background:#fff}
 .es .grade .g{font-size:30px;font-weight:900;line-height:1.2}
 .es .grade .r{font-size:14px;font-weight:900;color:var(--pen)}
 .es .grade .w{font-size:13px;color:var(--sub);line-height:1.65;margin-top:4px}
-.es .grade .t{margin-top:auto;padding-top:14px;font-size:13.5px;font-weight:700;display:flex;justify-content:space-between;gap:8px}
-.es .grade .t .hand{font-size:15px}
+.es .grade .t{margin-top:auto;padding-top:12px;font-size:13.5px;font-weight:700;color:var(--sub)}
+.es .grade .go{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;min-height:46px;border-radius:10px;background:var(--pen);color:#fff;font-weight:900;font-size:15px;box-shadow:0 3px 0 var(--pen-d)}
+.es .grade .go svg{width:16px;height:16px}
+.es .grade:hover .go{background:#b30d28}
+.es #grades{background:#fff6f7;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.es .start-panel .sp-head{margin-bottom:26px}
+.es .sp-head .hand{display:block;font-size:20px;transform:rotate(-1.5deg);transform-origin:left}
+.es .sp-head h2{font-size:clamp(24px,4.2vw,36px);font-weight:900;margin-top:4px}
+.es .sp-steps{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;counter-reset:sps}
+.es .sp-steps li{display:flex;align-items:center;gap:8px;font-size:14px;background:#fff;border:1.5px solid var(--ink);border-radius:99px;padding:5px 14px 5px 6px}
+.es .sp-steps li::before{counter-increment:sps;content:counter(sps);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--pen);color:#fff;font-weight:900;font-size:12.5px}
+.es .sp-foot{margin-top:16px;font-size:14px;color:var(--sub)}
 
 .es #quiz{background:var(--wash);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
 .es .card{max-width:740px;margin:0 auto;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:28px 28px 24px;box-shadow:6px 6px 0 var(--rule);scroll-margin-top:70px}
@@ -200,6 +212,10 @@ body{margin:0;background:#fff}
 .es .qnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;border-top:1px solid var(--rule);padding-top:16px}
 .es .qnav .btn{min-height:44px;font-size:14.5px;padding:8px 16px}
 .es .clock{font-variant-numeric:tabular-nums}
+.es .quit{margin-top:18px;text-align:right}
+.es .quit button{all:unset;cursor:pointer;font-size:12.5px;color:var(--sub);text-decoration:underline;text-underline-offset:3px;padding:6px 2px}
+.es .quit button.warn{color:var(--pen);font-weight:700;text-decoration:none;border:1.5px solid var(--pen);border-radius:8px;padding:8px 12px}
+.es .quit button:focus-visible{outline:3px solid var(--mark)}
 
 .es .rtop{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:18px}
 .es .rrank{position:relative;width:96px;height:96px;display:grid;place-items:center}
@@ -288,7 +304,7 @@ body{margin:0;background:#fff}
 .es .final .btn-plain{background:#fff;border-color:#fff;color:var(--pen)}
 .es .final .btn-out{background:transparent;color:#fff;border:2px solid #fff}
 .es .final .btn-out:hover{background:rgba(255,255,255,.12);color:#fff}
-.es footer{padding:26px 0 40px;font-size:12px;color:var(--sub);text-align:center}
+.es footer{padding:26px 0 110px;font-size:12px;color:var(--sub);text-align:center}
 
 @media (max-width:920px){
   .es .hero .wrap{grid-template-columns:minmax(0,1fr)}
@@ -304,8 +320,12 @@ body{margin:0;background:#fff}
   .es .final .row{justify-content:flex-start}
 }
 @media (max-width:640px){
-  .es .dock{display:flex}
-  .es footer{padding-bottom:96px}
+  .es .dock{left:0;right:0;bottom:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:2px solid var(--ink)}
+  .es .dock #dockDiag{display:inline-flex}
+  .es .grade .go .sp-hide{display:none}
+  .es .grade{padding:18px 14px 16px}
+  .es .grade .g{font-size:26px}
+  .es .dock .btn{flex:1 1 0;min-height:48px;padding:8px 10px;box-shadow:none}
   .es .flow{grid-template-columns:minmax(0,1fr)}
   .es .flow div{border-left:0;border-top:1px solid var(--rule)}
   .es .flow div:first-child{border-top:0}
@@ -341,7 +361,6 @@ body{margin:0;background:#fff}
   .es .bar .btn{font-size:13px;padding:8px 12px;white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){
-  .es .dock{transition:none}
   .es .draw path,.es .draw circle,.es .draw line{animation:none;stroke-dashoffset:0}
   .es .pop{animation:none;opacity:1}
   .es .meter i,.es .prog i{transition:none}
@@ -371,7 +390,7 @@ body{margin:0;background:#fff}
       <p class="lead">学年を選んで、スマホで答えるだけ。語順・品詞・文法、そして入試レベルのチャレンジ問題まで、水谷校舎の先生が作った問題で今の英語の力を見ます。</p>
       <div class="facts-row" aria-label="診断の特長">
         <span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="#c8102e" stroke-width="2"/><path d="M6 10.5l2.6 2.6L14.5 7" fill="none" stroke="#c8102e" stroke-width="2" stroke-linecap="round"/></svg>無料・登録なし</span>
-        <span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="#c8102e" stroke-width="2"/><path d="M10 5.5V10l3 2" fill="none" stroke="#c8102e" stroke-width="2" stroke-linecap="round"/></svg>1回 4〜10分</span>
+        <span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="#c8102e" stroke-width="2"/><path d="M10 5.5V10l3 2" fill="none" stroke="#c8102e" stroke-width="2" stroke-linecap="round"/></svg>1回 5〜10分</span>
         <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16l2-5 7-7 3 3-7 7z" fill="none" stroke="#c8102e" stroke-width="2" stroke-linejoin="round"/></svg>判定・苦手・解説がすぐ出る</span>
       </div>
       <div class="hero-cta">
@@ -384,7 +403,7 @@ body{margin:0;background:#fff}
     <div class="sheet ruled" aria-label="採点された答案の見本">
       <div class="sheet-top">
         <div><b>英語診断　中2</b><small>見本</small></div>
-        <div class="namebox">名前<span class="hand">みずほ</span></div>
+        <div class="namebox">名前<span class="hand">エイメイ</span></div>
       </div>
       <div class="sq"><span class="n">1</span><span>She sings <span class="ans">( beautifully )</span>.</span>
         <svg class="mark draw" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14" fill="none" stroke="#c8102e" stroke-width="2.5" style="--len:90;--d:.3s"/></svg></div>
@@ -424,7 +443,7 @@ body{margin:0;background:#fff}
       <div><b>72.7</b><span>北辰テスト 塾内最高偏差値</span><small>第5回</small></div>
       <div><b>19名</b><span>2026年度入試 合格</span><small>県立御三家・川高・川女</small></div>
     </div>
-    <p class="note">※掲載実績は水谷校舎のものです。成績が伸びた生徒の一部で、今後の成績向上を保証するものではありません。</p>
+    <p class="note">※水谷校舎の生徒の結果です。</p>
 
     <figure class="moment">
       <div class="moment-video">
@@ -451,16 +470,21 @@ body{margin:0;background:#fff}
 
 <section id="grades">
   <div class="wrap">
-    <div class="head">
-      <span class="hand">ここから診断です</span>
-      <h2>学年を選んでください</h2>
-      <p>その学年で習うところまでを出題し、最後に入試レベルのチャレンジ問題が少しあります。わからない問題は「わからない」を選んで大丈夫です。</p>
-    </div>
-    <div class="grades">
-      <button class="grade" type="button" data-level="sho"><span class="g">小学生</span><span class="r">基礎力チェック</span><span class="w">アルファベット・大文字と小文字・フォニックス（音とつづり）・かんたんな単語と並べかえ</span><span class="t"><span>14問</span><span class="hand">約4分</span></span></button>
-      <button class="grade" type="button" data-level="c1"><span class="g">中1</span><span class="r">現在進行形まで</span><span class="w">品詞・語順・be動詞と一般動詞・三単現・疑問詞・can・現在進行形・並べかえ</span><span class="t"><span>18問</span><span class="hand">約6分</span></span></button>
-      <button class="grade" type="button" data-level="c2"><span class="g">中2</span><span class="r">比較まで</span><span class="w">過去形・未来・助動詞・不定詞・動名詞・接続詞・文型・比較・並べかえ</span><span class="t"><span>21問</span><span class="hand">約8分</span></span></button>
-      <button class="grade" type="button" data-level="c3"><span class="g">中3</span><span class="r">中学の全範囲</span><span class="w">受け身・現在完了・分詞・関係代名詞・間接疑問・仮定法・入試の並べかえ</span><span class="t"><span>24問</span><span class="hand">約10分</span></span></button>
+    <div class="start-panel">
+      <div class="sp-head">
+        <span class="hand">さあ、ここから英語の学力診断です</span>
+        <h2>学年をタップすると、すぐに始まります</h2>
+        <ol class="sp-steps" aria-label="診断の流れ">
+          <li><b>学年をタップ</b></li><li><b>名前と学校を入力</b></li><li><b>問題に答える</b></li><li><b>その場で判定とカルテ</b></li>
+        </ol>
+      </div>
+      <div class="grades">
+        <button class="grade" type="button" data-level="sho"><span class="g">小学生</span><span class="r">基礎力チェック</span><span class="w">アルファベット・フォニックス（音とつづり）・単語・あいさつや会話・英語の順番</span><span class="t">17問・約5分</span><span class="go"><span class="sp-hide">この学年で</span>診断する<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <button class="grade" type="button" data-level="c1"><span class="g">中1</span><span class="r">現在進行形まで</span><span class="w">品詞・語順・be動詞と一般動詞・三単現・疑問詞・can・現在進行形・並べかえ</span><span class="t">18問・約6分</span><span class="go"><span class="sp-hide">この学年で</span>診断する<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <button class="grade" type="button" data-level="c2"><span class="g">中2</span><span class="r">比較まで</span><span class="w">過去形・未来・助動詞・不定詞・動名詞・接続詞・文型・比較・並べかえ</span><span class="t">22問・約8分</span><span class="go"><span class="sp-hide">この学年で</span>診断する<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <button class="grade" type="button" data-level="c3"><span class="g">中3</span><span class="r">中学の全範囲</span><span class="w">受け身・現在完了・分詞・関係代名詞・間接疑問・仮定法・入試の並べかえ</span><span class="t">26問・約10分</span><span class="go"><span class="sp-hide">この学年で</span>診断する<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      </div>
+      <p class="sp-foot">最後に入試レベルのチャレンジ問題が少しあります。わからない問題は「わからない」を選んで大丈夫です。無料・登録なしで、何回でも受けられます。</p>
     </div>
   </div>
 </section>
@@ -493,8 +517,8 @@ body{margin:0;background:#fff}
       <div id="qBody"></div>
       <div class="qnav">
         <button class="btn btn-plain" type="button" id="qBack">ひとつ戻る</button>
-        <button class="btn btn-plain" type="button" data-back>学年を選び直す</button>
       </div>
+      <p class="quit"><button type="button" id="qQuit">診断をやめて学年を選び直す</button></p>
     </div>
 
     <div class="card hidden" id="rCard">
@@ -507,22 +531,22 @@ body{margin:0;background:#fff}
           <p class="verdict" id="rVerdict"></p>
         </div>
       </div>
-      <div class="comment"><span class="hand">先生から</span><p id="rComment"></p></div>
-      <div class="quick"><a class="btn btn-line" id="rLine2" href="https://lin.ee/8jicCNb" data-ev="send_line_top">このカルテを先生に送る</a><span>送ると、くわしいカルテと次にやることが届きます</span></div>
+      <div class="comment"><span class="hand">先生からひとこと</span><p id="rComment"></p></div>
+      <div class="quick"><a class="btn btn-line" id="rLine2" href="https://lin.ee/8jicCNb" data-ev="send_line_top">結果を先生に送って、アドバイスをもらう</a><span>先生からおすすめの復習のしかたが届きます</span></div>
       <div class="rgrid">
         <div><h4>分野ごとの正答率</h4><div id="rMeters"></div></div>
         <div>
-          <h4>もう一度やっておきたい単元</h4><div class="chips" id="rWeak"></div>
-          <h4 style="margin-top:16px">正解だけど時間がかかった単元</h4><div class="chips" id="rSlow"></div>
+          <h4>もう一回やっておきたい単元</h4><div class="chips" id="rWeak"></div>
+          <h4 style="margin-top:16px">正解！でも少し時間がかかった単元</h4><div class="chips" id="rSlow"></div>
           <h4 style="margin-top:16px">よくできていた単元</h4><div class="chips" id="rGood"></div>
         </div>
       </div>
-      <div class="todo"><h4 id="rTodoH">次の1週間でやってみること</h4><ol id="rTodo"></ol><p class="more">水谷校舎では、このカルテをもとに一人ひとりの復習の順番を先生と一緒に決めていきます。</p></div>
+      <div class="todo"><h4 id="rTodoH">次の1週間でやってみること</h4><ol id="rTodo"></ol><p class="more">水谷校舎なら、この結果をもとに「どこから・どの順番で」復習するかを先生と一緒に決めていけます。</p></div>
       <div class="review"><h4>まちがえた問題の解説</h4><div id="rReview"></div></div>
       <div class="send" id="rSend">
-        <h4>先生が、くわしいカルテをお返しします</h4>
+        <h4>先生から、アドバイスが届きます</h4>
         <p>下の文が入った状態で公式LINEが開きます。そのまま送るだけです。</p>
-        <ul><li>苦手な単元と、つまずいている原因</li><li>おうちでできる復習のやり方</li><li>ご希望があれば、面談・体験授業のご案内</li></ul>
+        <ul><li>苦手な単元と、つまずきやすいポイント</li><li>おうちでできる復習のやり方</li><li>ご希望があれば、面談・体験授業のご案内</li></ul>
         <pre id="rMsg"></pre>
         <div class="row"><a class="btn btn-line" id="rLine" href="https://lin.ee/8jicCNb" data-ev="send_line">結果をLINEで送る</a><button class="btn btn-plain" type="button" data-back>ほかの学年もやってみる</button></div>
         <p class="tel" style="margin-top:12px">お電話でも相談できます：<a href="tel:0120488368">0120-488-368</a>（9:00〜17:00、日・祝を除く）</p>
@@ -591,7 +615,7 @@ body{margin:0;background:#fff}
     </div>
     <div class="flow">
       <div><h3>結果をLINEで送る</h3><p>診断の最後のボタンを押すと、結果の文が入った状態でLINEが開きます。</p></div>
-      <div><h3>先生からカルテが届く</h3><p>苦手な単元とその原因、おうちでできる復習のやり方をお返しします。</p></div>
+      <div><h3>先生からアドバイスが届く</h3><p>苦手なところと、おうちでできる復習のやり方をお返事します。</p></div>
       <div><h3>希望があれば面談・体験</h3><p>面談や体験授業の日時も、そのままLINEで相談できます。</p></div>
     </div>
     <div class="consult-cta"><a class="btn btn-line" href="https://lin.ee/8jicCNb" data-ev="line_consult">公式LINEで相談する</a><span class="tel">お電話：<a href="tel:0120488368">0120-488-368</a>（9:00〜17:00、日・祝を除く）</span></div>
@@ -605,7 +629,7 @@ body{margin:0;background:#fff}
     <details><summary><span class="hand">Q</span>名前や学校は何に使いますか？</summary><p>結果を見て、先生がアドバイスするために使います。水谷校舎の先生だけが確認し、ほかの目的には使いません。電話番号などの連絡先は聞きません。</p></details>
     <details><summary><span class="hand">Q</span>塾に通っていなくても受けられますか？</summary><p>はい、どなたでも受けられます。富士見市・ふじみ野市・志木市など、近くの小学生・中学生の方もどうぞ。</p></details>
     <details><summary><span class="hand">Q</span>まだ習っていないところが出ます。</summary><p>その学年の終わりまでの範囲と、入試レベルのチャレンジ問題を入れているので、時期によっては未習の問題があります。「わからない」を選んで大丈夫です。</p></details>
-    <details><summary><span class="hand">Q</span>LINEで結果を送ると、どうなりますか？</summary><p>先生が結果を見て、得意・苦手な単元と次にやることをまとめてLINEでお返しします。そのまま勉強の相談や体験授業のご相談もできます。</p></details>
+    <details><summary><span class="hand">Q</span>LINEで結果を送ると、どうなりますか？</summary><p>先生が結果を見て、苦手なところとおすすめの復習のしかたをLINEでお返事します。そのまま勉強の相談や体験授業のご相談もできます。</p></details>
   </div>
 </section>
 
@@ -621,13 +645,13 @@ body{margin:0;background:#fff}
 
 <section class="final">
   <div class="wrap">
-    <div><h2>まずは4分、今の英語を見てみよう。</h2><p>結果を見て「ここからやり直したい」と思ったら、公式LINEで気軽に相談してください。</p></div>
+    <div><h2>まずは5分、今の英語を見てみよう。</h2><p>結果を見て「ここからやり直したい」と思ったら、公式LINEで気軽に相談してください。</p></div>
     <div class="row"><a class="btn btn-plain" href="#grades" data-ev="cta_final">診断する</a><a class="btn btn-out" href="https://lin.ee/8jicCNb" data-ev="line_final">公式LINEで相談する</a></div>
   </div>
 </section>
 
 </main>
-<div class="dock" id="dock" aria-label="すぐに使うボタン"><a class="btn btn-pen" href="#grades" data-ev="dock_diag">診断する</a><a class="btn btn-line" href="https://lin.ee/8jicCNb" data-ev="dock_line">LINEで相談</a></div>
+<div class="dock" id="dock" aria-label="すぐに使うボタン"><a class="btn btn-pen" id="dockDiag" href="#grades" data-ev="dock_diag">診断する</a><a class="btn btn-line" href="https://lin.ee/8jicCNb" data-ev="dock_line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.8c0 .3-.2 1 .9.5s5.9-3.5 8-6c1.4-1.6 2-3.1 2-4.7C22 6.6 17.5 3 12 3z" fill="currentColor"/></svg>LINEで相談</a></div>
 <footer>© EIMEIグループ　エイメイ学院／明成個別 水谷校舎</footer>
 </div>
 
@@ -640,21 +664,24 @@ function $(id){return document.getElementById(id)}
 
 /* type: 省略＝選択式 / "order"＝並べかえ。a: 正解（選択式は番号、並べかえは文）。ch: チャレンジ問題（入試レベル） */
 var BANK={
-sho:{name:"小学生",grades:["小1","小2","小3","小4","小5","小6"],def:"小5",areas:["アルファベット","フォニックス","単語・文"],qs:[
+sho:{name:"小学生",grades:["小1","小2","小3","小4","小5","小6"],def:"小5",areas:["アルファベット","フォニックス","単語","会話・表現","英語の順番"],qs:[
 {t:"□に入るアルファベットはどれ？",en:"A　B　C　D　□　F",o:["E","G","H"],a:0,area:"アルファベット",unit:"アルファベットの順番",ex:"A B C D E F G… の順番です。"},
 {t:"小文字「m」の大文字はどれ？",o:["N","M","W"],a:1,area:"アルファベット",unit:"大文字と小文字",ex:"m の大文字は M。N（n）や W（w）とまちがえやすいので注意です。"},
-{t:"大文字「G」の小文字はどれ？",o:["q","g","j"],a:1,area:"アルファベット",unit:"大文字と小文字",ex:"G の小文字は g。q とは向きが違います。"},
-{t:"アルファベットの順番で「P」の次にくるのはどれ？",o:["O","R","Q"],a:2,area:"アルファベット",unit:"アルファベットの順番",ex:"… O P Q R S … の順番です。辞書を引くときにも使います。"},
+{t:"「りんご」を英語でいうと？",o:["apple","orange","banana"],a:0,area:"単語",unit:"食べもの・くだもの",ex:"りんごは apple。a の音で始まります。"},
+{t:"「日曜日」を英語でいうと？",o:["Monday","Sunday","Saturday"],a:1,area:"単語",unit:"曜日",ex:"日曜日は Sunday。Monday は月曜日、Saturday は土曜日です。"},
+{t:"「twelve」はいくつ？",o:["12","20","2"],a:0,area:"単語",unit:"数",ex:"twelve は 12。20 は twenty、2 は two です。"},
+{t:"なかまはずれはどれ？",o:["red","blue","dog"],a:2,area:"単語",unit:"色・動物",ex:"red（赤）と blue（青）は色、dog（犬）は動物なので、なかまはずれです。"},
 {t:"「bag」の最初の音と、同じ音で始まる単語はどれ？",o:["bed","pen","dog"],a:0,area:"フォニックス",unit:"最初の音",ex:"bag も bed も「ブッ」という b の音で始まります。p は息を強く出す「プッ」の音です。"},
-{t:"「sun」の最初の音と、同じ音で始まる単語はどれ？",o:["zoo","six","ship"],a:1,area:"フォニックス",unit:"最初の音",ex:"sun と six は「スッ」という s の音。ship の sh は「シュ」という別の音です。"},
 {t:"「cat」の a と同じ音が入っている単語はどれ？",o:["cake","map","car"],a:1,area:"フォニックス",unit:"母音の音",ex:"cat と map の a は「ア」と「エ」の間のような短い音。cake の a は「エイ」と読みます。"},
-{t:"「pig」の i と同じ音が入っている単語はどれ？",o:["big","bike","ice"],a:0,area:"フォニックス",unit:"母音の音",ex:"pig と big の i は短い「イ」。bike や ice の i は「アイ」と読みます。"},
-{t:"「dog」の最後の音と、同じ音で終わる単語はどれ？",o:["bag","dot","cup"],a:0,area:"フォニックス",unit:"最後の音",ex:"dog と bag は、どちらも最後が g の音「グッ」で終わります。"},
 {t:"「ship」の sh と同じ音で始まる単語はどれ？",o:["shop","sun","chair"],a:0,area:"フォニックス",unit:"2文字で1つの音",ex:"sh は2文字で「シュ」という1つの音。ch は「チ」の音です。"},
-{t:"「りんご」を英語でいうと？",o:["apple","orange","banana"],a:0,area:"単語・文",unit:"かんたんな単語",ex:"りんごは apple。a の音で始まります。"},
-{t:"「わたしは犬が好きです」を英語にすると？",o:["I like dogs.","I dogs like.","Like I dogs."],a:0,area:"単語・文",unit:"英語の順番",ex:"英語は「わたしは→好き→犬が」の順番。日本語と順番が違うのがポイントです。"},
-{t:"「cake」の a と同じ読み方をする単語はどれ？",o:["name","cat","arm"],a:0,ch:1,area:"フォニックス",unit:"最後の e のルール",ex:"cake も name も、最後の e は読まずに、前の a を「エイ」と読みます（サイレント e）。"},
-{type:"order",t:"「これはわたしのペンです」になるように並べかえよう",w:["This","is","my","pen."],a:"This is my pen.",ch:1,area:"単語・文",unit:"英語の順番",ex:"This（これは）→ is（です）→ my pen（わたしのペン）の順番です。"}
+{t:"「Nice to meet you.」と言われたら、なんと返す？",o:["Nice to meet you, too.","Good night.","I'm fine."],a:0,area:"会話・表現",unit:"はじめてのあいさつ",ex:"「はじめまして」と言われたら「こちらこそ」の Nice to meet you, too. と返します。"},
+{t:"「How are you?」への答えはどれ？",o:["I'm fine, thank you.","I'm ten.","It's sunny."],a:0,area:"会話・表現",unit:"調子をたずねる",ex:"How are you? は「元気？」。I'm fine, thank you.（元気だよ、ありがとう）と答えます。"},
+{t:"「What color do you like?」への答えはどれ？",o:["I like blue.","I'm happy.","Yes, I do."],a:0,area:"会話・表現",unit:"好きなものを伝える",ex:"「何色が好き？」と聞かれているので、I like blue.（青が好き）と色で答えます。"},
+{t:"「How old are you?」への答えはどれ？",o:["I'm fine.","I'm from Japan.","I'm eleven."],a:2,area:"会話・表現",unit:"年れいを伝える",ex:"How old are you? は「何さい？」。I'm eleven.（11さいです）と答えます。"},
+{t:"「わたしは犬が好きです」を英語にすると？",o:["I like dogs.","I dogs like.","Like I dogs."],a:0,area:"英語の順番",unit:"英語の順番",ex:"英語は「わたしは→好き→犬が」の順番。日本語と順番がちがうのがポイントです。"},
+{t:"「knife」（ナイフ）で、読まない文字はどれ？",o:["k","n","f"],a:0,ch:1,area:"フォニックス",unit:"読まない文字",ex:"knife は「ナイフ」と読み、最初の k は読みません。know・knee なども同じです。"},
+{t:"「What do you want to be?」への答えはどれ？",o:["I want a doctor.","I want to be a doctor.","I'm a doctor."],a:1,ch:1,area:"会話・表現",unit:"なりたいものを伝える",ex:"「何になりたい？」なので、I want to be a doctor.（医者になりたい）と答えます。"},
+{type:"order",t:"「わたしは毎週日曜日にサッカーをします」になるように並べかえよう",w:["I","play","soccer","on","Sundays."],a:"I play soccer on Sundays.",ch:1,area:"英語の順番",unit:"英語の順番（並べかえ）",ex:"I（わたしは）→ play（する）→ soccer（サッカーを）→ on Sundays（日曜日に）の順。「いつ」は最後に置きます。"}
 ]},
 c1:{name:"中1",grades:["中1","小6","中2","中3"],def:"中1",areas:["品詞","語順","動詞の形","疑問文・名詞"],qs:[
 {t:"「happy」の品詞はどれ？",o:["名詞","動詞","形容詞"],a:2,area:"品詞",unit:"品詞（形容詞）",ex:"happy は「うれしい・幸せな」という様子を表す形容詞です。"},
@@ -672,9 +699,9 @@ c1:{name:"中1",grades:["中1","小6","中2","中3"],def:"中1",areas:["品詞",
 {t:"(　)に入るのはどれ？",en:"Can your father (　) Chinese?",o:["speak","speaks","speaking"],a:0,area:"動詞の形",unit:"助動詞 can",ex:"can の後ろの動詞はいつも原形。主語が3人称でも speak のままです。"},
 {t:"(　)に入るのはどれ？",en:"Look! The children (　) in the park.",o:["play","are playing","is playing"],a:1,area:"動詞の形",unit:"現在進行形",ex:"Look!（見て！）で「今〜している」。children は複数なので are playing です。"},
 {t:"「あなたは今、何をしていますか」。正しいのはどれ？",o:["What are you doing now?","What do you doing now?","What you are doing now?"],a:0,area:"語順",unit:"現在進行形の疑問文",ex:"進行形の疑問文は「疑問詞＋be動詞＋主語＋〜ing」の順です。"},
-{t:"次の文で「動詞」はどれ？",en:"My mother often makes cookies.",o:["often","makes","cookies"],a:1,ch:1,area:"品詞",unit:"品詞（動詞を見つける）",ex:"「作る」にあたる makes が動詞。often（よく）は動詞を説明する副詞です。"},
-{t:"(　)に入るのはどれ？",en:"Look at that girl. She (　) a red bag.",o:["has","is having","have"],a:0,ch:1,area:"動詞の形",unit:"進行形にしない動詞",ex:"have が「持っている」の意味のときは、ふつう進行形にしません。主語 She なので has です。"},
-{type:"order",t:"「あなたは何匹ねこを飼っていますか」になるように並べかえよう",w:["How","many","cats","do","you","have?"],a:"How many cats do you have?",ch:1,area:"語順",unit:"How many の疑問文",ex:"How many cats（何匹のねこ）をまとめて先頭に。そのあと do you have? と続けます。"}
+{t:"正しい英文はどれ？",o:["My brother don't like cats.","My brother doesn't like cats.","My brother isn't like cats."],a:1,ch:1,area:"動詞の形",unit:"三単現の否定文",ex:"主語 My brother は3人称・単数。一般動詞 like の否定は doesn't＋原形です。"},
+{t:"会話の(　)に入るのはどれ？",en:"A: Whose bike is this?　B: (　)",o:["It's me.","It's my.","It's mine."],a:2,ch:1,area:"品詞",unit:"代名詞（〜のもの）",ex:"「だれの自転車？」に「わたしのものです」。「〜のもの」は mine です。my のあとには名詞が必要です。"},
+{type:"order",t:"「ケンは今、自分の部屋で宿題をしています」になるように並べかえよう",w:["Ken","is","doing","his","homework","in","his","room","now."],a:"Ken is doing his homework in his room now.",ch:1,area:"語順",unit:"現在進行形（並べかえ）",ex:"Ken is doing（している）→ his homework（宿題を）→ in his room（部屋で）→ now（今）。「何を→どこで→いつ」の順です。"}
 ]},
 c2:{name:"中2",grades:["中2","中1","中3"],def:"中2",areas:["品詞","語順","動詞の形","不定詞・動名詞","接続詞・文","比較"],qs:[
 {t:"(　)に入るのはどれ？",en:"She sings (　).",o:["beautiful","beautifully","beauty"],a:1,area:"品詞",unit:"品詞（副詞）",ex:"sings（歌う）を説明するのは副詞。beautiful に ly をつけた beautifully です。"},
@@ -695,9 +722,10 @@ c2:{name:"中2",grades:["中2","中1","中3"],def:"中2",areas:["品詞","語順
 {t:"「その知らせは私たちを幸せにした」。正しいのはどれ？",o:["The news made us happy.","The news made happy us.","The news made us happily."],a:0,area:"語順",unit:"文型（SVOC）",ex:"make＋人＋様子（形容詞）で「人を〜にする」。made us happy です。"},
 {t:"(　)に入るのはどれ？",en:"This bag is (　) than that one.",o:["big","bigger","biggest"],a:1,area:"比較",unit:"比較級",ex:"than（〜より）があるので比較級。big は g を重ねて bigger です。"},
 {t:"(　)に入るのはどれ？",en:"Math is the (　) interesting subject of all.",o:["more","most","much"],a:1,area:"比較",unit:"最上級（most）",ex:"of all（全部の中で）で一番。長い単語 interesting は the most で最上級にします。"},
-{t:"(　)に入るのはどれ？",en:"This is one of the (　) books in this library.",o:["old","older","oldest"],a:2,ch:1,area:"比較",unit:"one of the 最上級",ex:"「最も古い本のうちの1冊」。one of the の後ろは最上級＋複数形（oldest books）です。"},
-{t:"(　)に入るのはどれ？",en:"Ken can run as (　) as his brother.",o:["fast","faster","fastest"],a:0,ch:1,area:"比較",unit:"as 〜 as",ex:"as 〜 as（〜と同じくらい）の間は、形を変えないもとの形です。"},
-{type:"order",t:"「私には今日やるべき宿題がたくさんある」になるように並べかえよう",w:["I","have","a lot of","homework","to","do","today."],a:"I have a lot of homework to do today.",ch:1,area:"不定詞・動名詞",unit:"不定詞（〜するべき）",ex:"homework を to do（やるべき）が後ろから説明する形です。"}
+{t:"(　)に入るのはどれ？",en:"Tom is taller than (　) other student in his class.",o:["any","all","some"],a:0,ch:1,area:"比較",unit:"比較（any other）",ex:"「クラスのほかのどの生徒よりも背が高い」＝一番背が高い。any other＋単数形です。"},
+{t:"会話の(　)に入るのはどれ？",en:"A: Shall I open the window?　B: (　) It's hot today.",o:["Yes, please.","Yes, I shall.","No, I'm not."],a:0,ch:1,area:"接続詞・文",unit:"会話の決まった言い方（Shall I 〜?）",ex:"Shall I 〜?（〜しましょうか）には Yes, please.（お願いします）と答えるのが決まった言い方です。"},
+{t:"(　)に入るのはどれ？",en:"(　) I was sleeping, my friend called me.",o:["While","Because","Though"],a:0,ch:1,area:"接続詞・文",unit:"接続詞 while",ex:"「私が寝ている間に、友だちから電話があった」。〜している間に、は while です。"},
+{type:"order",t:"「私に何か冷たい飲み物をください」になるように並べかえよう",w:["Please","give","me","something","cold","to","drink."],a:"Please give me something cold to drink.",ch:1,area:"不定詞・動名詞",unit:"something＋形容詞＋to ―",ex:"give＋人＋もの。「何か冷たい飲み物」は something cold to drink の順（形容詞は something のあと）です。"}
 ]},
 c3:{name:"中3",grades:["中3","中2","高1"],def:"中3",areas:["品詞","語順","動詞の形","不定詞","後ろから説明","比較・接続"],qs:[
 {t:"(　)に入るのはどれ？",en:"This book is very (　).",o:["interest","interesting","interested"],a:1,area:"品詞",unit:"〜ing と 〜ed の形容詞",ex:"本が「おもしろい（興味を起こさせる）」は interesting。人が「興味をもっている」なら interested です。"},
@@ -720,33 +748,272 @@ c3:{name:"中3",grades:["中3","中2","高1"],def:"中3",areas:["品詞","語順
 {t:"(　)に入るのはどれ？",en:"Mt. Fuji is higher than any other (　) in Japan.",o:["mountain","mountains","the mountain"],a:0,area:"比較・接続",unit:"比較（any other）",ex:"any other の後ろは単数形。「ほかのどの山よりも高い」＝一番高い、という意味です。"},
 {t:"「私が昨日会った女性は先生です」。正しいのはどれ？",o:["The woman I met yesterday is a teacher.","The woman is I met yesterday a teacher.","I met the woman yesterday is a teacher."],a:0,area:"語順",unit:"語順（後ろから説明）",ex:"The woman を I met yesterday が後ろから説明し、そのあとに is a teacher が続きます。"},
 {t:"「彼に何と言えばいいかわからない」。正しいのはどれ？",o:["I don't know what to say to him.","I don't know to say what to him.","I don't know what say to him."],a:0,area:"不定詞",unit:"疑問詞＋to ―",ex:"「何を言えばいいか」は what to say。疑問詞＋to＋原形の順です。"},
-{t:"(　)に入るのはどれ？",en:"I have known him (　) we were children.",o:["for","since","when"],a:1,ch:1,area:"動詞の形",unit:"現在完了と since＋文",ex:"「子どものころから知っている」。since の後ろには文（we were children）も置けます。"},
+{t:"(　)に入るのはどれ？",en:"This is the most beautiful picture (　) I have ever seen.",o:["that","what","who"],a:0,ch:1,area:"後ろから説明",unit:"関係代名詞 that（最上級＋ever）",ex:"「今まで見た中で一番美しい絵」。最上級のついた名詞を説明するときは that がよく使われます。"},
+{t:"(　)に入るのはどれ？",en:"Do you know (　) is going to come to the party?",o:["who","whose","what"],a:0,ch:1,area:"語順",unit:"間接疑問（疑問詞が主語）",ex:"「だれがパーティーに来るか知っていますか」。who が主語なので、そのまま who is going to 〜 の順になります。"},
 {t:"(　)に入るのはどれ？",en:"It was so hot (　) I couldn't sleep.",o:["that","when","because"],a:0,ch:1,area:"比較・接続",unit:"so 〜 that …",ex:"「とても暑かったので眠れなかった」。so＋形容詞＋that … の形です。"},
-{type:"order",t:"「彼がどこに住んでいるか教えてください」になるように並べかえよう",w:["Please","tell","me","where","he","lives."],a:"Please tell me where he lives.",ch:1,area:"語順",unit:"間接疑問（並べかえ）",ex:"tell＋人（me）＋where he lives。疑問詞のあとは「主語＋動詞」の順です。"},
-{type:"order",t:"「これは私が昨日読んだ本です」になるように並べかえよう",w:["This","is","the","book","I","read","yesterday."],a:"This is the book I read yesterday.",ch:1,area:"後ろから説明",unit:"関係代名詞の省略（並べかえ）",ex:"the book を I read yesterday が後ろから説明します（関係代名詞 that / which が省略された形）。"}
+{type:"order",t:"「この本は難しすぎて、私には読めません」になるように並べかえよう",w:["This","book","is","too","difficult","for","me","to","read."],a:"This book is too difficult for me to read.",ch:1,area:"不定詞",unit:"too 〜 for … to ―",ex:"too＋形容詞＋for 人＋to ―で「…には難しすぎて―できない」。入試の並べかえの定番です。"},
+{type:"order",t:"「駅への行き方を教えてくれませんか」になるように並べかえよう",w:["Could","you","tell","me","how","to","get","to","the","station?"],a:"Could you tell me how to get to the station?",ch:1,area:"語順",unit:"tell 人 how to ―",ex:"Could you tell me（教えてくれませんか）＋how to get to 〜（〜への行き方）。to が2回出るのがポイントです。"},
+{type:"order",t:"「あなたは彼がどこで生まれたか知っていますか」になるように並べかえよう",w:["Do","you","know","where","he","was","born?"],a:"Do you know where he was born?",ch:1,area:"語順",unit:"間接疑問（受け身）",ex:"where のあとは「主語＋動詞」の順。he was born（彼が生まれた）と続けます。"}
 ]}
 };
+/* 同じ単元の入れかえ問題。診断のたびに、元の問題とこの中から1問ずつ選ぶ */
+var ALT={
+"sho|アルファベットの順番":[
+{t:"□に入るアルファベットはどれ？",en:"J　K　□　M　N",o:["I","L","O"],a:1,ex:"… J K L M N … の順番です。"},
+{t:"アルファベットの順番で「P」の次にくるのはどれ？",o:["O","R","Q"],a:2,ex:"… O P Q R S … の順番です。辞書を引くときにも使います。"}],
+"sho|大文字と小文字":[
+{t:"大文字「G」の小文字はどれ？",o:["q","g","j"],a:1,ex:"G の小文字は g。q とは向きがちがいます。"},
+{t:"小文字「d」の大文字はどれ？",o:["B","D","P"],a:1,ex:"d の大文字は D。b（B）とまちがえやすいので注意です。"}],
+"sho|食べもの・くだもの":[
+{t:"「たまご」を英語でいうと？",o:["egg","milk","rice"],a:0,ex:"たまごは egg。milk は牛乳、rice はお米・ごはんです。"},
+{t:"「いちご」を英語でいうと？",o:["peach","strawberry","grape"],a:1,ex:"いちごは strawberry。peach はもも、grape はぶどうです。"}],
+"sho|曜日":[
+{t:"「土曜日」を英語でいうと？",o:["Sunday","Thursday","Saturday"],a:2,ex:"土曜日は Saturday。Thursday は木曜日です。"},
+{t:"「Friday」は何曜日？",o:["木曜日","金曜日","土曜日"],a:1,ex:"Friday は金曜日。曜日は大文字で書き始めます。"}],
+"sho|数":[
+{t:"「fifteen」はいくつ？",o:["50","15","5"],a:1,ex:"fifteen は 15。50 は fifty、5 は five です。"},
+{t:"「30」を英語でいうと？",o:["thirteen","thirty","three"],a:1,ex:"30 は thirty。thirteen は 13 です。teen と ty のちがいに注意。"}],
+"sho|色・動物":[
+{t:"なかまはずれはどれ？",o:["cat","rabbit","green"],a:2,ex:"cat（ねこ）と rabbit（うさぎ）は動物、green（緑）は色です。"},
+{t:"なかまはずれはどれ？",o:["yellow","lion","pink"],a:1,ex:"yellow（黄）と pink（ピンク）は色、lion（ライオン）は動物です。"}],
+"sho|最初の音":[
+{t:"「sun」の最初の音と、同じ音で始まる単語はどれ？",o:["zoo","six","ship"],a:1,ex:"sun と six は「スッ」という s の音。ship の sh は「シュ」という別の音です。"},
+{t:"「map」の最初の音と、同じ音で始まる単語はどれ？",o:["nose","moon","cat"],a:1,ex:"map と moon は、口をとじて出す m の音「ムッ」で始まります。"}],
+"sho|母音の音":[
+{t:"「pig」の i と同じ音が入っている単語はどれ？",o:["big","bike","ice"],a:0,ex:"pig と big の i は短い「イ」。bike や ice の i は「アイ」と読みます。"},
+{t:"「hot」の o と同じ音が入っている単語はどれ？",o:["nose","dog","go"],a:1,ex:"hot と dog の o は短い「ア」に近い音。nose や go の o は「オウ」と読みます。"}],
+"sho|2文字で1つの音":[
+{t:"「chair」の ch と同じ音で始まる単語はどれ？",o:["cheese","ship","cat"],a:0,ex:"ch は2文字で「チ」という1つの音。cheese も同じです。"}],
+"sho|はじめてのあいさつ":[
+{unit:"あいさつ",t:"「Thank you.」と言われたら、なんと返す？",o:["You're welcome.","I'm sorry.","Goodbye."],a:0,ex:"「ありがとう」には You're welcome.（どういたしまして）と返します。"},
+{unit:"あいさつ",t:"「Good morning.」は、いつのあいさつ？",o:["朝","夜","ねる前"],a:0,ex:"Good morning. は「おはよう」。夜は Good evening.、ねる前は Good night. です。"}],
+"sho|調子をたずねる":[
+{unit:"天気をたずねる",t:"「How's the weather?」への答えはどれ？",o:["It's sunny.","I'm fine.","I'm ten."],a:0,ex:"「天気はどう？」なので It's sunny.（晴れています）と答えます。"}],
+"sho|好きなものを伝える":[
+{t:"「Do you like cats?」に「はい」と答えるときは？",o:["Yes, I do.","Yes, I am.","Yes, I like."],a:0,ex:"Do you 〜? と聞かれたら、do を使って Yes, I do. と答えます。"},
+{t:"「What fruit do you like?」への答えはどれ？",o:["I like bananas.","I'm a banana.","Yes, I like."],a:0,ex:"「何のくだものが好き？」なので、I like bananas.（バナナが好き）と答えます。"}],
+"sho|年れいを伝える":[
+{unit:"自分のことを伝える",t:"「Where are you from?」への答えはどれ？",o:["I'm fine.","I'm from Japan.","I'm eleven."],a:1,ex:"「どこの出身？」なので I'm from Japan.（日本から来ました）と答えます。"},
+{unit:"自分のことを伝える",t:"「When is your birthday?」への答えはどれ？",o:["It's May 5th.","I'm ten.","It's sunny."],a:0,ex:"「誕生日はいつ？」なので It's May 5th.（5月5日です）と日付で答えます。"}],
+"sho|英語の順番":[
+{t:"「わたしはテニスをします」を英語にすると？",o:["I tennis play.","I play tennis.","Play I tennis."],a:1,ex:"「わたしは→する→テニスを」の順番で I play tennis. です。"},
+{t:"「わたしはねこを飼っています」を英語にすると？",o:["I have a cat.","I a cat have.","Have I a cat."],a:0,ex:"「わたしは→飼っている→ねこを」の順番で I have a cat. です。"}],
+"sho|読まない文字":[
+{t:"「write」（書く）で、読まない文字はどれ？",o:["w","r","t"],a:0,ex:"write は「ライト」と読み、最初の w は読みません。wrong なども同じです。"}],
+"sho|なりたいものを伝える":[
+{unit:"たずねる・こたえる",t:"「What sport do you like?」への答えはどれ？",o:["I like soccer.","I play to soccer.","Yes, I do."],a:0,ex:"「何のスポーツが好き？」なので I like soccer. と答えます。Yes / No では答えません。"},
+{unit:"たずねる・こたえる",t:"「Where do you want to go?」への答えはどれ？",o:["I want to go to Italy.","I want Italy go.","Yes, I want."],a:0,ex:"「どこへ行きたい？」なので I want to go to Italy.（イタリアへ行きたい）と答えます。"}],
+"sho|英語の順番（並べかえ）":[
+{type:"order",t:"「わたしは毎週日曜日にサッカーをします」になるように並べかえよう",w:["I","play","soccer","on","Sundays."],a:"I play soccer on Sundays.",ex:"I → play → soccer → on Sundays の順。「いつ」は最後に置きます。"},
+{type:"order",t:"「あなたは何色が好きですか」になるように並べかえよう",w:["What","color","do","you","like?"],a:"What color do you like?",ex:"What color（何色）を最初に、そのあと do you like? と続けます。"}],
+
+"c1|品詞（形容詞）":[
+{t:"「beautiful」の品詞はどれ？",o:["形容詞","副詞","動詞"],a:0,ex:"beautiful は「美しい」という様子を表す形容詞です。"},
+{t:"次の文で「形容詞」はどれ？",en:"I have a new bike.",o:["have","new","bike"],a:1,ex:"new（新しい）が bike（自転車）の様子を説明している形容詞です。"}],
+"c1|品詞（副詞）":[
+{t:"次の文の「well」のはたらきはどれ？",en:"Ken plays the piano well.",o:["動詞を説明している（副詞）","物の名前（名詞）","人の名前"],a:0,ex:"well は plays（ひく）を「上手に」と説明しているので副詞です。"}],
+"c1|語順（主語＋動詞＋目的語）":[
+{t:"「私の姉はねこが好きです」。正しい語順はどれ？",o:["My sister cats likes.","My sister likes cats.","Likes my sister cats."],a:1,ex:"主語（My sister）→ 動詞（likes）→ 目的語（cats）の順です。"},
+{t:"「私たちは放課後にサッカーをします」。正しい語順はどれ？",o:["We play soccer after school.","We soccer play after school.","After school we soccer play."],a:0,ex:"We（私たちは）→ play（する）→ soccer（サッカーを）→ after school（放課後に）の順です。"}],
+"c1|be動詞":[
+{t:"(　)に入るのはどれ？",en:"My mother (　) a teacher.",o:["am","is","are"],a:1,ex:"主語 My mother は3人称・単数なので is です。"},
+{t:"(　)に入るのはどれ？",en:"(　) you a student?",o:["Is","Do","Are"],a:2,ex:"you の be動詞は are。疑問文は Are を前に出します。"}],
+"c1|一般動詞の否定文":[
+{t:"(　)に入るのはどれ？",en:"We (　) have class on Sunday.",o:["aren't","don't","doesn't"],a:1,ex:"have は一般動詞。主語が We なので don't を使います。"}],
+"c1|三単現のs":[
+{t:"(　)に入るのはどれ？",en:"Tom (　) his homework after dinner.",o:["do","dos","does"],a:2,ex:"主語 Tom は3人称・単数。do は es をつけて does になります。"},
+{t:"(　)に入るのはどれ？",en:"My father (　) TV every night.",o:["watch","watches","watchs"],a:1,ex:"ch で終わる動詞は es をつけます。watch → watches。"}],
+"c1|三単現の疑問文":[
+{t:"(　)に入るのはどれ？",en:"Does your brother (　) baseball?",o:["play","plays","playing"],a:0,ex:"Does で始まる疑問文では、動詞は原形（play）にもどします。"}],
+"c1|名詞の複数形":[
+{t:"(　)に入るのはどれ？",en:"There are many (　) in the park.",o:["child","childs","children"],a:2,ex:"child の複数形は children。s をつけない特別な形です。"},
+{t:"(　)に入るのはどれ？",en:"I have three (　).",o:["dictionary","dictionarys","dictionaries"],a:2,ex:"子音字＋y で終わる名詞は y を i にかえて es。dictionary → dictionaries。"}],
+"c1|代名詞（〜を）":[
+{t:"(　)に入るのはどれ？",en:"Yuki is my friend. I often play with (　).",o:["she","her","hers"],a:1,ex:"with の後ろは「〜を・〜に」の形。she → her です。"},
+{t:"(　)に入るのはどれ？",en:"These are my cats. I love (　).",o:["they","their","them"],a:2,ex:"love の後ろは「〜を」の形。they → them です。"}],
+"c1|疑問詞 how":[
+{t:"(　)に入るのはどれ？",en:"(　) many books do you have? — I have ten.",o:["How","What","Which"],a:0,ex:"数をたずねるのは How many。答えが ten（10冊）です。"}],
+"c1|疑問詞 whose":[
+{unit:"疑問詞 who",t:"(　)に入るのはどれ？",en:"(　) is that man? — He is my uncle.",o:["What","Who","Where"],a:1,ex:"答えが my uncle（おじ）なので、人をたずねる Who です。"},
+{unit:"疑問詞 where",t:"(　)に入るのはどれ？",en:"(　) do you play tennis? — In the park.",o:["When","Where","What"],a:1,ex:"答えが In the park（公園で）なので、場所をたずねる Where です。"}],
+"c1|命令文":[
+{t:"「この部屋で走ってはいけません」。正しいのはどれ？",o:["Don't run in this room.","Not run in this room.","You don't run in this room."],a:0,ex:"「〜してはいけない」は Don't＋動詞の原形で始めます。"},
+{t:"「いっしょに歌いましょう」。正しいのはどれ？",o:["Let's sing together.","Let's sings together.","Let's singing together."],a:0,ex:"Let's の後ろは動詞の原形です。"}],
+"c1|助動詞 can":[
+{t:"(　)に入るのはどれ？",en:"My sister (　) swim fast.",o:["can","cans","is can"],a:0,ex:"can は主語が3人称でも形が変わりません。can＋原形です。"}],
+"c1|現在進行形":[
+{t:"(　)に入るのはどれ？",en:"Be quiet. The baby (　) now.",o:["sleeps","is sleeping","sleeping"],a:1,ex:"now（今）していることは be動詞＋〜ing。The baby は単数なので is sleeping です。"},
+{t:"(　)に入るのはどれ？",en:"Look! Ken is (　) in the river.",o:["swim","swiming","swimming"],a:2,ex:"swim は m を重ねて ing をつけます。swim → swimming。"}],
+"c1|現在進行形の疑問文":[
+{t:"「あなたのお母さんは今、料理をしていますか」。正しいのはどれ？",o:["Is your mother cooking now?","Does your mother cooking now?","Is your mother cook now?"],a:0,ex:"進行形の疑問文は be動詞を前に出し、動詞は〜ing のまま。Is your mother cooking now? です。"}],
+"c1|三単現の否定文":[
+{t:"正しい英文はどれ？",o:["Yuki doesn't has a dog.","Yuki doesn't have a dog.","Yuki don't have a dog."],a:1,ex:"doesn't の後ろは動詞の原形。has ではなく have です。"}],
+"c1|代名詞（〜のもの）":[
+{t:"会話の(　)に入るのはどれ？",en:"A: Is this your notebook?　B: No, it's (　). Ask Ken.",o:["him","his","he"],a:1,ex:"「彼のもの」は his。Ken のものなので「ケンに聞いて」とつながります。"}],
+"c1|現在進行形（並べかえ）":[
+{type:"order",t:"「あなたは今、何を読んでいますか」になるように並べかえよう",w:["What","are","you","reading","now?"],a:"What are you reading now?",ex:"What（何を）を最初に、are you reading（読んでいますか）と続け、now は最後です。"},
+{type:"order",t:"「私の兄はいつも7時に起きます」になるように並べかえよう",w:["My","brother","always","gets","up","at","seven."],a:"My brother always gets up at seven.",ex:"always（いつも）は一般動詞の前に置きます。gets up（起きる）→ at seven（7時に）。"}],
+
+"c2|品詞（副詞）":[
+{t:"(　)に入るのはどれ？",en:"Please speak (　). I can't hear you.",o:["loud","loudly","louder"],a:1,ex:"speak（話す）を説明するのは副詞。loud に ly をつけた loudly です。"}],
+"c2|過去形（不規則動詞）":[
+{t:"(　)に入るのはどれ？",en:"I (　) a nice T-shirt yesterday.",o:["buy","buyed","bought"],a:2,ex:"buy の過去形は bought。不規則に変わる動詞です。"},
+{t:"(　)に入るのはどれ？",en:"We (　) a lot of pictures in Kyoto.",o:["took","taked","take"],a:0,ex:"take の過去形は took です。"}],
+"c2|過去の否定文":[
+{t:"(　)に入るのはどれ？",en:"I (　) at home last night.",o:["didn't","wasn't","weren't"],a:1,ex:"at home（家に）いた・いなかったは be動詞。主語 I の過去は was、否定は wasn't です。"}],
+"c2|過去進行形":[
+{t:"(　)に入るのはどれ？",en:"What (　) you doing at eight last night?",o:["are","were","did"],a:1,ex:"昨夜8時に「何をしていたか」。過去進行形の疑問文は Were you 〜ing? の形です。"}],
+"c2|未来（will）":[
+{t:"(　)に入るのはどれ？",en:"I think Ken (　) come to the party.",o:["will","is","does"],a:0,ex:"「ケンはパーティーに来ると思う」。未来の予想は will＋原形です。"}],
+"c2|未来（be going to）":[
+{t:"(　)に入るのはどれ？",en:"(　) are you going to do this weekend?",o:["What","Who","Which"],a:0,ex:"「今週末、何をするつもり？」。何をするかなので What です。"}],
+"c2|助動詞 must":[
+{t:"(　)に入るのはどれ？",en:"You (　) not swim in this river. It's dangerous.",o:["must","have","don't"],a:0,ex:"「この川で泳いではいけない」。must not で禁止を表します。"}],
+"c2|have to の否定":[
+{t:"「彼は今日、学校へ行く必要がありません」。正しいのはどれ？",o:["He doesn't have to go to school today.","He must not go to school today.","He don't have to go to school today."],a:0,ex:"主語 He なので doesn't have to。must not は「行ってはいけない」になってしまいます。"}],
+"c2|不定詞（〜するために）":[
+{t:"(　)に入るのはどれ？",en:"She got up early (　) the first train.",o:["catch","to catch","catching"],a:1,ex:"「始発に乗るために」早起きした。目的を表す to＋原形です。"}],
+"c2|動名詞":[
+{t:"(　)に入るのはどれ？",en:"Please stop (　). It's late.",o:["talk","to talking","talking"],a:2,ex:"stop の後ろは〜ing で「〜するのをやめる」。"},
+{t:"(　)に入るのはどれ？",en:"(　) English is fun.",o:["Study","Studying","Studies"],a:1,ex:"「英語を勉強することは楽しい」。主語になる「〜すること」は動名詞 Studying です。"}],
+"c2|不定詞（want to）":[
+{t:"(　)に入るのはどれ？",en:"I hope (　) you again.",o:["see","to see","seeing"],a:1,ex:"hope の後ろは to＋原形。「また会えることを願っています」です。"}],
+"c2|接続詞 if":[
+{t:"(　)に入るのはどれ？",en:"If you (　) free tomorrow, please call me.",o:["will be","are","be"],a:1,ex:"if の文では、未来のことでも現在形で表します。you are です。"}],
+"c2|接続詞 that":[
+{unit:"接続詞 so",t:"(　)に入るのはどれ？",en:"I was busy, (　) I couldn't watch TV.",o:["so","but","or"],a:0,ex:"「忙しかった、だからテレビを見られなかった」。結果をつなぐのは so です。"},
+{unit:"接続詞 because",t:"(　)に入るのはどれ？",en:"I like summer (　) I can swim in the sea.",o:["because","but","or"],a:0,ex:"「海で泳げるから、夏が好き」。理由をつなぐのは because です。"}],
+"c2|There is / are":[
+{t:"(　)に入るのはどれ？",en:"(　) there a hospital near here?",o:["Are","Is","Does"],a:1,ex:"a hospital（1つ）なので Is there 〜? です。"}],
+"c2|文型（SVOO）":[
+{t:"「母は私に新しいかばんを買ってくれた」。正しいのはどれ？",o:["My mother bought me a new bag.","My mother bought a new bag me.","My mother me bought a new bag."],a:0,ex:"buy＋人＋もの の順番。bought me a new bag です。"}],
+"c2|文型（SVOC）":[
+{t:"「私たちは彼をケンと呼びます」。正しいのはどれ？",o:["We call him Ken.","We call Ken him.","We him call Ken."],a:0,ex:"call＋人＋呼び名 の順番で「人を〜と呼ぶ」。call him Ken です。"}],
+"c2|比較級":[
+{t:"(　)に入るのはどれ？",en:"This question is (　) than that one.",o:["easy","easier","easiest"],a:1,ex:"than があるので比較級。easy は y を i にかえて easier です。"},
+{t:"(　)に入るのはどれ？",en:"Soccer is (　) popular than baseball in my class.",o:["much","more","most"],a:1,ex:"長い単語 popular の比較級は more popular です。"}],
+"c2|最上級（most）":[
+{t:"(　)に入るのはどれ？",en:"Ken runs the (　) in our class.",o:["fast","faster","fastest"],a:2,ex:"in our class（クラスで）一番速い。最上級 the fastest です。"}],
+"c2|比較（any other）":[
+{unit:"one of the 最上級",t:"(　)に入るのはどれ？",en:"This is one of the (　) temples in Japan.",o:["old","older","oldest"],a:2,ex:"「日本で最も古い寺のひとつ」。one of the＋最上級＋複数形です。"},
+{unit:"as 〜 as",t:"(　)に入るのはどれ？",en:"Ken can run as (　) as his brother.",o:["fast","faster","fastest"],a:0,ex:"as 〜 as（〜と同じくらい）の間は、形を変えないもとの形です。"}],
+"c2|会話の決まった言い方（Shall I 〜?）":[
+{unit:"会話の決まった言い方（Will you 〜?）",t:"会話の(　)に入るのはどれ？",en:"A: Will you help me?　B: (　) What can I do?",o:["Sure.","No, I won't.","Yes, you will."],a:0,ex:"Will you 〜?（〜してくれる？）には Sure.（いいよ）と答えるのが自然です。"}],
+"c2|接続詞 while":[
+{unit:"接続詞 before",t:"(　)に入るのはどれ？",en:"Please wash your hands (　) you eat lunch.",o:["before","after","until"],a:0,ex:"「昼ごはんを食べる前に手を洗って」。before です。"}],
+"c2|something＋形容詞＋to ―":[
+{unit:"最上級（並べかえ）",type:"order",t:"「ケンはクラスで一番速く走ることができます」になるように並べかえよう",w:["Ken","can","run","the","fastest","in","his","class."],a:"Ken can run the fastest in his class.",ex:"can run（走ることができる）→ the fastest（一番速く）→ in his class（クラスで）。"},
+{unit:"不定詞（並べかえ）",type:"order",t:"「私は宿題をするために早く家に帰りました」になるように並べかえよう",w:["I","went","home","early","to","do","my","homework."],a:"I went home early to do my homework.",ex:"went home early（早く家に帰った）のあとに、目的の to do my homework を置きます。"}],
+
+"c3|〜ing と 〜ed の形容詞":[
+{t:"(　)に入るのはどれ？",en:"I was (　) to hear the news.",o:["surprise","surprising","surprised"],a:2,ex:"人が「おどろいた」は surprised。ニュースが「おどろくべき」なら surprising です。"}],
+"c3|受け身（過去）":[
+{t:"(　)に入るのはどれ？",en:"This letter was (　) by my grandmother.",o:["write","wrote","written"],a:2,ex:"受け身は be動詞＋過去分詞。write の過去分詞は written です。"},
+{t:"(　)に入るのはどれ？",en:"When (　) this bridge built?",o:["is","was","did"],a:1,ex:"「この橋はいつ建てられたか」。過去の受け身の疑問文は When was 〜 built? です。"}],
+"c3|受け身":[
+{unit:"受け身の決まった形",t:"(　)に入るのはどれ？",en:"The mountain is covered (　) snow.",o:["by","with","in"],a:1,ex:"be covered with 〜で「〜でおおわれている」。決まった形です。"},
+{unit:"受け身の決まった形",t:"(　)に入るのはどれ？",en:"He is known (　) everyone in this town.",o:["by","to","at"],a:1,ex:"be known to 〜で「〜に知られている」。by ではなく to を使います。"}],
+"c3|現在完了（継続）":[
+{unit:"現在完了（How long）",t:"(　)に入るのはどれ？",en:"How (　) have you lived in this town?",o:["many","long","much"],a:1,ex:"「どのくらい（の期間）住んでいるか」は How long です。"}],
+"c3|現在完了（経験）":[
+{t:"(　)に入るのはどれ？",en:"I have (　) this movie three times.",o:["see","saw","seen"],a:2,ex:"現在完了は have＋過去分詞。see の過去分詞は seen です。"},
+{unit:"現在完了（経験・never）",t:"(　)に入るのはどれ？",en:"I have (　) been to Hokkaido. I want to go there someday.",o:["ever","never","already"],a:1,ex:"「一度も行ったことがない、いつか行きたい」。never です。"}],
+"c3|現在完了（完了）":[
+{t:"(　)に入るのはどれ？",en:"Have you finished your lunch (　)?",o:["already","yet","ever"],a:1,ex:"疑問文で「もう〜した？」は yet を文の最後に置きます。"}],
+"c3|現在完了進行形":[
+{t:"(　)に入るのはどれ？",en:"She has been (　) the piano for two hours.",o:["play","played","playing"],a:2,ex:"have been＋〜ing で「ずっと〜し続けている」。playing です。"}],
+"c3|It is 〜 for … to ―":[
+{t:"(　)に入るのはどれ？",en:"It is difficult (　) me to answer this question.",o:["to","for","of"],a:1,ex:"It is 〜 for 人 to ―。「私には」は for me です。"}],
+"c3|want 人 to ―":[
+{t:"(　)に入るのはどれ？",en:"Mr. Sato told us (　) quiet.",o:["be","to be","being"],a:1,ex:"tell＋人＋to ―で「人に〜するように言う」。to be quiet です。"},
+{t:"(　)に入るのはどれ？",en:"Could you ask him (　) me back?",o:["call","to call","calling"],a:1,ex:"ask＋人＋to ―で「人に〜するようにたのむ」。to call です。"}],
+"c3|原形不定詞（let）":[
+{t:"(　)に入るのはどれ？",en:"My father helped me (　) my homework.",o:["do","to doing","did"],a:0,ex:"help＋人＋動詞の原形で「人が〜するのを手伝う」。do です。"}],
+"c3|間接疑問":[
+{t:"(　)に入るのはどれ？",en:"I don't know what (　).",o:["does she like","she likes","likes she"],a:1,ex:"文の途中の疑問文は「疑問詞＋主語＋動詞」。what she likes です。"},
+{t:"(　)に入るのはどれ？",en:"Can you tell me when (　)?",o:["the bus will come","will the bus come","the bus come will"],a:0,ex:"when のあとは「主語＋動詞」の順。the bus will come です。"}],
+"c3|分詞（〜している）":[
+{t:"(　)に入るのはどれ？",en:"Who is the girl (　) with Ken?",o:["talks","talking","talked"],a:1,ex:"「ケンと話している女の子」。girl を talking with Ken が後ろから説明しています。"}],
+"c3|分詞（〜された）":[
+{t:"(　)に入るのはどれ？",en:"I like cars (　) in Japan.",o:["make","making","made"],a:2,ex:"「日本で作られた車」。車は作られる側なので過去分詞 made です。"},
+{t:"(　)に入るのはどれ？",en:"The language (　) in Brazil is Portuguese.",o:["speaking","spoken","speaks"],a:1,ex:"「ブラジルで話されている言語」。spoken が後ろから説明しています。"}],
+"c3|関係代名詞 who":[
+{t:"(　)に入るのはどれ？",en:"I have a dog (　) runs very fast.",o:["who","which","what"],a:1,ex:"dog（動物）を後ろから説明するので which（または that）です。"}],
+"c3|関係代名詞（目的格）":[
+{t:"(　)に入るのはどれ？",en:"The cake (　) my mother made was delicious.",o:["who","which","what"],a:1,ex:"cake（もの）を「母が作った」と説明。which（または that）。省略もできます。"}],
+"c3|仮定法過去":[
+{t:"(　)に入るのはどれ？",en:"If I (　) a lot of money, I would travel around the world.",o:["have","had","will have"],a:1,ex:"事実とちがう仮定は過去形。If I had 〜, I would 〜. の形です。"}],
+"c3|I wish（仮定法）":[
+{t:"(　)に入るのはどれ？",en:"I wish I (　) taller.",o:["am","were","will be"],a:1,ex:"I wish のあとは過去形。be動詞は were を使うのが基本です。"},
+{t:"(　)に入るのはどれ？",en:"I wish I (　) more time to study.",o:["have","had","will have"],a:1,ex:"「もっと勉強する時間があればいいのに」。I wish のあとは過去形 had です。"}],
+"c3|比較（any other）":[
+{t:"(　)に入るのはどれ？",en:"No other student in my class is (　) than Ken.",o:["tall","taller","tallest"],a:1,ex:"「ケンより背の高い生徒はいない」＝ケンが一番高い。No other 〜 than の形で比較級です。"}],
+"c3|語順（後ろから説明）":[
+{t:"「彼が書いた本はおもしろい」。正しいのはどれ？",o:["The book he wrote is interesting.","The book is he wrote interesting.","He wrote the book is interesting."],a:0,ex:"The book を he wrote が後ろから説明し、そのあとに is interesting が続きます。"}],
+"c3|疑問詞＋to ―":[
+{t:"「どの電車に乗ればいいか教えてください」。正しいのはどれ？",o:["Please tell me which train to take.","Please tell me to take which train.","Please tell me which to take train."],a:0,ex:"which train to take（どの電車に乗ればいいか）。疑問詞＋名詞＋to＋原形の順です。"}],
+"c3|関係代名詞 that（最上級＋ever）":[
+{t:"(　)に入るのはどれ？",en:"She is the kindest person (　) I have ever met.",o:["that","what","whose"],a:0,ex:"最上級（the kindest）のついた名詞を説明するときは that がよく使われます。"}],
+"c3|間接疑問（疑問詞が主語）":[
+{t:"(　)に入るのはどれ？",en:"Do you know (　) broke this window?",o:["who","whose","what"],a:0,ex:"「だれがこの窓を割ったか知っている？」。who が主語なので who broke 〜 の順です。"}],
+"c3|so 〜 that …":[
+{t:"(　)に入るのはどれ？",en:"The box was (　) heavy that I couldn't carry it.",o:["too","so","very"],a:1,ex:"so＋形容詞＋that … で「とても〜なので…」。too は that とは組みません。"}],
+"c3|too 〜 for … to ―":[
+{unit:"enough to ―（並べかえ）",type:"order",t:"「彼は親切にも私を手伝ってくれた」になるように並べかえよう",w:["He","was","kind","enough","to","help","me."],a:"He was kind enough to help me.",ex:"形容詞＋enough to ― で「―するほど〜だ」。kind enough to help me の順です。"},
+{type:"order",t:"「この問題は私には難しすぎて解けない」になるように並べかえよう",w:["This","question","is","too","hard","for","me","to","answer."],a:"This question is too hard for me to answer.",ex:"too＋形容詞＋for 人＋to ―で「…には〜すぎて―できない」。"}],
+"c3|tell 人 how to ―":[
+{unit:"how to ―（並べかえ）",type:"order",t:"「私はこのコンピューターの使い方がわかりません」になるように並べかえよう",w:["I","don't","know","how","to","use","this","computer."],a:"I don't know how to use this computer.",ex:"how to use（使い方）のあとに this computer を続けます。"}],
+"c3|間接疑問（受け身）":[
+{type:"order",t:"「あなたはこの寺がいつ建てられたか知っていますか」になるように並べかえよう",w:["Do","you","know","when","this","temple","was","built?"],a:"Do you know when this temple was built?",ex:"when のあとは「主語＋動詞」の順。this temple was built（この寺が建てられた）と続けます。"},
+{unit:"間接疑問（並べかえ）",type:"order",t:"「私はあなたが何を言ったのか理解できませんでした」になるように並べかえよう",w:["I","couldn't","understand","what","you","said."],a:"I couldn't understand what you said.",ex:"what のあとは「主語＋動詞」の順。what you said です。"}]
+};
+
+/* 毎回ちがう問題に：単元ごとに元の問題と入れかえ問題から1問を選び、選択肢の順番も混ぜる。前回と同じ問題はなるべく避ける */
+function buildSet(level){
+  var b=BANK[level], last=[], used=[];
+  try{last=JSON.parse(localStorage.getItem("es_last_"+level)||"[]")}catch(e){}
+  var qs=b.qs.map(function(q,gi){
+    var pool=[q].concat((ALT[level+"|"+q.unit]||[]).map(function(v){var o={};for(var k in v)o[k]=v[k];o.area=q.area;o.ch=q.ch;if(!o.unit)o.unit=q.unit;return o}));
+    var ids=pool.map(function(_,vi){return gi+"-"+vi});
+    var fresh=ids.filter(function(id){return last.indexOf(id)<0});
+    var choice=fresh.length?fresh[Math.floor(Math.random()*fresh.length)]:ids[Math.floor(Math.random()*ids.length)];
+    used.push(choice);
+    var pick=pool[+choice.split("-")[1]], out={};
+    for(var k in pick) out[k]=pick[k];
+    if(out.type!=="order"){
+      var order=out.o.map(function(_,i){return i}); order=shuffle(order);
+      out.o=order.map(function(i){return pick.o[i]}); out.a=order.indexOf(pick.a);
+    }
+    return out;
+  });
+  try{localStorage.setItem("es_last_"+level,JSON.stringify(used))}catch(e){}
+  return qs;
+}
 var DONT="わからない";
 var ADV={
-"アルファベット":"アルファベットは英語の入り口です。大文字・小文字を見てすぐ書けるようになると、単語を覚えるのがぐっと楽になります。",
-"フォニックス":"つづりと音のルール（フォニックス）がわかると、初めて見る単語も自分で読めるようになります。中学で単語を覚えるスピードに直結します。",
-"単語・文":"英語は日本語と順番が違います。「だれが→する→何を」の順番に早いうちから慣れておくと、中学の英語がスムーズです。",
-"品詞":"品詞（名詞・動詞・形容詞・副詞など）がわかると、文の形が見えるようになります。長文を読むスピードにもつながる土台です。",
-"語順":"英語は語順で意味が決まります。並べかえ問題や英作文で点を取るために、いちばん大切なところです。",
-"動詞の形":"時制（現在・過去・未来・進行形・完了形）や受け身など、動詞の形の使い分けは、文法問題でもリスニングでもよく問われます。",
-"疑問文・名詞":"疑問詞や複数形は、会話文やリスニングでよく出ます。答えの形から逆に考える練習が効きます。",
-"不定詞・動名詞":"to＋動詞の原形（不定詞）と〜ing（動名詞）は中2の山場です。使い方のパターンを整理すると、一気に解けるようになります。",
-"不定詞":"不定詞は中3で形が増えます（It is 〜 for … to、want 人 to、let など）。パターンで覚えると英作文にも使えます。",
-"接続詞・文":"接続詞や There is の文がわかると、2つの文をつないだ長い文が読めるようになります。",
-"後ろから説明":"分詞・関係代名詞は「名詞を後ろから説明する」形です。長文読解でいちばん差がつくところです。",
-"比較":"比較は入試の定番です。比較級・最上級・as 〜 as の形と、than / of / in の使い分けを整理しておきましょう。",
-"比較・接続":"比較や so 〜 that などの文の形は、長文の中でもよく出てきます。形を見たら意味がすぐ浮かぶようにしておきましょう。"
+"アルファベット":"大文字・小文字がパッと書けるようになると、単語を覚えるのがぐんと楽になります。",
+"フォニックス":"音とつづりのルールがわかると、はじめて見る単語も自分で読めるようになりますよ。",
+"単語":"曜日・数・色など、身近な単語から少しずつ。声に出して覚えると、聞き取りにも強くなります。",
+"会話・表現":"あいさつや「好きなもの」の言い方は、中学1年のはじめにすぐ使います。聞かれたことに合わせて答えるのがコツです。",
+"英語の順番":"英語は日本語と順番がちがうのがポイント。「だれが→する→何を」に少しずつ慣れていこう。",
+"品詞":"名詞・動詞・形容詞・副詞が見分けられると、文の形がスッと見えてきます。",
+"語順":"英語は順番で意味が決まることば。並べかえや英作文で点が取れるようになる、大事なところです。",
+"動詞の形":"「いつの話？」「今している？」で動詞の形が変わるところ。ここが整理できると、テストでぐっと強くなります。",
+"疑問文・名詞":"疑問詞は答え方とセットで覚えるのがコツ。会話文やリスニングでもよく出ます。",
+"不定詞・動名詞":"to＋動詞と〜ingは中2の山場。パターンで整理すると、一気に解けるようになります。",
+"不定詞":"不定詞は中3で形が増えるところ。パターンで覚えると、英作文にもそのまま使えます。",
+"接続詞・文":"接続詞がわかると、長い文もこわくなくなります。",
+"後ろから説明":"「名詞を後ろから説明する形」は、長文でいちばん差がつくところ。ここを押さえると長文が読みやすくなります。",
+"比較":"比較は入試の定番。形の作り方と、than・of・in の使い分けを整理しておこう。",
+"比較・接続":"so 〜 that などの形は長文にもよく出てきます。見た瞬間に意味が浮かぶようにしておこう。"
 };
 
 var TODO={
 "アルファベット":["A〜Zを声に出して、順番に言ってみる","大文字と小文字をペアで書く（1日1回）","b と d、p と q など、似た形を見くらべる"],
 "フォニックス":["身の回りの英単語の、最初の音を言ってみる","短い音（cat・pig）と長い読み方（cake・bike）をくらべる","sh・ch など、2文字で1つの音をまとめて練習する"],
-"単語・文":["「わたしは→する→何を」の順番で、短い文を言ってみる","好きなものを3つ、I like 〜. で言ってみる","身近なものの英単語を1日3つ覚える"],
+"単語":["曜日（Sunday〜Saturday）を順番に言ってみる","1〜20の数を英語で言ってみる","身近なもの（色・動物・食べもの）の英単語を1日3つ覚える"],
+"会話・表現":["How are you? と聞かれたら答える練習をする","自己紹介（名前・年れい・好きなもの）を英語で言ってみる","Can you 〜? と聞かれたときの答え方を練習する"],
+"英語の順番":["「わたしは→する→何を」の順番で、短い文を言ってみる","好きなものを3つ、I like 〜. で言ってみる","This is 〜. で身の回りのものを紹介してみる"],
 "品詞":["教科書の文で、動詞に〇をつけてみる","形容詞（様子）と副詞（動詞の説明）を見分ける","代名詞の表（I・my・me…）を声に出して言う"],
 "語順":["日本語を「だれが→する→何を→どこで→いつ」に並べてから英語にする","教科書の本文を1文ずつ書き写す","並べかえ問題を毎日2問やる"],
 "動詞の形":["教科書の動詞に印をつけて、現在・過去・進行形を見分ける","不規則動詞を1日5個ずつ覚える","yesterday・now など「いつの話か」を表す語に注目する"],
@@ -780,7 +1047,7 @@ $("startForm").addEventListener("submit",function(e){
   var name=$("fName").value.trim(), school=$("fSchool").value.trim();
   if(!name||!school){$("fErr").classList.remove("hidden");return}
   S.name=name.slice(0,40); S.school=school.slice(0,60); S.grade=$("fGrade").value; S.hp=$("fWeb").value;
-  var b=BANK[S.level]; S.ans=new Array(b.qs.length).fill(null); S.sec=new Array(b.qs.length).fill(0); S.i=0;
+  var b=BANK[S.level]; S.qs=buildSet(S.level); S.ans=new Array(S.qs.length).fill(null); S.sec=new Array(S.qs.length).fill(0); S.i=0;
   S.start=new Date(); S.t0=performance.now();
   show("qCard"); $("qLevel").textContent=b.name+"・英語診断"; $("qClock").textContent="0:00";
   render(); go($("qCard"));
@@ -789,7 +1056,7 @@ $("startForm").addEventListener("submit",function(e){
 });
 
 function render(){
-  var b=BANK[S.level], q=b.qs[S.i], n=b.qs.length;
+  var q=S.qs[S.i], n=S.qs.length;
   S.qStart=performance.now();
   var tag=$("qTag"); tag.textContent=q.ch?"チャレンジ（入試レベル）":q.area; tag.classList.toggle("ch",!!q.ch);
   $("qCount").textContent=(S.i+1)+" / "+n;
@@ -799,6 +1066,7 @@ function render(){
   var body=$("qBody"); body.innerHTML="";
   if(q.type==="order") renderOrder(q,body); else renderChoice(q,body);
   $("qBack").disabled=S.i===0;
+  quitReset();
 }
 function renderChoice(q,body){
   var box=document.createElement("div"); box.className="opts";
@@ -851,10 +1119,16 @@ function answer(v){
   if(busy) return; busy=true;
   S.sec[S.i]+=(performance.now()-S.qStart)/1000;
   S.ans[S.i]=v;
-  var n=BANK[S.level].qs.length;
+  var n=S.qs.length;
   setTimeout(function(){ busy=false; if(S.i<n-1){S.i++;render();} else finish(); },200);
 }
 $("qBack").addEventListener("click",function(){ if(S&&S.i>0){ S.sec[S.i]+=(performance.now()-S.qStart)/1000; S.i--; render(); } });
+var quitT=null, qq=$("qQuit");
+function quitReset(){clearTimeout(quitT);qq.classList.remove("warn");qq.textContent="診断をやめて学年を選び直す"}
+qq.addEventListener("click",function(){
+  if(!qq.classList.contains("warn")){qq.classList.add("warn");qq.textContent="ここまでの答えは消えます。やめるときは、もう一度押してください";quitT=setTimeout(quitReset,4000);return}
+  quitReset();clearInterval(tick);$("quiz").classList.add("hidden");go($("grades"));
+});
 Array.prototype.forEach.call(document.querySelectorAll("[data-back]"),function(b){b.addEventListener("click",function(){clearInterval(tick);$("quiz").classList.add("hidden");go($("grades"))})});
 
 function isCorrect(q,v){ if(q.type==="order") return typeof v==="string"&&v===q.a; return v===q.a; }
@@ -863,7 +1137,7 @@ function median(a){if(!a.length)return 0;var s=a.slice().sort(function(x,y){retu
 
 function finish(){
   clearInterval(tick);
-  var b=BANK[S.level], qs=b.qs, correct=0, by={}, wrongUnits=[], goodUnits=[], chTotal=0, chOk=0, slow=[];
+  var b=BANK[S.level], qs=S.qs, correct=0, by={}, wrongUnits=[], goodUnits=[], chTotal=0, chOk=0, slow=[];
   var total=(performance.now()-S.t0)/1000;
   b.areas.forEach(function(a){by[a]={c:0,t:0}});
   var med=median(S.sec);
@@ -877,7 +1151,7 @@ function finish(){
   goodUnits=goodUnits.filter(function(u){return wrongUnits.indexOf(u)<0&&slow.indexOf(u)<0});
   var pct=correct/qs.length;
   var rank=(pct>=.9&&chOk>=chTotal-1)?"S":pct>=.75?"A":pct>=.55?"B":"C";
-  var verdict={S:"学年の範囲はほぼ完ぺき。入試レベルにも手が届いています。",A:"土台はしっかり。あと少しで上のレベルです。",B:"できるところと、伸ばすところがはっきり見えました。",C:"伸びしろがたくさん見つかりました。ここからが伸ばしどきです。"}[rank];
+  var verdict={S:"すごい！学年の範囲はほぼ完ぺきです。",A:"よくできました！土台はしっかりできています。",B:"いい感じ！できるところと、のばすところが見えました。",C:"のびしろ、たくさん見つかりました！ここからです。"}[rank];
   $("qProg").style.width="100%";
   show("rCard");
   $("rWho").textContent=S.grade+"　"+S.name+" さん（"+S.school+"）";
@@ -898,13 +1172,13 @@ function finish(){
   chips($("rSlow"),slow,"slow","なし");
   chips($("rGood"),goodUnits,"ok","これから伸ばしていきましょう");
   var best=null,bestP=-1; areaOut.forEach(function(a){var r=a.correct/a.total; if(r>bestP){bestP=r;best=a.area}});
-  var c=[S.name+"さん、最後までおつかれさまでした。"];
-  if(bestP>=.6) c.push("「"+best+"」はよくできています（正答率"+Math.round(bestP*100)+"%）。ここは自信をもって大丈夫です。");
-  else c.push("最後まで解ききったことが、まず大事な一歩です。");
-  if(wrongUnits.length&&weakestArea!==best) c.push("いちばんの伸びしろは「"+weakestArea+"」。"+(ADV[weakestArea]||""));
-  if(slow.length) c.push("「"+slow[0]+"」は正解でしたが、時間がかかっていました。ここを速く解けるようになると、テストで見直しの時間が作れます。");
-  if(chTotal&&chOk) c.push("入試レベルのチャレンジ問題も"+chOk+"問正解できています。");
-  c.push({S:"この調子で、入試レベルの長文や英作文にもどんどん挑戦していきましょう。",A:"苦手な単元を1つずつ片づけていけば、S判定はすぐそこです。",B:"苦手が具体的に見えたのは大きな収穫です。ここから一気に伸ばせます。",C:"まだ習っていない単元もあるはずなので、点数は気にしなくて大丈夫。どこから始めればいいかがわかったことが、今回いちばんの成果です。"}[rank]);
+  var c=[S.name+"さん、おつかれさま！最後までよくがんばりました。"];
+  if(bestP>=.6) c.push("「"+best+"」はばっちり（正答率"+Math.round(bestP*100)+"%）。ここは自信をもっていいですよ。");
+  else c.push("最後まで解ききれたのが、まず大きな一歩です。");
+  if(wrongUnits.length&&weakestArea!==best) c.push("次にのびるのは「"+weakestArea+"」。"+(ADV[weakestArea]||""));
+  if(slow.length) c.push("「"+slow[0]+"」は正解！少し時間がかかっていたので、もうひと押しで“すぐ解ける”になりそうです。");
+  if(chTotal&&chOk) c.push("入試レベルのチャレンジ問題も"+chOk+"問正解。これはすごい！");
+  c.push({S:"この調子で、入試の長文や英作文にもどんどんチャレンジしてみよう。",A:"苦手を1つずつ片づけていけば、S判定はもうすぐです。",B:"苦手がはっきりしたのは大きな収穫。ここから一気にのばせます。",C:"まだ習っていないところもあるはずなので、点数は気にしなくて大丈夫。どこから始めればいいかがわかったのが、今日いちばんの収穫です。"}[rank]);
   $("rComment").textContent=c.join("\n");
   var todo=wrongUnits.length?(TODO[weakestArea]||[]):["入試の長文を1日1題読む","3文くらいの英作文を書いてみる","リスニング問題に挑戦する"];
   $("rTodoH").textContent=wrongUnits.length?"次の1週間でやってみること（「"+weakestArea+"」）":"次の1週間でやってみること";
@@ -919,7 +1193,7 @@ function finish(){
     rv.appendChild(d);
   });
   if(!rv.children.length) rv.innerHTML='<p style="font-size:14px;color:#575d6b">まちがえた問題はありません。</p>';
-  var msg="【英語診断の結果】\n"+S.grade+"　"+S.name+"（"+S.school+"）\n結果："+correct+"/"+qs.length+"問（判定"+rank+"）　時間 "+fmt(total)+"\n苦手："+(wrongUnits.slice(0,4).join("・")||"なし")+"\nくわしいカルテを希望します";
+  var msg="【英語診断の結果】\n"+S.grade+"　"+S.name+"（"+S.school+"）\n結果："+correct+"/"+qs.length+"問（判定"+rank+"）　時間 "+fmt(total)+"\n苦手："+(wrongUnits.slice(0,4).join("・")||"なし")+"\nアドバイスをお願いします";
   $("rMsg").textContent=msg;
   $("rLine").href=$("rLine2").href="https://line.me/R/oaMessage/"+LINE_ID+"/?"+encodeURIComponent(msg);
   go($("rCard"));
@@ -930,13 +1204,10 @@ function finish(){
 
 Array.prototype.forEach.call(document.querySelectorAll(".grade"),function(b){b.addEventListener("click",function(){choose(b.dataset.level)})});
 Array.prototype.forEach.call(document.querySelectorAll("[data-ev]"),function(a){a.addEventListener("click",function(){ev(a.dataset.ev,S?{level:BANK[S.level].name}:{})})});
-/* スマホ下のボタン：最初の画面を過ぎたら出し、診断中と最後の案内のところでは隠す */
-var dock=$("dock"), past=false, hideBy={};
-function upd(){var hide=Object.keys(hideBy).some(function(k){return hideBy[k]}); dock.classList.toggle("on",past&&!hide)}
+/* 下のボタンはいつも出す。診断中は「診断する」だけ隠す */
+var dock=$("dock");
 if("IntersectionObserver" in window){
-  new IntersectionObserver(function(es){es.forEach(function(e){past=!e.isIntersecting&&e.boundingClientRect.top<0; upd()})}).observe(document.querySelector(".hero"));
-  var ho=new IntersectionObserver(function(es){es.forEach(function(e){hideBy[e.target.id||e.target.className]=e.isIntersecting; upd()})});
-  ["quiz","consult","grades"].forEach(function(id){ho.observe($(id))}); ho.observe(document.querySelector(".final"));
+  new IntersectionObserver(function(es){es.forEach(function(e){dock.classList.toggle("inquiz",e.isIntersecting&&!$("quiz").classList.contains("hidden"))})},{threshold:.15}).observe($("quiz"));
 }
 /* 合格発表の動画：見えている間だけ音なしで流す。動きを減らす設定の人には自動で流さない */
 var loop=$("mLoop"), tg=$("mToggle"), userPaused=false;
