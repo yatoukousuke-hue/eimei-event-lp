@@ -705,7 +705,7 @@ function finish(){
   el("rMsg").textContent=msg;
   el("rLine").href="https://line.me/R/oaMessage/"+LINE_ID+"/?"+encodeURIComponent(msg);
   el("result").scrollIntoView({behavior:"smooth",block:"start"});
-  ev("diag_finish",{level:b.name,rank:rank,score:correct});
+  ev("diag_finish",{level:b.name,rank:rank});
 }
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
