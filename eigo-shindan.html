@@ -510,7 +510,7 @@ body{margin:0;background:#fff}
     </div>
 
     <div class="card hidden" id="qCard">
-      <div class="qhead"><span id="qLevel">中2</span><span class="tag" id="qTag">語順</span><span><span id="qCount">1 / 21</span>　<span class="clock" id="qClock">0:00</span></span></div>
+      <div class="qhead"><span id="qLevel">中2</span><span class="tag" id="qTag">語順</span><span><span id="qCount">1 / 22</span>　<span class="clock" id="qClock">0:00</span></span></div>
       <div class="prog"><i id="qProg"></i></div>
       <p class="qtext" id="qText"></p>
       <p class="qen en hidden" id="qEn"></p>
@@ -566,8 +566,8 @@ body{margin:0;background:#fff}
     <div class="skills">
       <div class="skill"><h3>語順で文を組み立てる力</h3><p>英語は「だれが→する→何を」の順番で意味が決まります。並べかえ問題や英作文は、ここがわかるかどうかで差がつきます。</p><span class="ex en">I'll show <u>you</u> <u>this picture</u>.<span class="hand">人→ものの順</span></span></div>
       <div class="skill"><h3>品詞で文を読む力</h3><p>名詞・動詞・形容詞・副詞が見分けられると、知らない単語があっても文の形がつかめます。長文を読むスピードにもつながります。</p><span class="ex en">She sings <u>beautifully</u>.<span class="hand">動詞を説明＝副詞</span></span></div>
-      <div class="skill"><h3>動詞の形を使い分ける力</h3><p>現在・過去・進行形・完了形・受け身。「いつ・どんな状態か」で動詞の形を選べることが、文法問題にもリスニングにも効いてきます。</p><span class="ex en">It <u>has been raining</u> since morning.<span class="hand">ずっと続いている</span></span></div>
-      <div class="skill"><h3>長い文を読み、書く力</h3><p>不定詞・分詞・関係代名詞で文が長くなっても、どこがどこを説明しているかを見抜く力。長文読解と条件英作文の得点源です。</p><span class="ex en">The boy <u>running there</u> is Ken.<span class="hand">後ろから説明</span></span></div>
+      <div class="skill"><h3>動詞の形を使い分ける力</h3><p>現在・過去・進行形・完了形・受け身。「いつ・どんな状態か」で動詞の形を選べることが、文法問題にもリスニングにも効いてきます。</p><span class="ex en">It <u>has been raining</u> since this morning.<span class="hand">ずっと続いている</span></span></div>
+      <div class="skill"><h3>長い文を読み、書く力</h3><p>不定詞・分詞・関係代名詞で文が長くなっても、どこがどこを説明しているかを見抜く力。長文読解と条件英作文の得点源です。</p><span class="ex en">The boy <u>running over there</u> is Ken.<span class="hand">後ろから説明</span></span></div>
     </div>
   </div>
 </section>
@@ -781,7 +781,7 @@ var ALT={
 {t:"「map」の最初の音と、同じ音で始まる単語はどれ？",o:["nose","moon","cat"],a:1,ex:"map と moon は、口をとじて出す m の音「ムッ」で始まります。"}],
 "sho|母音の音":[
 {t:"「pig」の i と同じ音が入っている単語はどれ？",o:["big","bike","ice"],a:0,ex:"pig と big の i は短い「イ」。bike や ice の i は「アイ」と読みます。"},
-{t:"「hot」の o と同じ音が入っている単語はどれ？",o:["nose","dog","go"],a:1,ex:"hot と dog の o は短い「ア」に近い音。nose や go の o は「オウ」と読みます。"}],
+{t:"「hot」の o と同じ音が入っている単語はどれ？",o:["nose","box","go"],a:1,ex:"hot と box の o は短い音。nose や go の o は「オウ」と読みます。"}],
 "sho|2文字で1つの音":[
 {t:"「chair」の ch と同じ音で始まる単語はどれ？",o:["cheese","ship","cat"],a:0,ex:"ch は2文字で「チ」という1つの音。cheese も同じです。"}],
 "sho|はじめてのあいさつ":[
@@ -804,7 +804,7 @@ var ALT={
 {unit:"たずねる・こたえる",t:"「What sport do you like?」への答えはどれ？",o:["I like soccer.","I play to soccer.","Yes, I do."],a:0,ex:"「何のスポーツが好き？」なので I like soccer. と答えます。Yes / No では答えません。"},
 {unit:"たずねる・こたえる",t:"「Where do you want to go?」への答えはどれ？",o:["I want to go to Italy.","I want Italy go.","Yes, I want."],a:0,ex:"「どこへ行きたい？」なので I want to go to Italy.（イタリアへ行きたい）と答えます。"}],
 "sho|英語の順番（並べかえ）":[
-{type:"order",t:"「わたしは毎週日曜日にサッカーをします」になるように並べかえよう",w:["I","play","soccer","on","Sundays."],a:"I play soccer on Sundays.",ex:"I → play → soccer → on Sundays の順。「いつ」は最後に置きます。"},
+{type:"order",t:"「わたしは青い自転車を持っています」になるように並べかえよう",w:["I","have","a","blue","bike."],a:"I have a blue bike.",ex:"I → have → a blue bike の順。blue（青い）は bike の前に置きます。"},
 {type:"order",t:"「あなたは何色が好きですか」になるように並べかえよう",w:["What","color","do","you","like?"],a:"What color do you like?",ex:"What color（何色）を最初に、そのあと do you like? と続けます。"}],
 
 "c1|品詞（形容詞）":[
@@ -819,14 +819,14 @@ var ALT={
 {t:"(　)に入るのはどれ？",en:"My mother (　) a teacher.",o:["am","is","are"],a:1,ex:"主語 My mother は3人称・単数なので is です。"},
 {t:"(　)に入るのはどれ？",en:"(　) you a student?",o:["Is","Do","Are"],a:2,ex:"you の be動詞は are。疑問文は Are を前に出します。"}],
 "c1|一般動詞の否定文":[
-{t:"(　)に入るのはどれ？",en:"We (　) have class on Sunday.",o:["aren't","don't","doesn't"],a:1,ex:"have は一般動詞。主語が We なので don't を使います。"}],
+{t:"(　)に入るのはどれ？",en:"We (　) have school on Sundays.",o:["aren't","don't","doesn't"],a:1,ex:"have は一般動詞。主語が We なので don't を使います。"}],
 "c1|三単現のs":[
 {t:"(　)に入るのはどれ？",en:"Tom (　) his homework after dinner.",o:["do","dos","does"],a:2,ex:"主語 Tom は3人称・単数。do は es をつけて does になります。"},
 {t:"(　)に入るのはどれ？",en:"My father (　) TV every night.",o:["watch","watches","watchs"],a:1,ex:"ch で終わる動詞は es をつけます。watch → watches。"}],
 "c1|三単現の疑問文":[
 {t:"(　)に入るのはどれ？",en:"Does your brother (　) baseball?",o:["play","plays","playing"],a:0,ex:"Does で始まる疑問文では、動詞は原形（play）にもどします。"}],
 "c1|名詞の複数形":[
-{t:"(　)に入るのはどれ？",en:"There are many (　) in the park.",o:["child","childs","children"],a:2,ex:"child の複数形は children。s をつけない特別な形です。"},
+{t:"(　)に入るのはどれ？",en:"Many (　) are playing in the park.",o:["child","childs","children"],a:2,ex:"child の複数形は children。s をつけない特別な形です。"},
 {t:"(　)に入るのはどれ？",en:"I have three (　).",o:["dictionary","dictionarys","dictionaries"],a:2,ex:"子音字＋y で終わる名詞は y を i にかえて es。dictionary → dictionaries。"}],
 "c1|代名詞（〜を）":[
 {t:"(　)に入るのはどれ？",en:"Yuki is my friend. I often play with (　).",o:["she","her","hers"],a:1,ex:"with の後ろは「〜を・〜に」の形。she → her です。"},
@@ -849,13 +849,13 @@ var ALT={
 "c1|三単現の否定文":[
 {t:"正しい英文はどれ？",o:["Yuki doesn't has a dog.","Yuki doesn't have a dog.","Yuki don't have a dog."],a:1,ex:"doesn't の後ろは動詞の原形。has ではなく have です。"}],
 "c1|代名詞（〜のもの）":[
-{t:"会話の(　)に入るのはどれ？",en:"A: Is this your notebook?　B: No, it's (　). Ask Ken.",o:["him","his","he"],a:1,ex:"「彼のもの」は his。Ken のものなので「ケンに聞いて」とつながります。"}],
+{t:"会話の(　)に入るのはどれ？",en:"A: Is this Ken's notebook?　B: Yes, it's (　).",o:["him","his","he"],a:1,ex:"「彼のもの」は his。Ken's notebook を his 1語で言いかえています。"}],
 "c1|現在進行形（並べかえ）":[
 {type:"order",t:"「あなたは今、何を読んでいますか」になるように並べかえよう",w:["What","are","you","reading","now?"],a:"What are you reading now?",ex:"What（何を）を最初に、are you reading（読んでいますか）と続け、now は最後です。"},
-{type:"order",t:"「私の兄はいつも7時に起きます」になるように並べかえよう",w:["My","brother","always","gets","up","at","seven."],a:"My brother always gets up at seven.",ex:"always（いつも）は一般動詞の前に置きます。gets up（起きる）→ at seven（7時に）。"}],
+{unit:"頻度を表す副詞（並べかえ）",type:"order",t:"「私の兄はいつも7時に起きます」になるように並べかえよう",w:["My","brother","always","gets","up","at","seven."],a:"My brother always gets up at seven.",ex:"always（いつも）は一般動詞の前に置きます。gets up（起きる）→ at seven（7時に）。"}],
 
 "c2|品詞（副詞）":[
-{t:"(　)に入るのはどれ？",en:"Please speak (　). I can't hear you.",o:["loud","loudly","louder"],a:1,ex:"speak（話す）を説明するのは副詞。loud に ly をつけた loudly です。"}],
+{t:"(　)に入るのはどれ？",en:"Please listen (　).",o:["careful","carefully","care"],a:1,ex:"listen（聞く）を説明するのは副詞。careful に ly をつけた carefully です。"}],
 "c2|過去形（不規則動詞）":[
 {t:"(　)に入るのはどれ？",en:"I (　) a nice T-shirt yesterday.",o:["buy","buyed","bought"],a:2,ex:"buy の過去形は bought。不規則に変わる動詞です。"},
 {t:"(　)に入るのはどれ？",en:"We (　) a lot of pictures in Kyoto.",o:["took","taked","take"],a:0,ex:"take の過去形は took です。"}],
@@ -866,7 +866,7 @@ var ALT={
 "c2|未来（will）":[
 {t:"(　)に入るのはどれ？",en:"I think Ken (　) come to the party.",o:["will","is","does"],a:0,ex:"「ケンはパーティーに来ると思う」。未来の予想は will＋原形です。"}],
 "c2|未来（be going to）":[
-{t:"(　)に入るのはどれ？",en:"(　) are you going to do this weekend?",o:["What","Who","Which"],a:0,ex:"「今週末、何をするつもり？」。何をするかなので What です。"}],
+{t:"(　)に入るのはどれ？",en:"(　) you going to visit Kyoto next week?",o:["Do","Are","Will"],a:1,ex:"be going to の疑問文は be動詞を前に出します。主語が you なので Are です。"}],
 "c2|助動詞 must":[
 {t:"(　)に入るのはどれ？",en:"You (　) not swim in this river. It's dangerous.",o:["must","have","don't"],a:0,ex:"「この川で泳いではいけない」。must not で禁止を表します。"}],
 "c2|have to の否定":[
@@ -877,7 +877,7 @@ var ALT={
 {t:"(　)に入るのはどれ？",en:"Please stop (　). It's late.",o:["talk","to talking","talking"],a:2,ex:"stop の後ろは〜ing で「〜するのをやめる」。"},
 {t:"(　)に入るのはどれ？",en:"(　) English is fun.",o:["Study","Studying","Studies"],a:1,ex:"「英語を勉強することは楽しい」。主語になる「〜すること」は動名詞 Studying です。"}],
 "c2|不定詞（want to）":[
-{t:"(　)に入るのはどれ？",en:"I hope (　) you again.",o:["see","to see","seeing"],a:1,ex:"hope の後ろは to＋原形。「また会えることを願っています」です。"}],
+{unit:"不定詞（hope to など）",t:"(　)に入るのはどれ？",en:"I hope (　) you again.",o:["see","to see","seeing"],a:1,ex:"hope の後ろは to＋原形。「また会えることを願っています」です。"}],
 "c2|接続詞 if":[
 {t:"(　)に入るのはどれ？",en:"If you (　) free tomorrow, please call me.",o:["will be","are","be"],a:1,ex:"if の文では、未来のことでも現在形で表します。you are です。"}],
 "c2|接続詞 that":[
@@ -900,9 +900,9 @@ var ALT={
 "c2|会話の決まった言い方（Shall I 〜?）":[
 {unit:"会話の決まった言い方（Will you 〜?）",t:"会話の(　)に入るのはどれ？",en:"A: Will you help me?　B: (　) What can I do?",o:["Sure.","No, I won't.","Yes, you will."],a:0,ex:"Will you 〜?（〜してくれる？）には Sure.（いいよ）と答えるのが自然です。"}],
 "c2|接続詞 while":[
-{unit:"接続詞 before",t:"(　)に入るのはどれ？",en:"Please wash your hands (　) you eat lunch.",o:["before","after","until"],a:0,ex:"「昼ごはんを食べる前に手を洗って」。before です。"}],
+{unit:"接続詞 before",t:"「昼ごはんを食べる前に、手を洗ってください」。(　)に入るのはどれ？",en:"Please wash your hands (　) you eat lunch.",o:["before","after","until"],a:0,ex:"「昼ごはんを食べる前に手を洗って」。before です。"}],
 "c2|something＋形容詞＋to ―":[
-{unit:"最上級（並べかえ）",type:"order",t:"「ケンはクラスで一番速く走ることができます」になるように並べかえよう",w:["Ken","can","run","the","fastest","in","his","class."],a:"Ken can run the fastest in his class.",ex:"can run（走ることができる）→ the fastest（一番速く）→ in his class（クラスで）。"},
+{unit:"不定詞（並べかえ）",type:"order",t:"「私には今日やるべきことがたくさんあります」になるように並べかえよう",w:["I","have","a","lot","of","things","to","do","today."],a:"I have a lot of things to do today.",ex:"things を to do（やるべき）が後ろから説明します。today は最後です。"},
 {unit:"不定詞（並べかえ）",type:"order",t:"「私は宿題をするために早く家に帰りました」になるように並べかえよう",w:["I","went","home","early","to","do","my","homework."],a:"I went home early to do my homework.",ex:"went home early（早く家に帰った）のあとに、目的の to do my homework を置きます。"}],
 
 "c3|〜ing と 〜ed の形容詞":[
@@ -912,7 +912,7 @@ var ALT={
 {t:"(　)に入るのはどれ？",en:"When (　) this bridge built?",o:["is","was","did"],a:1,ex:"「この橋はいつ建てられたか」。過去の受け身の疑問文は When was 〜 built? です。"}],
 "c3|受け身":[
 {unit:"受け身の決まった形",t:"(　)に入るのはどれ？",en:"The mountain is covered (　) snow.",o:["by","with","in"],a:1,ex:"be covered with 〜で「〜でおおわれている」。決まった形です。"},
-{unit:"受け身の決まった形",t:"(　)に入るのはどれ？",en:"He is known (　) everyone in this town.",o:["by","to","at"],a:1,ex:"be known to 〜で「〜に知られている」。by ではなく to を使います。"}],
+{unit:"受け身の決まった形",t:"(　)に入るのはどれ？",en:"I am interested (　) Japanese history.",o:["by","in","at"],a:1,ex:"be interested in 〜で「〜に興味がある」。by ではなく in を使う決まった形です。"}],
 "c3|現在完了（継続）":[
 {unit:"現在完了（How long）",t:"(　)に入るのはどれ？",en:"How (　) have you lived in this town?",o:["many","long","much"],a:1,ex:"「どのくらい（の期間）住んでいるか」は How long です。"}],
 "c3|現在完了（経験）":[
@@ -928,7 +928,7 @@ var ALT={
 {t:"(　)に入るのはどれ？",en:"Mr. Sato told us (　) quiet.",o:["be","to be","being"],a:1,ex:"tell＋人＋to ―で「人に〜するように言う」。to be quiet です。"},
 {t:"(　)に入るのはどれ？",en:"Could you ask him (　) me back?",o:["call","to call","calling"],a:1,ex:"ask＋人＋to ―で「人に〜するようにたのむ」。to call です。"}],
 "c3|原形不定詞（let）":[
-{t:"(　)に入るのはどれ？",en:"My father helped me (　) my homework.",o:["do","to doing","did"],a:0,ex:"help＋人＋動詞の原形で「人が〜するのを手伝う」。do です。"}],
+{unit:"原形不定詞（help）",t:"(　)に入るのはどれ？",en:"My father helped me (　) my homework.",o:["do","to doing","did"],a:0,ex:"help＋人＋動詞の原形で「人が〜するのを手伝う」。do です。"}],
 "c3|間接疑問":[
 {t:"(　)に入るのはどれ？",en:"I don't know what (　).",o:["does she like","she likes","likes she"],a:1,ex:"文の途中の疑問文は「疑問詞＋主語＋動詞」。what she likes です。"},
 {t:"(　)に入るのはどれ？",en:"Can you tell me when (　)?",o:["the bus will come","will the bus come","the bus come will"],a:0,ex:"when のあとは「主語＋動詞」の順。the bus will come です。"}],
@@ -938,7 +938,7 @@ var ALT={
 {t:"(　)に入るのはどれ？",en:"I like cars (　) in Japan.",o:["make","making","made"],a:2,ex:"「日本で作られた車」。車は作られる側なので過去分詞 made です。"},
 {t:"(　)に入るのはどれ？",en:"The language (　) in Brazil is Portuguese.",o:["speaking","spoken","speaks"],a:1,ex:"「ブラジルで話されている言語」。spoken が後ろから説明しています。"}],
 "c3|関係代名詞 who":[
-{t:"(　)に入るのはどれ？",en:"I have a dog (　) runs very fast.",o:["who","which","what"],a:1,ex:"dog（動物）を後ろから説明するので which（または that）です。"}],
+{unit:"関係代名詞 which",t:"(　)に入るのはどれ？",en:"I have a dog (　) runs very fast.",o:["who","which","what"],a:1,ex:"dog（動物）を後ろから説明するので which（または that）です。"}],
 "c3|関係代名詞（目的格）":[
 {t:"(　)に入るのはどれ？",en:"The cake (　) my mother made was delicious.",o:["who","which","what"],a:1,ex:"cake（もの）を「母が作った」と説明。which（または that）。省略もできます。"}],
 "c3|仮定法過去":[
@@ -947,7 +947,7 @@ var ALT={
 {t:"(　)に入るのはどれ？",en:"I wish I (　) taller.",o:["am","were","will be"],a:1,ex:"I wish のあとは過去形。be動詞は were を使うのが基本です。"},
 {t:"(　)に入るのはどれ？",en:"I wish I (　) more time to study.",o:["have","had","will have"],a:1,ex:"「もっと勉強する時間があればいいのに」。I wish のあとは過去形 had です。"}],
 "c3|比較（any other）":[
-{t:"(　)に入るのはどれ？",en:"No other student in my class is (　) than Ken.",o:["tall","taller","tallest"],a:1,ex:"「ケンより背の高い生徒はいない」＝ケンが一番高い。No other 〜 than の形で比較級です。"}],
+{unit:"比較（No other 〜 比較級）",t:"(　)に入るのはどれ？",en:"No other student in my class is (　) than Ken.",o:["tall","taller","tallest"],a:1,ex:"「ケンより背の高い生徒はいない」＝ケンが一番高い。No other 〜 than の形で比較級です。"}],
 "c3|語順（後ろから説明）":[
 {t:"「彼が書いた本はおもしろい」。正しいのはどれ？",o:["The book he wrote is interesting.","The book is he wrote interesting.","He wrote the book is interesting."],a:0,ex:"The book を he wrote が後ろから説明し、そのあとに is interesting が続きます。"}],
 "c3|疑問詞＋to ―":[
