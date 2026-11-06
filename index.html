@@ -281,6 +281,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 }
 @media (prefers-reduced-motion: reduce){.ev .callsign::before{animation:none}}
 </style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -645,5 +647,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 </script>
 </div>
 
+<script>
+(function(){function ev(n,d){try{window.va&&window.va("event",{name:n,data:d||{}})}catch(e){}}
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var h=a.getAttribute("href")||"";
+if(h.indexOf("oaMessage")>=0)ev("line_apply",{where:a.textContent.trim().slice(0,20)});else if(h.indexOf("lin.ee")>=0)ev("line_add",{where:a.textContent.trim().slice(0,20)});});
+if("IntersectionObserver" in window){var seen={};var io=new IntersectionObserver(function(es){es.forEach(function(x){var id=x.target.id;if(x.isIntersecting&&id&&!seen[id]){seen[id]=1;ev("view_section",{section:id});}})},{threshold:.35});
+Array.prototype.forEach.call(document.querySelectorAll("section[id]"),function(s){io.observe(s)});}})();
+</script>
 </body>
 </html>
