@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小学生イベントLPメーカー｜EIMEIグループ</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--ink:#1f2430;--sub:#5b6272;--rule:#e1e4ea;--bg:#f5f6f8;--accent:#c8102e;--ok:#1d7a3a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;font-size:15px;line-height:1.6}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--rule);padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+header h1{font-size:17px;margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:6px}
+button,.btn{font:inherit;font-weight:700;font-size:14px;padding:8px 14px;border-radius:8px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;min-height:40px}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd23f;outline-offset:1px}
+.layout{display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:0;height:calc(100vh - 62px)}
+.form{overflow:auto;padding:16px 16px 80px;background:#fff;border-right:1px solid var(--rule)}
+.preview{position:relative;background:#dfe3ea}
+.preview iframe{width:100%;height:100%;border:0;background:#fff}
+.preview .size{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;z-index:2}
+.preview.phone iframe{width:390px;margin:0 auto;display:block;border-left:1px solid #ccc;border-right:1px solid #ccc}
+fieldset{border:1px solid var(--rule);border-radius:12px;padding:12px 14px 14px;margin:0 0 14px}
+legend{font-weight:900;padding:0 6px}
+.hint{font-size:12.5px;color:var(--sub);margin:-2px 0 8px}
+label{display:block;font-size:13px;font-weight:700;margin:8px 0 2px}
+input,select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1.5px solid #c9ced8;border-radius:8px;background:#fff;color:var(--ink)}
+textarea{min-height:64px;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.list .item{border:1px dashed #c9ced8;border-radius:10px;padding:8px 10px;margin:8px 0;position:relative;background:#fafbfc}
+.list .item .del{position:absolute;right:6px;top:6px;min-height:28px;padding:2px 8px;font-size:12px;border-color:#c9ced8}
+.list .item .mv{position:absolute;right:56px;top:6px;min-height:28px;padding:2px 8px;font-size:12px;border-color:#c9ced8}
+.add{width:100%;border-style:dashed;margin-top:4px}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font-size:13px;padding:6px 10px;min-height:36px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50;max-width:92vw}
+.toast.on{opacity:1}
+.mobile-tabs{display:none}
+.guide{background:#fff8e6;border:1px solid #f1d58a;border-radius:10px;padding:10px 12px;font-size:13.5px;margin-bottom:14px}
+.guide ol{margin:4px 0 0;padding-left:1.3em}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);height:auto}
+  .preview{display:none;height:80vh}
+  body.show-preview .form{display:none}
+  body.show-preview .preview{display:block}
+  .mobile-tabs{display:flex;gap:6px}
+  .preview .size{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>小学生イベントLPメーカー</h1>
+  <div class="mobile-tabs"><button type="button" id="tabForm">入力</button><button type="button" id="tabPrev">プレビュー</button></div>
+  <div class="actions">
+    <button type="button" id="openNew">新しいタブで見る</button>
+    <button type="button" id="copyLink">確認用リンクをコピー</button>
+    <button type="button" class="primary" id="saveJson">設定ファイルを保存</button>
+    <label class="btn" style="margin:0;display:inline-flex;align-items:center">設定ファイルを開く<input type="file" id="loadJson" accept=".json,application/json" hidden></label>
+  </div>
+</header>
+<div class="layout">
+<div class="form" id="form">
+  <div class="guide"><b>使い方</b><ol>
+    <li>「ひな形」からイベントの種類を選ぶと、見本の文が入ります。</li>
+    <li>校舎の情報とイベントの内容を書きかえます（右のプレビューにすぐ出ます）。</li>
+    <li>「設定ファイルを保存」で .json を保存し、チラシ・写真と一緒に担当（伊藤）へ送ってください。公開用のリンク（…/e/校舎名-イベント名）にします。</li>
+    <li>先に先生どうしで見るだけなら「確認用リンクをコピー」でも共有できます（写真は入りません）。</li>
+  </ol></div>
+
+  <fieldset><legend>ひな形</legend>
+    <div class="presets" id="presets"></div>
+  </fieldset>
+
+  <fieldset><legend>見た目</legend>
+    <label>テーマ</label>
+    <select data-k="theme">
+      <option value="sky">青空（遠足・おでかけ）</option>
+      <option value="space">宇宙・夜空（科学館・プラネタリウム）</option>
+      <option value="lab">実験室（理科実験教室）</option>
+      <option value="halloween">ハロウィン</option>
+      <option value="christmas">クリスマス・冬</option>
+      <option value="summer">夏祭り</option>
+    </select>
+  </fieldset>
+
+  <fieldset><legend>校舎の情報</legend>
+    <p class="hint">一度入れると、このブラウザに覚えておきます。</p>
+    <label>校舎名</label><input data-k="campus.name" placeholder="例：エイメイ学院／明成個別 ○○校舎">
+    <div class="g2"><div><label>公式LINEのID</label><input data-k="campus.lineId" placeholder="例：@249algab"></div><div><label>友だち追加リンク</label><input data-k="campus.lineUrl" placeholder="https://lin.ee/…"></div></div>
+    <p class="hint">IDを入れると、申込の文が入った状態でLINEが開くボタンになります。</p>
+    <div class="g2"><div><label>電話番号</label><input data-k="campus.tel" placeholder="0120-488-368"></div><div><label>受付時間</label><input data-k="campus.telNote" placeholder="9:00〜17:00、日・祝を除く"></div></div>
+    <label>住所</label><input data-k="campus.address">
+    <label>アクセス</label><input data-k="campus.access" placeholder="例：○○駅 東口より徒歩8分">
+    <label>校舎のページ</label><input data-k="campus.hp" placeholder="https://www.eimeigakuin.jp/…">
+  </fieldset>
+
+  <fieldset><legend>イベントの基本</legend>
+    <label>ひとこと（タイトルの上）</label><input data-k="event.catch" placeholder="例：みんなで行こう！">
+    <label>イベント名</label><input data-k="event.title" placeholder="例：板橋区科学館 遠足">
+    <label>説明（2〜3文）</label><textarea data-k="event.lead"></textarea>
+    <div class="g2"><div><label>日付（カウントダウン用）</label><input type="date" data-k="event.date"></div><div><label>日付の表示</label><input data-k="event.dateLabel" placeholder="11/28（土）"></div></div>
+    <div class="g2"><div><label>時間</label><input data-k="event.time" placeholder="9:00集合／15:40ごろ解散"></div><div><label>集合・場所</label><input data-k="event.place" placeholder="みずほ台駅 改札前"></div></div>
+    <div class="g2"><div><label>対象</label><input data-k="event.target" placeholder="小学1〜6年生"></div><div><label>参加費</label><input data-k="event.fee" placeholder="無料"></div></div>
+    <div class="g2"><div><label>定員（なければ空欄）</label><input data-k="event.capacity"></div><div><label>申込締切</label><input data-k="event.deadlineLabel" placeholder="11/15（日）"></div></div>
+    <label>チラシ画像</label><input data-k="event.flyer" placeholder="画像のURL（なければ空欄）">
+    <input type="file" accept="image/*" data-img="event.flyer" style="margin-top:6px">
+    <p class="hint">画像を選ぶとプレビューに出ます。公開のときは画像のファイルも一緒に送ってください。</p>
+  </fieldset>
+
+  <fieldset><legend>見どころ</legend>
+    <label>見出し</label><input data-k="highlightsTitle" placeholder="例：当日のお楽しみ">
+    <label>見出しの下の文</label><textarea data-k="highlightsLead"></textarea>
+    <div class="list" data-list="highlights" data-fields="label:ラベル|title:見出し|text:説明:area|image:写真のURL:img"></div>
+    <label>ストーリー・ミッション（なければ空欄）</label>
+    <input data-k="story.label" placeholder="ラベル（例：ミッション）">
+    <input data-k="story.title" placeholder="見出し" style="margin-top:6px">
+    <textarea data-k="story.text" placeholder="説明" style="margin-top:6px"></textarea>
+    <label>注意書き</label><input data-k="highlightsNote">
+  </fieldset>
+
+  <fieldset><legend>当日の流れ</legend>
+    <div class="list" data-list="schedule" data-fields="time:時刻|title:やること|text:補足"></div>
+    <label>注意書き</label><input data-k="scheduleNote" placeholder="予定時刻は前後する場合があります。">
+  </fieldset>
+
+  <fieldset><legend>持ち物</legend>
+    <div class="list" data-list="belongings" data-fields="name:持ち物|note:補足"></div>
+  </fieldset>
+
+  <fieldset><legend>保護者の方へ</legend>
+    <div class="list" data-list="notices" data-fields="_:お知らせ:area"></div>
+  </fieldset>
+
+  <fieldset><legend>申込</legend>
+    <label>申込の文の1行目</label><input data-k="apply.prefix" placeholder="例：【遠足申込】11/28科学館">
+    <p class="hint">下の項目が「お名前：」のように続きます。</p>
+    <div class="list" data-list="apply.items" data-fields="_:送ってもらう項目"></div>
+    <label>お友だちの保護者の方へのお願い（なければ空欄）</label><textarea data-k="apply.friendsNote"></textarea>
+  </fieldset>
+
+  <fieldset><legend>これまでのイベント（なければ空欄）</legend>
+    <label>見出しの下の文</label><textarea data-k="past.lead"></textarea>
+    <div class="list" data-list="past.items" data-fields="date:時期|title:イベント名|text:説明:area|image:写真のURL:img"></div>
+  </fieldset>
+
+  <fieldset><legend>よくある質問</legend>
+    <div class="list" data-list="faq" data-fields="q:質問|a:答え:area"></div>
+  </fieldset>
+
+  <fieldset><legend>会場・行き先（校舎で行うなら空欄）</legend>
+    <label>名前</label><input data-k="place.name">
+    <label>住所</label><input data-k="place.address">
+    <label>アクセス</label><input data-k="place.access">
+    <label>公式ページ</label><input data-k="place.url">
+  </fieldset>
+
+  <fieldset><legend>ページの最後</legend>
+    <label>見出し</label><input data-k="finalTitle" placeholder="いっしょに楽しもう！">
+    <label>文</label><textarea data-k="finalText"></textarea>
+  </fieldset>
+</div>
+<div class="preview" id="previewPane">
+  <div class="size"><button type="button" id="szPhone">スマホ幅</button><button type="button" id="szFull">広い幅</button></div>
+  <iframe id="frame" src="/event" title="プレビュー"></iframe>
+</div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var CAMPUS_KEY="eventlp_campus";
+var cfg={};
+function get(o,path){return path.split(".").reduce(function(a,k){return a==null?undefined:a[k]},o)}
+function set(o,path,v){var ks=path.split("."),cur=o;for(var i=0;i<ks.length-1;i++){if(cur[ks[i]]==null||typeof cur[ks[i]]!=="object")cur[ks[i]]={};cur=cur[ks[i]]}cur[ks[ks.length-1]]=v}
+function toast(t){var el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove("on")},2400)}
+
+var COMMON_APPLY=["お名前","学校・学年","緊急連絡先","心配なこと"];
+var PRESETS={
+"遠足・おでかけ":{theme:"sky",event:{catch:"みんなで行こう！",title:"○○ 遠足",lead:"先生たちといっしょに電車に乗って、○○へ出かけます。見て、さわって、ためして楽しめる一日です。",time:"9:00集合／15:00ごろ解散",place:"○○駅 改札前",target:"小学1〜6年生",fee:"無料"},highlightsTitle:"当日のお楽しみ",highlights:[{label:"見どころ1",title:"○○を見よう",text:""},{label:"見どころ2",title:"○○を体験",text:""},{label:"ミッション",title:"みんなで挑戦！",text:""}],schedule:[{time:"9:00",title:"○○駅に集合",text:""},{time:"10:00",title:"○○に到着",text:""},{time:"12:00",title:"昼ごはん",text:""},{time:"15:00",title:"○○駅で解散",text:""}],scheduleNote:"予定時刻は前後する場合があります。",belongings:[{name:"リュックサック",note:"両手が自由に使えるもの"},{name:"筆記用具",note:""},{name:"飲み物",note:""},{name:"お弁当・軽食",note:""},{name:"交通費",note:"往復○○円ほど（こども料金）"}],notices:["当日の様子は公式LINEでお知らせします。","雨の日の実施については、前日に公式LINEでお知らせします。"],apply:{prefix:"【遠足申込】○/○",items:COMMON_APPLY,friendsNote:"お友だちと一緒の参加も大歓迎です。お友だちの保護者の方にも、公式LINEの追加とご連絡をお願いしています。"},faq:[{q:"塾に通っていなくても参加できますか？",a:"はい、どなたでも参加できます。お友だちを誘っての参加も大歓迎です。"}],finalTitle:"みんなで出かけよう！"},
+"理科実験教室":{theme:"lab",event:{catch:"無料の理科実験教室",title:"○○をつくろう！",lead:"身近な材料で、ふしぎな○○を作ります。作ったものは持ち帰れます。",time:"○:○○〜○:○○",place:"○○校舎",target:"小学1〜6年生",fee:"無料",capacity:"先着○名"},highlightsTitle:"こんな実験をします",highlights:[{label:"STEP1",title:"材料をまぜる",text:""},{label:"STEP2",title:"変化を観察",text:""},{label:"おみやげ",title:"作ったものは持ち帰り",text:""}],schedule:[{time:"○:○○",title:"受付",text:""},{time:"○:○○",title:"実験スタート",text:""},{time:"○:○○",title:"まとめ・おわり",text:""}],belongings:[{name:"筆記用具",note:""},{name:"持ち帰り用の袋",note:""}],notices:["汚れてもよい服装でお越しください。","保護者の方の付きそいは不要です（見学もできます）。"],apply:{prefix:"【実験教室申込】○/○",items:["お名前","学校・学年","保護者の連絡先","アレルギーなど心配なこと"],friendsNote:"お友だちと一緒の参加も大歓迎です。"},faq:[{q:"塾に通っていなくても参加できますか？",a:"はい、どなたでも参加できます。"}],finalTitle:"いっしょに実験しよう！"},
+"ハロウィン":{theme:"halloween",event:{catch:"仮装で来てね！",title:"ハロウィンパーティー",lead:"仮装でお菓子をもらおう！宝探しや特別実験も用意しています。",time:"○:○○〜○:○○",place:"○○校舎",target:"小学1〜6年生",fee:"無料"},highlightsTitle:"パーティーのお楽しみ",highlights:[{label:"その1",title:"仮装でお菓子プレゼント",text:""},{label:"その2",title:"宝探し",text:""},{label:"その3",title:"特別理科実験",text:""}],schedule:[{time:"○:○○",title:"受付・仮装チェック",text:""},{time:"○:○○",title:"ゲーム・宝探し",text:""},{time:"○:○○",title:"お菓子プレゼント・おわり",text:""}],belongings:[{name:"仮装（なくてもOK）",note:""},{name:"お菓子を入れる袋",note:""}],notices:["仮装はなくても参加できます。"],apply:{prefix:"【ハロウィン申込】○/○",items:["お名前","学校・学年","保護者の連絡先","アレルギーなど心配なこと"],friendsNote:"お友だちと一緒の参加も大歓迎です。"},faq:[{q:"仮装がなくても参加できますか？",a:"はい、参加できます。"}],finalTitle:"仮装して遊びに来てね！"},
+"クリスマス":{theme:"christmas",event:{catch:"英語とゲームで楽しもう",title:"クリスマスパーティー",lead:"クリスマスの文化と英語にふれるゲームとビンゴ。みんなで楽しい冬のひとときを。",time:"○:○○〜○:○○",place:"○○校舎",target:"小学1〜6年生",fee:"無料"},highlightsTitle:"パーティーのお楽しみ",highlights:[{label:"その1",title:"英語のゲーム",text:""},{label:"その2",title:"ビンゴ大会",text:""},{label:"その3",title:"プレゼント",text:""}],schedule:[{time:"○:○○",title:"受付",text:""},{time:"○:○○",title:"ゲーム・ビンゴ",text:""},{time:"○:○○",title:"おわり",text:""}],belongings:[{name:"筆記用具",note:""}],notices:[],apply:{prefix:"【クリスマス申込】○/○",items:["お名前","学校・学年","保護者の連絡先","アレルギーなど心配なこと"],friendsNote:"お友だちと一緒の参加も大歓迎です。"},faq:[],finalTitle:"いっしょに楽しもう！"},
+"夏祭り":{theme:"summer",event:{catch:"今年もやります！",title:"えいめい夏祭り",lead:"わたあめ・焼きそば・ビンゴに先生すくい。年にいちどの大きなお祭りです。",time:"○:○○〜○:○○",place:"○○校舎",target:"小学生・中学生とご家族",fee:"無料"},highlightsTitle:"お祭りのお楽しみ",highlights:[{label:"たべもの",title:"わたあめ・焼きそば",text:""},{label:"あそび",title:"先生すくい・ビンゴ",text:""},{label:"おみやげ",title:"景品つき",text:""}],schedule:[{time:"○:○○",title:"開場",text:""},{time:"○:○○",title:"ビンゴ大会",text:""},{time:"○:○○",title:"おわり",text:""}],belongings:[{name:"うちわ・タオル",note:""},{name:"飲み物",note:""}],notices:["暑さ対策をしてお越しください。"],apply:{prefix:"【夏祭り申込】○/○",items:["お名前","学校・学年","参加人数","保護者の連絡先"],friendsNote:"お友だちやごきょうだいとの参加も大歓迎です。"},faq:[],finalTitle:"みんなで夏を楽しもう！"},
+"水谷の科学館遠足（見本）":"/events/mizutani-kagakukan-2026.json"
+};
+
+/* リスト欄 */
+function listFields(el){return el.dataset.fields.split("|").map(function(f){var p=f.split(":");return {k:p[0],label:p[1],kind:p[2]||""}})}
+function renderList(el){
+  var path=el.dataset.list, fields=listFields(el), arr=get(cfg,path)||[];
+  el.innerHTML="";
+  arr.forEach(function(row,i){
+    var it=document.createElement("div"); it.className="item";
+    fields.forEach(function(f){
+      var lab=document.createElement("label"); lab.textContent=f.label; it.appendChild(lab);
+      var inp=document.createElement(f.kind==="area"?"textarea":"input");
+      inp.value=f.k==="_"?(row||""):(row[f.k]||"");
+      inp.addEventListener("input",function(){ if(f.k==="_") arr[i]=inp.value; else row[f.k]=inp.value; update(false)});
+      it.appendChild(inp);
+      if(f.kind==="img"){var fi=document.createElement("input");fi.type="file";fi.accept="image/*";fi.style.marginTop="4px";fi.addEventListener("change",function(){readImg(fi.files[0],function(u){row[f.k]=u;inp.value="（選んだ画像）";update(false)})});it.appendChild(fi)}
+    });
+    var del=document.createElement("button"); del.type="button"; del.className="del"; del.textContent="消す";
+    del.addEventListener("click",function(){arr.splice(i,1);renderList(el);update(false)}); it.appendChild(del);
+    if(i>0){var mv=document.createElement("button"); mv.type="button"; mv.className="mv"; mv.textContent="↑"; mv.setAttribute("aria-label","上へ");
+      mv.addEventListener("click",function(){var t=arr[i-1];arr[i-1]=arr[i];arr[i]=t;renderList(el);update(false)}); it.appendChild(mv)}
+    el.appendChild(it);
+  });
+  var add=document.createElement("button"); add.type="button"; add.className="add"; add.textContent="＋ 追加";
+  add.addEventListener("click",function(){ var a=get(cfg,path); if(!Array.isArray(a)){a=[];set(cfg,path,a)} a.push(fields[0].k==="_"?"":{}); renderList(el); update(false)});
+  el.appendChild(add);
+}
+function readImg(file,cb){ if(!file) return; var r=new FileReader(); r.onload=function(){ var img=new Image(); img.onload=function(){ var w=Math.min(1200,img.width), h=Math.round(img.height*w/img.width); var cv=document.createElement("canvas"); cv.width=w; cv.height=h; cv.getContext("2d").drawImage(img,0,0,w,h); cb(cv.toDataURL("image/jpeg",.82)) }; img.src=r.result }; r.readAsDataURL(file) }
+
+function fillForm(){
+  $$("[data-k]").forEach(function(inp){var v=get(cfg,inp.dataset.k); inp.value=(v==null?"":String(v).indexOf("data:")===0?"":v)});
+  $$("[data-list]").forEach(renderList);
+}
+function clean(o){ // 空の値を取りのぞいて保存用にする
+  if(Array.isArray(o)) return o.map(clean).filter(function(v){return !(v===""||v==null||(typeof v==="object"&&!Array.isArray(v)&&!Object.keys(v).length))});
+  if(o&&typeof o==="object"){var r={};Object.keys(o).forEach(function(k){var v=clean(o[k]);if(v===""||v==null)return;if(typeof v==="object"&&!Array.isArray(v)&&!Object.keys(v).length)return;if(Array.isArray(v)&&!v.length)return;r[k]=v});return r}
+  return typeof o==="string"?o.trim():o;
+}
+var frame=$("#frame"), ready=false;
+frame.addEventListener("load",function(){ready=true;update(false)});
+function update(save){
+  var c=clean(cfg);
+  if(ready) frame.contentWindow.postMessage({type:"eventlp:config",config:c},"*");
+  try{ if(cfg.campus) localStorage.setItem(CAMPUS_KEY,JSON.stringify(cfg.campus)); localStorage.setItem("eventlp_draft",JSON.stringify(cfg)) }catch(e){}
+}
+$$("[data-k]").forEach(function(inp){inp.addEventListener("input",function(){set(cfg,inp.dataset.k,inp.value);update(false)})});
+$$("[data-img]").forEach(function(fi){fi.addEventListener("change",function(){readImg(fi.files[0],function(u){set(cfg,fi.dataset.img,u);var t=$('[data-k="'+fi.dataset.img+'"]');if(t)t.value="";update(false);toast("画像をプレビューに入れました")})})});
+
+/* ひな形 */
+var pbox=$("#presets");
+Object.keys(PRESETS).forEach(function(name){var b=document.createElement("button");b.type="button";b.textContent=name;b.addEventListener("click",async function(){
+  if(Object.keys(clean(cfg)).length>1&&!pbox.dataset.ok){ pbox.dataset.ok="1"; toast("もう一度押すと、今の入力を置きかえます"); setTimeout(function(){delete pbox.dataset.ok},3000); return }
+  delete pbox.dataset.ok;
+  var p=PRESETS[name], data;
+  if(typeof p==="string"){ data=await (await fetch(p,{cache:"no-cache"})).json() } else { data=JSON.parse(JSON.stringify(p)) }
+  var campus=null; try{campus=JSON.parse(localStorage.getItem(CAMPUS_KEY)||"null")}catch(e){}
+  if(typeof p!=="string"&&campus) data.campus=campus;
+  cfg=data; fillForm(); update(true); toast("「"+name+"」を入れました");
+});pbox.appendChild(b)});
+
+/* 保存・読み込み・共有 */
+function slugify(){var d=(cfg.event&&cfg.event.date)||"";return ("event-"+d).replace(/[^0-9a-z-]/gi,"")}
+$("#saveJson").addEventListener("click",function(){
+  var c=clean(cfg); var blob=new Blob([JSON.stringify(c,null,2)],{type:"application/json"});
+  var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=((c.event&&c.event.title)||"イベント").replace(/[\\/:*?"<>|\s]+/g,"_")+".json"; a.click(); setTimeout(function(){URL.revokeObjectURL(a.href)},2000);
+  toast("設定ファイルを保存しました。チラシ・写真と一緒に送ってください");
+});
+$("#loadJson").addEventListener("change",function(e){var f=e.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ try{cfg=JSON.parse(r.result); fillForm(); update(true); toast("読み込みました")}catch(err){toast("読み込めませんでした（形がちがうファイルです）")} }; r.readAsText(f)});
+async function shareUrl(){
+  var c=clean(JSON.parse(JSON.stringify(cfg)));
+  (function strip(o){ if(o&&typeof o==="object"){ Object.keys(o).forEach(function(k){ if(typeof o[k]==="string"&&o[k].indexOf("data:")===0) delete o[k]; else strip(o[k]) }) } })(c);
+  var bytes=new TextEncoder().encode(JSON.stringify(c));
+  var cs=new CompressionStream("deflate-raw"); var buf=new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(cs)).arrayBuffer());
+  var s=""; for(var i=0;i<buf.length;i++) s+=String.fromCharCode(buf[i]);
+  return location.origin+"/event#data="+btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+$("#copyLink").addEventListener("click",async function(){ var u=await shareUrl(); try{await navigator.clipboard.writeText(u); toast("確認用リンクをコピーしました（写真は入りません）")}catch(e){prompt("このリンクをコピーしてください",u)} });
+$("#openNew").addEventListener("click",async function(){ window.open(await shareUrl(),"_blank","noopener") });
+$("#szPhone").addEventListener("click",function(){$("#previewPane").classList.add("phone")});
+$("#szFull").addEventListener("click",function(){$("#previewPane").classList.remove("phone")});
+$("#tabForm").addEventListener("click",function(){document.body.classList.remove("show-preview")});
+$("#tabPrev").addEventListener("click",function(){document.body.classList.add("show-preview");update(false)});
+
+/* はじめの状態：下書き → なければ遠足のひな形 */
+try{cfg=JSON.parse(localStorage.getItem("eventlp_draft")||"null")}catch(e){}
+if(!cfg){ cfg=JSON.parse(JSON.stringify(PRESETS["遠足・おでかけ"])); try{var cp=JSON.parse(localStorage.getItem(CAMPUS_KEY)||"null"); if(cp) cfg.campus=cp}catch(e){} }
+fillForm();
+})();
+</script>
+</body>
+</html>
