@@ -25,5 +25,12 @@
       "source": "/e/:slug",
       "destination": "/event"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/e/mizutani-kagakukan-2026",
+      "destination": "/",
+      "permanent": false
+    }
   ]
 }
