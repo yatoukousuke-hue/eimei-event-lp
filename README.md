@@ -4,6 +4,7 @@
 
 - `index.html` … ページ本体
 - `img/` … チラシなどの画像
+- `slime-2026.html` … 12月 ふわふわ雲スライム実験教室のLP（/slime-2026）
 
 Vercel: 「Framework Preset: Other」、Build Command なし、Output Directory はルートのまま。
 
