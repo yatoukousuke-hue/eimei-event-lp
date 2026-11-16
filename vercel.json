@@ -27,7 +27,7 @@
     },
     {
       "source": "/ensoku-2026",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ],
   "redirects": [
