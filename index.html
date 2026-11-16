@@ -2,6 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>
+/* 遠足が終わったら（11/28 16:00以降）、トップページはクリスマスのページへ切り替え。遠足のページは /ensoku-2026 で見られます。 */
+(function(){try{if(location.pathname==="/"&&Date.now()>=Date.parse("2026-11-28T16:00:00+09:00"))location.replace("/christmas-2026"+location.search)}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>板橋区科学館へ大冒険｜エイメイ水谷 小学生イベント</title>
 <meta name="claude:viewport-fit-sides" content="cover">

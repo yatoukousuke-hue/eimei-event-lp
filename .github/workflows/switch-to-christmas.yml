@@ -1,0 +1,23 @@
+# 遠足のあと（2026/11/28 16:05ごろ 日本時間）に、トップページ「/」をクリスマスのページへ転送する設定を自動で追加します。
+# （ページ側でも同じ時刻に切り替えるので、この処理が少し遅れても見た目は切り替わります）
+name: switch-to-christmas
+on:
+  schedule:
+    - cron: "5 7 28 11 *"
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  switch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 2026年だけ実行
+        run: |
+          if [ "$(TZ=Asia/Tokyo date +%Y)" != "2026" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then echo "skip"; exit 0; fi
+          python3 scripts/switch_top.py
+          if git diff --quiet; then echo "変更なし"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "遠足が終わったので、トップページをクリスマスパーティーへ切り替え"
+          git push

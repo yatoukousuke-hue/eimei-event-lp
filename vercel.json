@@ -24,12 +24,16 @@
     {
       "source": "/e/:slug",
       "destination": "/event"
+    },
+    {
+      "source": "/ensoku-2026",
+      "destination": "/index.html"
     }
   ],
   "redirects": [
     {
       "source": "/e/mizutani-kagakukan-2026",
-      "destination": "/",
+      "destination": "/ensoku-2026",
       "permanent": false
     }
   ]

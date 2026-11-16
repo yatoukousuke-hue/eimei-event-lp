@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>クリスマスパーティー｜エイメイ水谷 小学生イベント</title>
+<meta name="description" content="エイメイ学院／明成個別 水谷校舎の小学生イベント。クリスマスの英語と文化にふれるゲーム、頭を使うミニゲーム、パワーアップしたビンゴ大会。塾に通っていないお友だちも参加できます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<meta property="og:type" content="website">
+<meta property="og:title" content="クリスマスパーティー｜エイメイ水谷 小学生イベント">
+<meta property="og:description" content="英語とゲームとビンゴで、みんなでメリークリスマス。お申し込みは公式LINEから。">
+<meta property="og:image" content="https://eimei-event-lp.vercel.app/img/xmas-ogp.jpg?v=1">
+<meta property="og:url" content="https://eimei-event-lp.vercel.app/christmas-2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c2a1e">
+<style>
+/* ===== 開催情報はページ下の XMAS（スクリプト）で書きかえます ===== */
+html{-webkit-text-size-adjust:100%}
+:root{
+  --night:#0c2a1e; --night-2:#123d2b; --pine:#1d5a3e; --red:#c8102e; --red-d:#9a0c23; --gold:#f2c14e; --gold-d:#c8962a;
+  --snow:#ffffff; --paper:#fbf6ec; --sheet:#ffffff; --ink:#2a2420; --sub:#6b5f55; --rule:#eadfcd;
+  --line:#06c755; --line-d:#04913d;
+  --display:"Mochiy Pop One","Hiragino Maru Gothic ProN","Zen Maru Gothic",sans-serif;
+  --body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#15140f;--sheet:#1f1d17;--ink:#f3ece0;--sub:#c2b6a6;--rule:#3a352b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#15140f;--sheet:#1f1d17;--ink:#f3ece0;--sub:#c2b6a6;--rule:#3a352b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:500;line-height:1.85;letter-spacing:.02em;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.35;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:52px;padding:.7em 1.4em;border-radius:999px;font-weight:900;text-decoration:none;font-size:1.02rem;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:translateY(1px)}
+.btn-line{background:var(--line);color:#fff;box-shadow:0 5px 0 var(--line-d)}
+.btn-line:hover{box-shadow:0 7px 0 var(--line-d);transform:translateY(-2px)}
+.btn-ghost{border:2px solid currentColor;background:transparent}
+.btn-line svg{width:22px;height:22px;flex:none}
+
+/* トップバー */
+.topbar{position:sticky;top:0;z-index:40;background:rgba(12,42,30,.92);backdrop-filter:blur(8px);color:#fff}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
+.brand{font-weight:900;font-size:.86rem;line-height:1.3}
+.brand small{display:block;font-weight:500;opacity:.75;font-size:.72rem}
+.topbar .btn{min-height:40px;padding:.4em 1em;font-size:.86rem;box-shadow:none}
+
+/* ヒーロー */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(120% 80% at 50% 0%,#1f6b49 0%,var(--night-2) 45%,var(--night) 100%);padding:56px 0 120px}
+#snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.garland{position:absolute;left:0;right:0;top:0;height:46px;pointer-events:none}
+.hero .wrap{position:relative;display:grid;gap:36px;align-items:center}
+@media(min-width:860px){.hero .wrap{grid-template-columns:1.15fr .85fr}.hero{padding:80px 0 140px}}
+.kicker{display:inline-block;background:var(--red);color:#fff;font-weight:900;font-size:.86rem;padding:.25em 1em;border-radius:999px;letter-spacing:.08em}
+.hero h1{margin-top:18px;font-size:clamp(2.2rem,8.4vw,4.2rem);text-shadow:0 4px 0 rgba(0,0,0,.25)}
+.hero h1 .s{display:block;font-size:.42em;color:var(--gold);letter-spacing:.06em;margin-bottom:.3em}
+.hero h1 .y{color:var(--gold)}
+.hero .lead{margin:18px 0 0;font-size:1.04rem;max-width:34em;opacity:.95}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.chips li{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:.35em .9em;font-size:.92rem;font-weight:700}
+.chips b{color:var(--gold);margin-right:.4em;font-weight:900}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:center}
+.count{font-weight:900;font-size:.95rem;color:#fff}
+.count b{font-family:var(--display);font-weight:400;font-size:1.9rem;color:var(--gold);margin:0 .15em}
+
+/* ツリー */
+.tree{position:relative;width:min(340px,82vw);margin:0 auto;aspect-ratio:3/4}
+.tree svg{width:100%;height:100%;overflow:visible}
+.tree .bulb{animation:tw 2.4s ease-in-out infinite}
+.tree .bulb:nth-child(2n){animation-delay:.6s}.tree .bulb:nth-child(3n){animation-delay:1.2s}
+@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}
+.tree .star{transform-origin:150px 38px;animation:sp 6s ease-in-out infinite}
+@keyframes sp{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.1) rotate(8deg)}}
+.hill{position:absolute;left:-5%;right:-5%;bottom:-2px;height:90px;background:var(--paper);border-radius:50% 50% 0 0/100% 100% 0 0}
+
+/* セクション */
+section{padding:72px 0}
+.sec-head{text-align:center;margin-bottom:34px}
+.sec-head .tag{display:inline-block;font-weight:900;color:var(--red);letter-spacing:.14em;font-size:.82rem}
+.sec-head h2{font-size:clamp(1.55rem,5vw,2.2rem);margin-top:6px}
+.sec-head p{color:var(--sub);margin:12px auto 0;max-width:36em}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sec-head .tag{color:#ff6b7f}}
+
+/* お楽しみ（ギフトタグ） */
+.gifts{display:grid;gap:22px}
+@media(min-width:760px){.gifts{grid-template-columns:repeat(3,1fr)}}
+.gift{position:relative;background:var(--sheet);border-radius:20px;padding:30px 22px 24px;border:2px solid var(--rule);box-shadow:0 10px 24px rgba(60,40,10,.08)}
+.gift::before{content:"";position:absolute;left:50%;top:-14px;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:var(--paper);border:2px solid var(--rule)}
+.gift .no{display:inline-block;font-family:var(--display);color:#fff;background:var(--c,var(--red));border-radius:10px;padding:.1em .7em;font-size:.86rem}
+.gift h3{font-size:1.28rem;margin:12px 0 8px}
+.gift p{margin:0;color:var(--sub);font-size:.96rem}
+.gift .ico{position:absolute;right:16px;top:18px;width:54px;height:54px}
+.gift:nth-child(2){--c:var(--pine)}
+.gift:nth-child(3){--c:var(--gold-d)}
+
+/* ひとくちクイズ */
+.quiz{background:var(--night);color:#fff;border-radius:24px;padding:30px 20px;margin-top:40px;position:relative;overflow:hidden}
+.quiz h3{font-size:1.25rem;text-align:center}
+.quiz>p{text-align:center;opacity:.85;margin:6px 0 18px;font-size:.92rem}
+.qcard{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px;margin:0 auto;max-width:560px}
+.qcard .q{font-weight:900;font-size:1.06rem}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opts button{font:inherit;font-weight:700;text-align:left;min-height:48px;border-radius:12px;border:2px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:.5em 1em;cursor:pointer}
+.opts button:hover{border-color:var(--gold)}
+.opts button.ok{background:var(--pine);border-color:#7fd3a6}
+.opts button.ng{opacity:.45}
+.qmsg{min-height:1.8em;margin-top:10px;font-weight:700;color:var(--gold)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:.88rem;opacity:.85}
+.qnav button{font:inherit;font-weight:900;color:var(--night);background:var(--gold);border:0;border-radius:999px;padding:.45em 1.2em;cursor:pointer;min-height:40px}
+.qnav button[hidden]{display:none}
+
+/* 開催概要 */
+.info{background:var(--sheet);border-radius:22px;border:2px solid var(--rule);overflow:hidden;max-width:760px;margin:0 auto}
+.info dl{margin:0;display:grid;grid-template-columns:7.5em 1fr}
+.info dt,.info dd{margin:0;padding:16px 18px;border-bottom:1px solid var(--rule)}
+.info dt{font-weight:900;color:var(--red);background:rgba(200,16,46,.05)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .info dt{color:#ff8a99}}
+.info dl>*:nth-last-child(-n+2){border-bottom:0}
+.info .tbd{color:var(--sub);font-weight:700}
+.info .tbd::before{content:"";display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--gold);margin-right:.5em;vertical-align:.1em}
+.note{max-width:760px;margin:14px auto 0;color:var(--sub);font-size:.88rem}
+@media(max-width:480px){.info dl{grid-template-columns:5.6em 1fr}.info dt,.info dd{padding:14px 12px}}
+
+/* これまで */
+.past{display:grid;gap:16px;max-width:760px;margin:0 auto}
+.past article{display:grid;grid-template-columns:6.4em 1fr;gap:14px;background:var(--sheet);border-radius:16px;padding:18px;border:2px solid var(--rule)}
+.past time{font-family:var(--display);color:var(--pine);font-size:.95rem}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .past time{color:#7fd3a6}}
+.past h3{font-family:var(--body);font-weight:900;font-size:1.04rem}
+.past p{margin:4px 0 0;color:var(--sub);font-size:.94rem}
+
+/* 申込 */
+.apply{background:linear-gradient(180deg,var(--red) 0%,var(--red-d) 100%);color:#fff;position:relative;overflow:hidden}
+.apply .sec-head .tag{color:var(--gold)}
+.apply .sec-head p{color:rgba(255,255,255,.9)}
+.steps{display:grid;gap:14px;max-width:760px;margin:0 auto;padding:0;list-style:none;counter-reset:s}
+.steps li{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:16px 18px 16px 64px;position:relative;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--night);font-family:var(--display);display:grid;place-items:center}
+.steps b{display:block;font-size:1.05rem}
+.apply .cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:28px}
+.apply .btn-line{font-size:1.12rem;min-height:60px;padding:.7em 2em}
+.apply .btn-ghost{color:#fff}
+.apply .small{font-size:.86rem;opacity:.9;text-align:center;max-width:34em;margin:6px auto 0}
+
+/* FAQ */
+.faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--sheet);border:2px solid var(--rule);border-radius:16px;padding:0 18px}
+.faq summary{cursor:pointer;font-weight:900;padding:16px 0;list-style:none;display:flex;gap:10px}
+.faq summary::before{content:"Q";font-family:var(--display);color:var(--red)}
+.faq summary::-webkit-details-marker{display:none}
+.faq details p{margin:0 0 16px;color:var(--sub)}
+
+/* アクセス */
+.access{max-width:760px;margin:0 auto;background:var(--sheet);border:2px solid var(--rule);border-radius:20px;padding:22px}
+.access h3{font-family:var(--body);font-weight:900;font-size:1.1rem}
+.access p{margin:6px 0 0}
+.access .tel{font-family:var(--display);font-size:1.4rem;color:var(--red);text-decoration:none}
+
+/* 最後 */
+.final{text-align:center;background:var(--night);color:#fff;padding:64px 0}
+.final h2{font-size:clamp(1.5rem,5vw,2.1rem)}
+.final p{opacity:.9}
+footer{text-align:center;font-size:.8rem;color:var(--sub);padding:24px 0}
+
+/* 下のボタン */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);border-top:1px solid #e6dccb;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dock{background:rgba(21,20,15,.96);border-color:#3a352b}}
+.dock .btn{width:100%;max-width:480px;min-height:50px}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}.tree .bulb,.tree .star{animation:none}}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">エイメイ学院／明成個別<small>水谷校舎 小学生イベント</small></div>
+    <a class="btn btn-line js-apply" href="https://lin.ee/YUk6YFb">LINEで申し込む</a>
+  </div>
+</header>
+
+<section class="hero" aria-labelledby="hero-title">
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <svg class="garland" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 6 Q 100 40 200 6 T 400 6 T 600 6 T 800 6 T 1000 6 T 1200 6" fill="none" stroke="#2f7d55" stroke-width="3"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <span class="kicker">小学生イベント</span>
+      <h1 id="hero-title"><span class="s">英語とゲームで、メリークリスマス！</span>クリスマス<br>パーティー<span class="y">2026</span></h1>
+      <p class="lead">クリスマスの英語や文化にふれたり、頭を使うミニゲームに挑戦したり。最後は、パワーアップしたビンゴ大会！ 先生たちといっしょに、楽しく学べるクリスマスです。</p>
+      <ul class="chips">
+        <li><b>日にち</b><span data-x="dateLabel"></span></li>
+        <li><b>時間</b><span data-x="time"></span></li>
+        <li><b>対象</b><span data-x="target"></span></li>
+        <li><b>参加費</b><span data-x="fee"></span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn btn-line js-apply" href="https://lin.ee/YUk6YFb"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>公式LINEで申し込む</a>
+        <span class="count" id="count" aria-live="polite"></span>
+      </div>
+    </div>
+    <div class="tree" aria-hidden="true">
+      <svg viewBox="0 0 300 400">
+        <rect x="132" y="330" width="36" height="44" rx="4" fill="#7a4a24"/>
+        <polygon points="150,60 60,190 100,190 40,280 95,280 25,340 275,340 205,280 260,280 200,190 240,190" fill="#2f8a5a"/>
+        <polygon points="150,60 60,190 100,190 40,280 95,280 25,340 150,340" fill="#25744b"/>
+        <path d="M80 175 Q150 205 220 170 M62 265 Q150 300 240 262" stroke="#f2c14e" stroke-width="4" fill="none" stroke-dasharray="2 9" stroke-linecap="round"/>
+        <g>
+          <circle class="bulb" cx="105" cy="160" r="9" fill="#c8102e"/>
+          <circle class="bulb" cx="190" cy="150" r="9" fill="#f2c14e"/>
+          <circle class="bulb" cx="150" cy="120" r="8" fill="#ffffff"/>
+          <circle class="bulb" cx="80" cy="245" r="10" fill="#f2c14e"/>
+          <circle class="bulb" cx="150" cy="232" r="10" fill="#c8102e"/>
+          <circle class="bulb" cx="220" cy="240" r="10" fill="#5ec8ff"/>
+          <circle class="bulb" cx="60" cy="320" r="10" fill="#5ec8ff"/>
+          <circle class="bulb" cx="125" cy="310" r="10" fill="#ffffff"/>
+          <circle class="bulb" cx="190" cy="318" r="10" fill="#f2c14e"/>
+          <circle class="bulb" cx="245" cy="322" r="10" fill="#c8102e"/>
+        </g>
+        <polygon class="star" points="150,14 158,32 178,33 162,45 168,64 150,53 132,64 138,45 122,33 142,32" fill="#f2c14e" stroke="#fff3c4" stroke-width="2"/>
+        <rect x="186" y="344" width="48" height="40" rx="5" fill="#c8102e"/><rect x="205" y="344" width="10" height="40" fill="#f2c14e"/>
+        <rect x="64" y="352" width="44" height="32" rx="5" fill="#f2c14e"/><rect x="81" y="352" width="10" height="32" fill="#c8102e"/>
+      </svg>
+    </div>
+  </div>
+  <div class="hill"></div>
+</section>
+
+<section id="fun">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">お楽しみ</span>
+      <h2>パーティーで待っている、3つのプレゼント</h2>
+      <p>あそびながら、英語にも、頭の体操にもなる。そんなクリスマスにしたくて、先生たちで準備しています。</p>
+    </div>
+    <div class="gifts">
+      <article class="gift reveal">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><rect x="6" y="10" width="42" height="34" rx="8" fill="#c8102e"/><text x="27" y="33" text-anchor="middle" font-size="15" font-weight="900" fill="#fff" font-family="sans-serif">ABC</text></svg>
+        <span class="no">その1</span>
+        <h3>クリスマスの英語と文化</h3>
+        <p>海外のクリスマスってどんなふう？ クリスマスにまつわる英語や文化に、ゲームを通してふれます。</p>
+      </article>
+      <article class="gift reveal">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="#1d5a3e"/><text x="27" y="35" text-anchor="middle" font-size="22" font-weight="900" fill="#f2c14e" font-family="sans-serif">?</text></svg>
+        <span class="no">その2</span>
+        <h3>頭を使うミニゲーム</h3>
+        <p>ひらめきと協力がカギ。みんなで考えて、わいわい盛り上がるミニゲームを用意しています。</p>
+      </article>
+      <article class="gift reveal">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><rect x="8" y="8" width="38" height="38" rx="6" fill="#c8962a"/><g fill="#fff" font-family="sans-serif" font-size="10" font-weight="900" text-anchor="middle"><text x="17" y="22">B</text><text x="27" y="22">I</text><text x="37" y="22">N</text><text x="17" y="36">G</text><text x="27" y="36">O</text></g><circle cx="37" cy="33" r="5" fill="#c8102e"/></svg>
+        <span class="no">その3</span>
+        <h3>パワーアップしたビンゴ大会</h3>
+        <p>去年も大盛り上がりだったビンゴ大会が、今年はさらにパワーアップ。最後まで目がはなせません。</p>
+      </article>
+    </div>
+
+    <div class="quiz reveal" id="quiz">
+      <h3>ためしてみよう！ クリスマス英語クイズ</h3>
+      <p>パーティーの前に、ちょっとだけウォーミングアップ。</p>
+      <div class="qcard">
+        <div class="q" id="qText"></div>
+        <div class="opts" id="qOpts"></div>
+        <div class="qmsg" id="qMsg" aria-live="polite"></div>
+        <div class="qnav"><span id="qNo"></span><button type="button" id="qNext" hidden>つぎへ</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="info" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">開催のごあんない</span>
+      <h2>クリスマスパーティーの日時と場所</h2>
+    </div>
+    <div class="info reveal">
+      <dl>
+        <dt>日にち</dt><dd data-x="dateLabel"></dd>
+        <dt>時間</dt><dd data-x="time"></dd>
+        <dt>場所</dt><dd data-x="place"></dd>
+        <dt>対象</dt><dd data-x="target"></dd>
+        <dt>参加費</dt><dd data-x="fee"></dd>
+        <dt>持ち物</dt><dd data-x="bring"></dd>
+        <dt>申込締切</dt><dd data-x="deadline"></dd>
+      </dl>
+    </div>
+    <p class="note reveal" data-x="extra"></p>
+  </div>
+</section>
+
+<section id="past" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">これまでのイベント</span>
+      <h2>水谷校舎は、イベントがいっぱい</h2>
+      <p>小学生向けのイベントを、毎月のように開いています。塾に通っていないお友だちも、たくさん参加してくれています。</p>
+    </div>
+    <div class="past">
+      <article class="reveal"><time>2025.12</time><div><h3>クリスマスパーティー</h3><p>クリスマスの文化や英語にふれるゲーム、頭を使うミニゲーム、ビンゴ大会で盛り上がりました。</p></div></article>
+      <article class="reveal"><time>2026.10</time><div><h3>小学部ハロウィンパーティー</h3><p>仮装でお菓子プレゼント、特別理科実験教室「まほうのポーション」、宝探し。20人が参加しました。</p></div></article>
+      <article class="reveal"><time>2026.11</time><div><h3>板橋区科学館へ遠足</h3><p>プラネタリウムと体験型の展示を、なぞ解きミッションに挑戦しながら探検しました。</p></div></article>
+      <article class="reveal"><time>毎年8月</time><div><h3>えいめい夏祭り</h3><p>わたあめ・焼きそば・先生すくい・ビンゴ。2026年は185人が集まりました。</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="apply" class="apply">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">お申し込み</span>
+      <h2>公式LINEで、かんたん申込</h2>
+      <p>ボタンを押すと、申込の文が入った状態でLINEが開きます。</p>
+    </div>
+    <ol class="steps reveal">
+      <li><b>公式LINEを開く</b>下のボタンから、水谷校舎の公式LINEを開きます。</li>
+      <li><b>申込の文を送る</b>入力欄に申込の文が入っています。「：」のあとを書き足して送ってください。</li>
+      <li><b>校舎からのお返事を待つ</b>受付ができたら、公式LINEでお知らせします。</li>
+    </ol>
+    <div class="cta reveal">
+      <a class="btn btn-line js-apply" href="https://lin.ee/YUk6YFb"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>申込の文を入れてLINEを開く</a>
+      <a class="btn btn-ghost" href="https://lin.ee/YUk6YFb">友だち追加だけする</a>
+      <p class="small">お友だちと一緒の参加も大歓迎です。お友だちの保護者の方にも、公式LINEの追加とご連絡をお願いしています。</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">Q&amp;A</span>
+      <h2>みずほ台の小学生向け クリスマス会Q&amp;A</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>塾に通っていなくても参加できますか？</summary><p>はい、どなたでも参加できます。お友だちを誘っての参加も大歓迎です。</p></details>
+      <details><summary>英語がはじめてでも楽しめますか？</summary><p>はい。英語を習ったことがないお子さんも、ゲームを通して楽しめる内容にしています。</p></details>
+      <details><summary>参加費はかかりますか？</summary><p data-x="feeFaq"></p></details>
+      <details><summary>当日はどこに行けばいいですか？</summary><p>エイメイ学院／明成個別 水谷校舎（みずほ台駅 東口より徒歩8分）にお越しください。</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="access" style="padding-top:10px">
+  <div class="wrap">
+    <div class="access reveal">
+      <h3>エイメイ学院／明成個別 水谷校舎</h3>
+      <p>〒354-0011 埼玉県富士見市水子4651<br>東武東上線 みずほ台駅 東口より徒歩8分</p>
+      <p style="margin-top:12px">お電話でのお問い合わせ<br><a class="tel" href="tel:0120488368">0120-488-368</a><br><small style="color:var(--sub)">9:00〜17:00（日・祝を除く）</small></p>
+      <p style="margin-top:10px"><a href="https://www.eimeigakuin.jp/mizutani/shogakubu/">水谷校舎 小学部のページ</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>今年のクリスマスは、<br>水谷校舎でいっしょに！</h2>
+    <p data-x="finalText"></p>
+    <a class="btn btn-line js-apply" href="https://lin.ee/YUk6YFb" style="margin-top:12px">公式LINEで申し込む</a>
+  </div>
+</section>
+
+<footer><div class="wrap">© EIMEI GROUP ／ エイメイ学院／明成個別 水谷校舎</div></footer>
+
+<div class="dock"><a class="btn btn-line js-apply" href="https://lin.ee/YUk6YFb">公式LINEで申し込む</a></div>
+
+<script>
+/* ===== ここを書きかえると、ページ全体に反映されます =====
+   空欄（""）の項目は「近日お知らせします」と表示されます。 */
+var XMAS = {
+  date: "",              // 例 "2026-12-19"（カウントダウン用）
+  dateLabel: "",         // 例 "12/19（土）"
+  time: "",              // 例 "15:00〜17:00"
+  place: "エイメイ学院／明成個別 水谷校舎",
+  target: "小学1〜6年生",
+  fee: "",               // 例 "無料"
+  bring: "飲み物",
+  deadline: "",          // 例 "12/13（日）"
+  extra: ""              // 補足があれば1〜2文
+};
+(function(){
+  var TBD="近日お知らせします";
+  function v(k){return (XMAS[k]||"").trim()}
+  var map={
+    feeFaq: v("fee") ? "参加費は"+v("fee")+"です。" : "参加費は、決まりしだいこのページと公式LINEでお知らせします。",
+    finalText: v("deadline") ? "申込締切は "+v("deadline")+" です。お友だちと一緒の参加も大歓迎です。" : "お友だちと一緒の参加も大歓迎です。"
+  };
+  document.querySelectorAll("[data-x]").forEach(function(el){
+    var k=el.getAttribute("data-x");
+    if(k in map){el.textContent=map[k];return}
+    var val=v(k);
+    if(k==="extra"){ if(val) el.textContent=val; else el.remove(); return }
+    if(val) el.textContent=val; else {el.textContent=TBD; el.classList.add("tbd")}
+  });
+  document.querySelectorAll(".chips li").forEach(function(li){ if(li.querySelector(".tbd")) li.remove() });
+
+  // 申込の文が入ったLINEリンク
+  var msg="【クリスマス申込】"+(v("dateLabel")?v("dateLabel")+" ":"")+"クリスマスパーティー\n●お名前：\n●学校と学年：\n●いっしょに参加する人数：\n●緊急の連絡先（電話番号）：\n●アレルギーなど心配なこと：";
+  var href="https://line.me/R/oaMessage/%40249algab/?"+encodeURIComponent(msg);
+  document.querySelectorAll(".js-apply").forEach(function(a){a.href=href});
+
+  // カウントダウン（日本時間の暦で数える）
+  var c=document.getElementById("count");
+  if(c&&v("date")){
+    var p=v("date").split("-"), now=new Date(Date.now()+9*3600000);
+    var d=Math.round((Date.UTC(+p[0],+p[1]-1,+p[2])-Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()))/86400000);
+    c.innerHTML = d>0 ? "パーティーまで あと<b>"+d+"</b>日" : d===0 ? "<b>今日</b>はパーティー！" : "パーティーは終了しました";
+  }
+
+  // クイズ
+  var Q=[
+    {q:"「トナカイ」は英語でなんという？",o:["reindeer","rabbit","raccoon"],a:0,m:"正解は reindeer（レインディア）。サンタのそりを引いています。"},
+    {q:"「stocking（ストッキング）」は、クリスマスに何として使う？",o:["プレゼントを入れるくつした","ツリーのてっぺんのかざり","サンタのぼうし"],a:0,m:"正解！ 海外では、くつしたにプレゼントを入れてもらう習慣があります。"},
+    {q:"「Merry Christmas!」と言われたら、なんて返す？",o:["Merry Christmas!","Good night!","See you!"],a:0,m:"正解！ 同じことばで返せばOK。笑顔でいっしょに言ってみよう。"},
+    {q:"「snowman」はどれのこと？",o:["雪だるま","雪の結晶","スキーをする人"],a:0,m:"正解！ snow（雪）＋ man（人）で、雪だるまです。"}
+  ];
+  for(var i=Q.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=Q[i];Q[i]=Q[j];Q[j]=t}
+  var qi=0, score=0, qT=document.getElementById("qText"), qO=document.getElementById("qOpts"), qM=document.getElementById("qMsg"), qN=document.getElementById("qNext"), qNo=document.getElementById("qNo");
+  function show(){
+    var it=Q[qi]; qT.textContent=it.q; qO.innerHTML=""; qM.textContent=""; qN.hidden=true; qNo.textContent=(qi+1)+" / "+Q.length;
+    var idx=it.o.map(function(_,k){return k}).sort(function(){return Math.random()-.5});
+    idx.forEach(function(k){
+      var b=document.createElement("button"); b.type="button"; b.textContent=it.o[k];
+      b.addEventListener("click",function(){
+        if(qO.dataset.done) return;
+        if(k===it.a){ qO.dataset.done=1; b.classList.add("ok"); if(!qO.dataset.miss) score++; qM.textContent=it.m;
+          Array.prototype.forEach.call(qO.children,function(x){if(x!==b)x.classList.add("ng")});
+          qN.hidden=false; qN.textContent= qi<Q.length-1 ? "つぎへ" : "結果を見る"; }
+        else { qO.dataset.miss=1; b.classList.add("ng"); b.disabled=true; qM.textContent="おしい！ もう一回えらんでみよう。"; }
+      });
+      qO.appendChild(b);
+    });
+    delete qO.dataset.done; delete qO.dataset.miss;
+  }
+  qN.addEventListener("click",function(){
+    if(qi<Q.length-1){qi++;show();return}
+    qT.textContent=Q.length+"問中 "+score+"問、1回で正解！"; qO.innerHTML=""; qNo.textContent="";
+    qM.textContent= score===Q.length ? "すごい！ パーティーでも大活躍まちがいなし。" : "パーティーでは、もっとたくさんの英語にふれられます。お楽しみに！";
+    qN.hidden=true;
+    try{window.va&&window.va("event",{name:"quiz_done",data:{score:score}})}catch(e){}
+  });
+  show();
+
+  // 現れるアニメーション
+  var rs=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});rs.forEach(function(r){io.observe(r)})}
+  else rs.forEach(function(r){r.classList.add("in")});
+
+  // 雪
+  var cv=document.getElementById("snow"); if(!cv||!cv.getContext) return;
+  var still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ctx=cv.getContext("2d"), W=0,H=0, dpr=Math.min(window.devicePixelRatio||1,2), F=[];
+  function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    F=[];var n=Math.round(W*H/5200);for(var i=0;i<n;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.4+.6,s:Math.random()*.6+.25,w:Math.random()*6.28})}
+  function draw(){ctx.clearRect(0,0,W,H);ctx.fillStyle="#fff";
+    for(var i=0;i<F.length;i++){var f=F[i];if(!still){f.y+=f.s;f.w+=.01;f.x+=Math.sin(f.w)*.35;if(f.y>H+4){f.y=-4;f.x=Math.random()*W}}
+      ctx.globalAlpha=.35+f.r/4;ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,6.283);ctx.fill()}
+    ctx.globalAlpha=1; if(!still) requestAnimationFrame(draw)}
+  size(); window.addEventListener("resize",function(){size();if(still)draw()}); requestAnimationFrame(draw);
+})();
+</script>
+<script>
+(function(){function ev(n,d){try{window.va&&window.va("event",{name:n,data:d||{}})}catch(e){}}
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var h=a.getAttribute("href")||"";
+if(h.indexOf("oaMessage")>=0)ev("line_apply",{page:"xmas",where:a.textContent.trim().slice(0,20)});else if(h.indexOf("lin.ee")>=0)ev("line_add",{page:"xmas",where:a.textContent.trim().slice(0,20)});});
+if("IntersectionObserver" in window){var seen={};var io=new IntersectionObserver(function(es){es.forEach(function(x){var id=x.target.id;if(x.isIntersecting&&id&&!seen[id]){seen[id]=1;ev("view_section",{section:"xmas-"+id});}})},{threshold:.35});
+Array.prototype.forEach.call(document.querySelectorAll("section[id]"),function(s){io.observe(s)});}})();
+</script>
+</body>
+</html>
