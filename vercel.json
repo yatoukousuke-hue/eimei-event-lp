@@ -24,10 +24,6 @@
     {
       "source": "/e/:slug",
       "destination": "/event"
-    },
-    {
-      "source": "/ensoku-2026",
-      "destination": "/"
     }
   ],
   "redirects": [
